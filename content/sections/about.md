@@ -4,11 +4,16 @@ weight: 1
 id: "about"
 ---
 
-Das Münchner Duo twiceasmad, bestehend aus PROVOKAT und Fin Dus, verwandelt sich live in eine 7-köpfige Band mit dickem Bläsersound, die stilistisch zwischen Deutschpop, Reggae und Funk pendelt.
-Mit ihrer Single Neuzeit Phänomen wollen sie der lokalen Musikszene mehr Leben einhauchen, was sie bei einem energiegeladenen Release-Konzert im Atomic Café eindrucksvoll präsentierten.
-Die daraus entstandene Live-EP Fiese lines/Fast gestickt, erschienen Anfang Oktober, gibt einen authentischen Eindruck ihrer Bühnenpräsenz.
+Dicke Bläser, bissiger Rap und Ohrwurm-Melodien aus einem trashigen Kleinanzeigen-Synthesizer – verpackt in einem Mix aus Pop, Rock und Reggae.
+Klingt nach viel?
+Ist es auch.
+**twiceasmad** passen in keine Schublade und gehören trotzdem (oder gerade deshalb) zu den spannendsten jungen Live-Bands aus München.
 
-Ihre Musik brachte ihnen eine Nominierung für den Tassilo Kulturpreis sowie Auftritte beim OBEN OHNE OPEN AIR 2021 oder in der FM4 Morning Show.
-twiceasmad vereinen Rap, Synthies und Bläser zu einem energiegeladenen, einzigartigen Sound, der unzensiert und in Farbe in der bayerischen Hauptstadt entsteht.
+Ihr Debütalbum ***Stranieri*** (VÖ 22.10.) -- italienisch für „Fremde“ oder „Ausländer“ -- erzählt vom Gefühl, sich fremd zu fühlen:
+In neuen Städten, in Beziehungen, in sich selbst. Der Soundtrack einer Generation im Aufbruch und Umbruch -- irgendwo zwischen Studienabschluss, Barjob und ersten Hochzeiten. Wenn enge Schulfreunde zu Bekannten von früher werden, ist das beängstigend -- und inspirierend.
 
-<img src="/images/pressebild.jpg" alt="Pressebild" style="max-width: 100%; height: auto; display: block; margin: 2rem auto; border-radius: 8px;">
+Nach Auftritten beim **Oben Ohne Festival**, einem ausverkauften Konzert im **Atomic Café** und einer Nominierung für den Tassilo Kulturpreis geht es für die siebenköpfige Band erstmals auf Tour:
+Im Herbst solo, ab November als Support von **Monobo Son** auf ihrer „Bitte Noch Meer“-Tour.
+Jeder Ton kommt direkt aus den Fingerspitzen, Stimmbändern oder Lungen der Jungs -- live, ehrlich und mit voller Wucht.
+
+<img src="/images/pressebild.jpg" alt="Pressebild">

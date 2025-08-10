@@ -1,26 +1,13 @@
 ---
-title: "Our Music"
+title: "Musik"
 weight: 2
 id: "music"
 ---
 
-Share information about your albums, singles, and musical style here.
-
-You can embed media players directly:
-
-<!-- Example Spotify embed -->
 <div class="spotify-embed" style="margin: 20px 0;">
-  <!-- Add your Spotify embed code here -->
-  <p><em>Add your Spotify embed code in this section</em></p>
+<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/artist/3I8XIkGa9s1FmadHhrHX6f?utm_source=generator" width="100%" height="500" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 </div>
 
-<!-- Example YouTube embed -->
 <div class="youtube-embed" style="margin: 20px 0;">
-  <!-- Add your YouTube embed code here -->
-  <p><em>Add your YouTube embed code in this section</em></p>
+<iframe width="100%" height="450" src="https://www.youtube-nocookie.com/embed/rQ4Kr6eAk0o?si=QG8nUdXFbb_voMGa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
-
-**Our latest releases:**
-- Single 1
-- Single 2
-- Album Name

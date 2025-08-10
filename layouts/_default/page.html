@@ -28,7 +28,7 @@
                 <p>{{ .Site.Params.description }}</p>
             </div>
             <div class="footer-links">
-                <h4>Quick Links</h4>
+                <h4>Links</h4>
                 <ul>
                     {{ range (where .Site.RegularPages "Section" "sections").ByWeight }}
                     <li><a href="{{ "/" | relURL }}#{{ .Params.id }}">{{ .Title }}</a></li>
@@ -36,7 +36,7 @@
                 </ul>
             </div>
             <div class="footer-social">
-                <h4>Follow Us</h4>
+                <h4>Social Media</h4>
                 <div class="social-links">
                     {{ range .Site.Params.social }}
                       {{ if .url }}

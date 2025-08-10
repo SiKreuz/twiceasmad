@@ -61,7 +61,7 @@
             <div class="footer-links">
                 <h4>Quick Links</h4>
                 <ul>
-                    {{ range (where .Site.Pages "Section" "sections").ByWeight }}
+                    {{ range (where .Site.RegularPages "Section" "sections").ByWeight }}
                     <li><a href="#{{ .Params.id }}">{{ .Title }}</a></li>
                     {{ end }}
                 </ul>

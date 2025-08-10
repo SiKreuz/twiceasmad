@@ -1,5 +1,5 @@
 ---
-title: "Über Uns"
+title: "Bio"
 weight: 1
 id: "about"
 ---

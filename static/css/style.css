@@ -15,6 +15,22 @@ body {
     color: #333;
 }
 
+/* Theme Colors */
+:root {
+    /* Primary brand color (purple) */
+    --color-primary: #933D83;
+    --color-primary-600: #7E3572; /* darker for hover */
+    --color-primary-400: #A65297; /* lighter */
+    --color-primary-200: #D9BCD3; /* tint */
+    --color-primary-100: #F6EFF4; /* very light background tint */
+    --color-primary-rgb: 147, 61, 131; /* for rgba usage */
+
+    /* Base neutrals */
+    --color-text: #333333;
+    --color-bg: #ffffff;
+    --color-muted: #f8f9fa;
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -45,7 +61,6 @@ body {
     height: 100%;
     object-fit: cover;
 }
-
 .hero-overlay {
     position: absolute;
     top: 0;
@@ -109,7 +124,7 @@ body {
 .cta-button {
     display: inline-block;
     padding: 15px 30px;
-    background: #ff6b6b;
+    background: var(--color-primary);
     color: white;
     text-decoration: none;
     border-radius: 30px;
@@ -120,9 +135,9 @@ body {
 }
 
 .cta-button:hover {
-    background: #ff5252;
+    background: var(--color-primary-600);
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(255, 107, 107, 0.3);
+    box-shadow: 0 8px 20px rgba(var(--color-primary-rgb), 0.3);
 }
 
 .scroll-indicator {
@@ -200,7 +215,7 @@ body {
 }
 
 .nav-link:hover {
-    color: #ff6b6b;
+    color: var(--color-primary);
 }
 
 .nav-toggle {
@@ -228,7 +243,7 @@ body {
 }
 
 .content-section:nth-child(even) {
-    background: #f8f9fa;
+    background: var(--color-muted);
 }
 
 .section-header {
@@ -286,7 +301,7 @@ body {
 .footer-social h4 {
     font-size: 1.2rem;
     margin-bottom: 1rem;
-    color: #ff6b6b;
+    color: var(--color-primary);
 }
 
 .footer-links ul {
@@ -300,7 +315,7 @@ body {
 }
 
 .footer-links a:hover {
-    color: #ff6b6b;
+    color: var(--color-primary);
 }
 
 .social-links {
@@ -320,8 +335,8 @@ body {
 }
 
 .social-link:hover {
-    color: #ff6b6b;
-    background: rgba(255, 107, 107, 0.1);
+    color: var(--color-primary);
+    background: rgba(var(--color-primary-rgb), 0.1);
 }
 
 .social-link i {
@@ -360,7 +375,7 @@ body {
 
 /* Legal Pages */
 .legal-page-header {
-    background: linear-gradient(135deg, #2c3e50, #34495e);
+    background: linear-gradient(135deg, #712E67, var(--color-primary));
     color: white;
     padding: 6rem 0 4rem;
     text-align: center;
@@ -390,7 +405,7 @@ body {
 .legal-content h1 {
     color: #2c3e50;
     margin-bottom: 1.5rem;
-    border-bottom: 2px solid #3498db;
+    border-bottom: 2px solid var(--color-primary);
     padding-bottom: 0.5rem;
 }
 
@@ -430,7 +445,7 @@ body {
 .btn-back {
     display: inline-block;
     padding: 0.75rem 1.5rem;
-    background: #3498db;
+    background: var(--color-primary);
     color: white;
     text-decoration: none;
     border-radius: 5px;
@@ -439,7 +454,7 @@ body {
 }
 
 .btn-back:hover {
-    background: #2980b9;
+    background: var(--color-primary-600);
 }
 
 /* Responsive Design */

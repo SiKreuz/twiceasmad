@@ -20,51 +20,6 @@
 </main>
 
 <!-- Footer -->
-<footer class="site-footer">
-    <div class="container">
-        <div class="footer-content">
-            <div class="footer-brand">
-                <h3>{{ .Site.Params.bandName }}</h3>
-                <p>{{ .Site.Params.description }}</p>
-            </div>
-            <div class="footer-links">
-                <h4>Links</h4>
-                <ul>
-                    {{ range (where .Site.RegularPages "Section" "sections").ByWeight }}
-                    <li><a href="{{ "/" | relURL }}#{{ .Params.id }}">{{ .Title }}</a></li>
-                    {{ end }}
-                </ul>
-            </div>
-            <div class="footer-social">
-                <h4>Social Media</h4>
-                <div class="social-links">
-                    {{ range .Site.Params.social }}
-                      {{ if .url }}
-                        {{ if eq .name "Email" }}
-                          <a href="mailto:{{ .url }}" class="social-link" aria-label="{{ .name }}">
-                            <i class="fas fa-{{ .icon }}"></i>
-                            <span>{{ .name }}</span>
-                          </a>
-                        {{ else }}
-                          <a href="{{ .url }}" class="social-link" target="_blank" rel="noopener" aria-label="{{ .name }}">
-                            <i class="fab fa-{{ .icon }}"></i>
-                            <span>{{ .name }}</span>
-                          </a>
-                        {{ end }}
-                      {{ end }}
-                    {{ end }}
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; {{ now.Year }} {{ .Site.Params.bandName }}. Alle Rechte vorbehalten.</p>
-            <div class="footer-legal">
-                <a href="{{ "imprint" | relURL }}">Impressum</a>
-                <span class="separator">|</span>
-                <a href="{{ "privacy" | relURL }}">Datenschutz</a>
-            </div>
-        </div>
-    </div>
-</footer>
+{{ partial "footer.html" . }}
 
 {{ end }}

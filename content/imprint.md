@@ -5,15 +5,17 @@ draft: false
 layout: "page"
 ---
 
+**Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:**  
+
 Vertreten durch: **Fabian Maurice Fremuth**  
-twiceasmad  
+twiceasmad GbR  
 Ahornring 34  
 82024 Taufkirchen
 
 ## Kontakt
-**Telefon**: 0160 382 3425  
-**E-Mail**: mail@twiceasmad.de
+**Telefon**: [+49 160 3823425](tel:+491603823425)  
+**E-Mail**: [mail@twiceasmad.de](mailto:mail@twiceasmad.de)
 
-## Verbraucherstreitbeilegung/Universalschlichtungsstelle
+## Verbraucherstreitbeilegung / Universalschlichtungsstelle
 
 Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.

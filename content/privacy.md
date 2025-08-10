@@ -1,98 +1,158 @@
 ---
-title: "Privacy Policy"
+title: "Datenschutzerklärung"
 date: 2025-08-10
 draft: false
 layout: "page"
 ---
 
-# Privacy Policy
+## 1. Verantwortlicher und Kontakt
 
-## 1. Data Protection at a Glance
+Diese Website wird betrieben von:  
 
-### General Information
+**twiceasmad GbR**  
+Ahornring 34  
+82024 Taufkirchen  
+[mail@twiceasmad.de](mailto:mail@twiceasmad.de)
 
-The following gives a simple overview of what happens to your personal information when you visit our website. Personal information is any data with which you could be personally identified. Detailed information on the subject of data protection can be found in our privacy policy found below.
+Bei Fragen zum Datenschutz oder zu dieser Datenschutzerklärung wenden Sie sich bitte an die oben genannte E-Mail-Adresse.
 
-### Data Collection on our Website
+## 2. Allgemeine Hinweise
 
-**Who is responsible for the data collection on this website?**
+Diese Website ist eine statische Website, die mit Hugo generiert wird und ohne serverseitige Verarbeitung auskommt. Wir nehmen den Schutz Ihrer Daten sehr ernst und informieren Sie transparent über die Verarbeitung personenbezogener Daten beim Besuch unserer Seite.
 
-The data collected on this website are processed by the website operator. The operator's contact details can be found in the website's required legal notice.
+### 2.1 Unser Umgang mit Datenschutz
 
-**How do we collect your data?**
+Als statische Website erheben, speichern oder verarbeiten wir selbst keine personenbezogenen Daten auf unseren Servern. Beim Aufruf eingebetteter Inhalte von Drittanbietern (YouTube, Spotify, Bandsintown) können jedoch durch diese Dienste Daten erhoben werden. Die Verarbeitung erfolgt nach deren eigenen Datenschutzbestimmungen.
 
-Some data are collected when you provide it to us. This could, for example, be data you enter on a contact form.
+## 3. Eingebettete Drittanbieter-Dienste
 
-Other data are collected automatically by our IT systems when you visit the website. These data are primarily technical data such as the browser and operating system you are using or when you accessed the page. These data are collected automatically as soon as you enter our website.
+Unsere Website bindet Inhalte folgender Drittanbieter ein. Bei Interaktion mit diesen Inhalten können die jeweiligen Anbieter Daten über Sie verarbeiten:
 
-**What do we use your data for?**
+### 3.1 YouTube-Videos
 
-Part of the data is collected to ensure the proper functioning of the website. Other data can be used to analyze how visitors use the site.
+**Anbieter:** Google LLC (YouTube)  
+**Verantwortlicher:** Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA
 
-**What rights do you have regarding your data?**
+**Zweck:** Anzeige von Videoinhalten zu unserer Musik und unseren Auftritten.
 
-You always have the right to request information about your stored data, its origin, its recipients, and the purpose of its collection at no charge. You also have the right to request that it be corrected, blocked, or deleted.
+**Verarbeitung:**
+- Beim Aufruf eines eingebetteten YouTube-Videos wird Ihre IP-Adresse an Google übermittelt
+- YouTube kann Cookies und lokalen Speicher für Funktionalität und Analyse setzen
+- Wenn Sie bei Google eingeloggt sind, kann Ihr Nutzungsverhalten Ihrem Profil zugeordnet werden
+- Daten können in die USA übertragen und dort verarbeitet werden
 
-## 2. General Information and Mandatory Information
+**Erweiterter Datenschutzmodus:** Wir verwenden, wo möglich, den erweiterten Datenschutzmodus von YouTube (youtube-nocookie.com), wodurch Cookies erst nach aktiver Interaktion gesetzt werden.
 
-### Data Protection
+**Rechtsgrundlage:** Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO), wenn Sie das Video abspielen.
 
-The operators of this website take the protection of your personal data very seriously. We treat your personal data as confidential and in accordance with the statutory data protection regulations and this privacy policy.
+**Speicherdauer:** Informationen zur Speicherdauer finden Sie in der [Datenschutzerklärung von Google](https://policies.google.com/privacy).
 
-If you use this website, various pieces of personal data will be collected. Personal information is any data with which you could be personally identified.
+**Ihre Rechte:** Sie können Ihre Einwilligung widerrufen, indem Sie das Video nicht abspielen. Weitere Informationen finden Sie in der [Datenschutzerklärung von Google](https://policies.google.com/privacy).
 
-### Contact Form
+### 3.2 Spotify-Artist-Profil
 
-If you send us questions via the contact form, we will collect the data entered on the form, including the contact details you provide, to answer your question and any follow-up questions. We do not share this information without your permission.
+**Anbieter:** Spotify AB, Regeringsgatan 19, 111 53 Stockholm, Schweden
 
-### Server Log Files
+**Zweck:** Anzeige des Künstlerprofils und Musikstreaming-Integration.
 
-The website provider automatically collects and stores information that your browser automatically transmits to us in "server log files". These are:
+**Verarbeitung:**
+- Übermittlung der IP-Adresse an Spotify
+- Cookies für Player-Funktionalität und Benutzereinstellungen
+- Nutzungsverhalten und Interaktion mit dem Spotify-Widget
+- Wenn Sie bei Spotify eingeloggt sind, kann die Aktivität Ihrem Konto zugeordnet werden
+- Daten werden überwiegend innerhalb der EU (Schweden) verarbeitet
 
-- Browser type and browser version
-- Operating system used
-- Referrer URL
-- Host name of the accessing computer
-- Time of the server request
-- IP address
+**Rechtsgrundlage:** Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) bei Interaktion mit dem Spotify-Widget.
 
-These data will not be combined with data from other sources.
+**Ihre Rechte:** Sie können die Datenverarbeitung vermeiden, indem Sie das Widget nicht nutzen. Details finden Sie in der [Datenschutzerklärung von Spotify](https://www.spotify.com/de/privacy).
 
-The basis for data processing is Art. 6 (1) (f) DSGVO, which allows the processing of data to fulfill a contract or for measures preliminary to a contract.
+### 3.3 Bandsintown-Konzertübersicht
 
-## 3. Your Rights
+**Anbieter:** Bandsintown, LLC (USA)
 
-### Right to Information
+**Zweck:** Anzeige von bevorstehenden und vergangenen Konzertterminen sowie Ticketinformationen.
 
-You have the right to request confirmation as to whether we are processing personal data concerning you. If this is the case, you have the right to information about this personal data.
+**Verarbeitung:**
+- Übermittlung der IP-Adresse und ggf. Standortdaten
+- Cookies für Widget-Funktionalität und Benutzereinstellungen
+- Nutzungsverhalten und Interaktion mit Konzertlisten
+- Daten können in die USA übertragen und dort verarbeitet werden
 
-### Right to Rectification
+**Rechtsgrundlage:** Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) bei Interaktion mit dem Bandsintown-Widget.
 
-You have the right to rectification of inaccurate personal data concerning you. Taking into account the purposes of the processing, you also have the right to have incomplete personal data completed.
+**Ihre Rechte:** Sie können die Datenverarbeitung vermeiden, indem Sie das Widget nicht nutzen. Weitere Informationen finden Sie in der [Datenschutzerklärung von Bandsintown](https://corp.bandsintown.com/privacy).
 
-### Right to Erasure
+## 4. Cookies und Tracking-Technologien
 
-You have the right to erasure of personal data concerning you, provided that the processing is not necessary.
+### 4.1 Eigene Cookies
 
-### Right to Restriction
+Diese Website setzt selbst keine Cookies und verwendet keine eigenen Tracking-Technologien.
 
-You have the right to restriction of processing of personal data concerning you.
+### 4.2 Cookies von Drittanbietern
 
-### Right to Data Portability
+Die oben genannten eingebetteten Dienste können beim Interagieren Cookies setzen. Diese Cookies unterliegen den jeweiligen Datenschutz- und Cookie-Richtlinien der Anbieter.
 
-You have the right to receive personal data concerning you in a structured, commonly used and machine-readable format.
+**Mögliche Cookie-Arten:**
+- **Funktionale Cookies:** Für Videowiedergabe, Musikstreaming und Widget-Funktionalität
+- **Analyse-Cookies:** Zur Messung von Interaktionen und Verbesserung der Dienste
+- **Präferenz-Cookies:** Zur Speicherung von Einstellungen und Präferenzen
 
-### Right to Object
+## 5. Datenübermittlung in Drittländer
 
-You have the right to object to processing of personal data concerning you which is based on legitimate interests.
+Einige eingebettete Dienste (YouTube/Google und Bandsintown) haben ihren Sitz in den USA, einem Land ohne angemessenes Datenschutzniveau laut EU-Kommission. Die Übermittlung erfolgt auf Basis Ihrer ausdrücklichen Einwilligung.
 
-## 4. Contact Information
+- **Google/YouTube:** Übermittlung auf Grundlage Ihrer Einwilligung und ggf. Standardvertragsklauseln
+- **Bandsintown:** Übermittlung auf Grundlage Ihrer Einwilligung
 
-If you have questions about this privacy policy, please contact us:
+Mit der Interaktion mit diesen Inhalten willigen Sie in die Übermittlung Ihrer Daten in diese Länder ein.
 
-**Email:** [Your Email Address]  
-**Address:** [Your Full Address]
+## 6. Ihre Rechte nach DSGVO
 
----
+Sie haben als betroffene Person folgende Rechte:
 
-*This privacy policy was last updated on August 10, 2025. Please note that you should customize this template according to your specific data processing activities and local legal requirements.*
+- **Auskunft:** Über die Verarbeitung Ihrer personenbezogenen Daten
+- **Berichtigung:** Unrichtiger Daten
+- **Löschung:** Ihrer gespeicherten Daten
+- **Einschränkung:** Der Verarbeitung
+- **Datenübertragbarkeit:** Erhalt Ihrer Daten in einem strukturierten Format
+- **Widerspruch:** Gegen die Verarbeitung aus berechtigtem Interesse
+- **Widerruf:** Ihrer Einwilligung mit Wirkung für die Zukunft
+
+Für Daten, die durch Drittanbieter erhoben werden, wenden Sie sich bitte direkt an den jeweiligen Anbieter.
+
+## 7. Datenschutz bei Kindern
+
+Unsere Website richtet sich nicht an Kinder unter 13 Jahren. Wir erheben wissentlich keine personenbezogenen Daten von Kindern unter 13 Jahren. Sollten Sie Kenntnis davon haben, dass uns solche Daten vorliegen, kontaktieren Sie uns bitte umgehend.
+
+## 8. Datensicherheit
+
+Wir verarbeiten selbst keine personenbezogenen Daten, erwarten aber von den eingebetteten Drittanbietern angemessene Sicherheitsmaßnahmen. Für die Sicherheit der bei Drittanbietern verarbeiteten Daten übernehmen wir keine Gewähr.
+
+## 9. Änderungen dieser Datenschutzerklärung
+
+Wir behalten uns vor, diese Datenschutzerklärung gelegentlich zu aktualisieren. Änderungen werden auf dieser Seite mit neuem Stand veröffentlicht. Bitte informieren Sie sich regelmäßig über den aktuellen Inhalt.
+
+## 10. Tipps zur Minimierung der Datenerhebung
+
+Wenn Sie die Datenerhebung minimieren möchten:
+
+- **YouTube-Videos:** Nicht auf „Abspielen“ klicken
+- **Spotify-Inhalte:** Nicht mit dem Widget interagieren
+- **Konzertinfos:** Nicht auf Bandsintown-Widgets klicken
+- **Browser-Einstellungen:** Blockieren Sie Drittanbieter-Cookies
+- **Datenschutzorientierte Browser:** Nutzen Sie Browser mit erhöhtem Datenschutz
+
+## 11. Rechtsgrundlage im Überblick
+
+Die Verarbeitung durch eingebettete Drittanbieter erfolgt ausschließlich auf Basis Ihrer ausdrücklichen Einwilligung durch Interaktion mit den Inhalten. Sie können diese Einwilligung jederzeit widerrufen, indem Sie nicht interagieren.
+
+## 12. Kontakt für Datenschutzanliegen
+
+Bei Fragen oder Anliegen zum Datenschutz wenden Sie sich bitte an:
+
+[Ihre E-Mail-Adresse]
+
+Für Anliegen zu einzelnen Diensten:
+- **YouTube/Google:** [Google Datenschutz-Kontakt](https://support.google.com/policies/contact/general_privacy_form)
+- **Spotify:** [Spotify Datenschutz-Kontakt](https://support.spotify.com/contact-privacy-office/)
+- **Bandsintown:** [Bandsintown Privacy Request](https://www.bandsintown.com/privacy_request/)

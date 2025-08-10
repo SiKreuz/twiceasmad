@@ -19,11 +19,16 @@ body {
 :root {
     /* Primary brand color (purple) */
     --color-primary: #933D83;
-    --color-primary-600: #7E3572; /* darker for hover */
-    --color-primary-400: #A65297; /* lighter */
-    --color-primary-200: #D9BCD3; /* tint */
-    --color-primary-100: #F6EFF4; /* very light background tint */
-    --color-primary-rgb: 147, 61, 131; /* for rgba usage */
+    --color-primary-600: #7E3572;
+    /* darker for hover */
+    --color-primary-400: #A65297;
+    /* lighter */
+    --color-primary-200: #D9BCD3;
+    /* tint */
+    --color-primary-100: #F6EFF4;
+    /* very light background tint */
+    --color-primary-rgb: 147, 61, 131;
+    /* for rgba usage */
 
     /* Base neutrals */
     --color-text: #333333;
@@ -51,13 +56,13 @@ body {
     content: "";
     position: absolute;
     inset: 0;
-    z-index: 0; /* above image & base overlay, below content */
+    z-index: 0;
+    /* above image & base overlay, below content */
     pointer-events: none;
     background: radial-gradient(ellipse at center,
-        rgba(0, 0, 0, 0.45) 0%,
-        rgba(0, 0, 0, 0.55) 60%,
-        rgba(0, 0, 0, 0.65) 100%
-    );
+            rgba(0, 0, 0, 0.45) 0%,
+            rgba(0, 0, 0, 0.55) 60%,
+            rgba(0, 0, 0, 0.65) 100%);
 }
 
 .hero-image {
@@ -74,6 +79,7 @@ body {
     height: 100%;
     object-fit: cover;
 }
+
 .hero-overlay {
     position: absolute;
     top: 0;
@@ -96,7 +102,7 @@ body {
     width: auto;
     margin: 0 auto 0.75rem;
     display: block;
-    filter: drop-shadow(0 4px 14px rgba(0,0,0,0.35));
+    filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.35));
 }
 
 .band-name {
@@ -222,12 +228,19 @@ body {
 }
 
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
         transform: translateY(0) rotate(45deg);
     }
+
     40% {
         transform: translateY(-10px) rotate(45deg);
     }
+
     60% {
         transform: translateY(-5px) rotate(45deg);
     }
@@ -272,7 +285,7 @@ body {
     height: 36px;
     width: auto;
     display: block;
-    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.25));
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.25));
 }
 
 .nav-brand-text {
@@ -405,13 +418,13 @@ body {
     border: 1px solid rgba(0, 0, 0, 0.06);
     border-radius: 12px;
     padding: 1.25rem;
-    box-shadow: 0 6px 22px rgba(0,0,0,0.06);
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.06);
     transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .contact-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 28px rgba(0,0,0,0.09);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.09);
     border-color: rgba(var(--color-primary-rgb), 0.35);
 }
 
@@ -552,7 +565,7 @@ body {
     background: white;
     padding: 3rem;
     border-radius: 8px;
-    box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
     max-width: 800px;
     margin: 0 auto 2rem;
 }
@@ -617,21 +630,21 @@ body {
     .band-name {
         font-size: 2.5rem;
     }
-    
+
     .band-tagline {
         font-size: 1.2rem;
     }
-    
+
     .hero-social-links {
         gap: 1rem;
     }
-    
+
     .hero-social-link {
         width: 45px;
         height: 45px;
         font-size: 1.1rem;
     }
-    
+
     .nav-menu {
         position: fixed;
         top: 70px;
@@ -645,31 +658,31 @@ body {
         padding: 2rem 0;
         transition: left 0.3s ease;
     }
-    
+
     .nav-menu.active {
         left: 0;
     }
-    
+
     .nav-toggle {
         display: flex;
     }
-    
+
     .nav-toggle.active span:nth-child(1) {
         transform: rotate(-45deg) translate(-5px, 6px);
     }
-    
+
     .nav-toggle.active span:nth-child(2) {
         opacity: 0;
     }
-    
+
     .nav-toggle.active span:nth-child(3) {
         transform: rotate(45deg) translate(-5px, -6px);
     }
-    
+
     .section-title {
         font-size: 2rem;
     }
-    
+
     .content-section {
         padding: 60px 0;
     }
@@ -678,12 +691,12 @@ body {
         height: 56px;
         margin-bottom: 0.6rem;
     }
-    
+
     /* Legal Pages Mobile */
     .page-title {
         font-size: 2.5rem;
     }
-    
+
     .legal-content {
         padding: 2rem;
         margin: 0 1rem 2rem;
@@ -700,31 +713,31 @@ body {
     .band-name {
         font-size: 2rem;
     }
-    
+
     .band-tagline {
         font-size: 1rem;
     }
-    
+
     .hero-social-links {
         gap: 0.8rem;
     }
-    
+
     .hero-social-link {
         width: 40px;
         height: 40px;
         font-size: 1rem;
     }
-    
+
     .cta-button {
         padding: 12px 24px;
         font-size: 0.9rem;
     }
-    
+
     /* Legal Pages Small Mobile */
     .page-title {
         font-size: 2rem;
     }
-    
+
     .legal-content {
         padding: 1.5rem;
     }
@@ -735,4 +748,236 @@ body {
     .contact-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+}
+
+/* Bandsintown widget tweaks (scoped to Shows section) */
+/* Ensure location and text columns are left-aligned inside the embed */
+#shows .show-list,
+#shows .show-list * {
+    text-align: left !important;
+}
+
+/* Specifically ensure the location lines render left-aligned on all layouts */
+#shows .bit-location-under-desktop,
+#shows .bit-location-under-mobile,
+#shows .bit-titleWrapper,
+#shows .bit-venue,
+#shows a.bit-details,
+#shows .bit-details-inner-wrapper {
+    text-align: left !important;
+}
+
+/* If the widget uses flex to center, push to the start */
+#shows .bit-details-inner-wrapper,
+#shows .bit-titleWrapper {
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+}
+
+/* Prevent unexpected centering caused by block-level anchors */
+#shows a.bit-details,
+#shows .bit-titleWrapper a {
+    display: block;
+}
+
+/* Explicit order: date → title → location */
+#shows .bit-details-inner-wrapper a.bit-details {
+    order: 1 !important;
+}
+
+#shows .bit-details-inner-wrapper .bit-titleWrapper {
+    order: 2 !important;
+}
+
+#shows .bit-details-inner-wrapper .bit-location-under-mobile {
+    order: 3 !important;
+}
+
+#shows .bit-details-inner-wrapper .bit-location-under-tablet {
+    order: 3 !important;
+}
+
+/* Responsive layout for the Bandsintown widget */
+/* Large screens: keep date, event name, and location in one line */
+@media (min-width: 1025px) {
+    #shows .bit-details-inner-wrapper {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: baseline !important;
+        flex-wrap: nowrap !important;
+        justify-content: flex-start !important;
+        gap: 0 !important;
+        /* separators provide spacing */
+        white-space: nowrap !important;
+    }
+
+    /* Prevent wrapping and force inline sizing for the three parts */
+    #shows .bit-details-inner-wrapper a.bit-details,
+    #shows .bit-details-inner-wrapper .bit-titleWrapper,
+    #shows .bit-details-inner-wrapper .bit-location-under-mobile {
+        display: inline-block !important;
+        vertical-align: baseline !important;
+        flex: 0 0 auto !important;
+        width: auto !important;
+        max-width: none !important;
+        float: none !important;
+        clear: none !important;
+    }
+
+    #shows .bit-date,
+    #shows .bit-titleWrapper,
+    #shows .bit-venue,
+    #shows .bit-location-under-mobile {
+        white-space: nowrap !important;
+    }
+
+    /* Let the date wrapper shrink to content instead of a fixed column */
+    #shows .bit-date-wrapper {
+        display: inline-block !important;
+        width: auto !important;
+        min-width: 0 !important;
+        max-width: none !important;
+        flex: 0 0 auto !important;
+    }
+
+    #shows .bit-date {
+        display: inline !important;
+        width: auto !important;
+    }
+
+    /* Inline layout tweaks */
+    #shows .bit-titleWrapper,
+    #shows .bit-location-under-mobile {
+        margin-top: 0 !important;
+    }
+
+    /* Prefer tablet location on large screens and hide mobile to avoid duplicates */
+    #shows .bit-location-under-mobile {
+        display: none !important;
+    }
+
+    #shows .bit-location-under-tablet {
+        display: inline !important;
+        align-self: auto !important;
+        white-space: nowrap !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Ensure the title doesn't reserve extra space */
+    #shows .bit-titleWrapper {
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+    }
+
+    #shows .bit-titleWrapper a {
+        display: inline !important;
+        width: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Location: no unintended offset */
+    #shows .bit-location-under-mobile {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Ensure the anchor inside title is inline, not block */
+    #shows .bit-titleWrapper a {
+        display: inline !important;
+        width: auto !important;
+    }
+    
+    /* Handle div variant of venue in second tab */
+    #shows .bit-titleWrapper div.bit-venue {
+        display: inline !important;
+        width: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Add dash separators between date → name → location */
+    #shows .bit-details-inner-wrapper .bit-date::after {
+        content: " — ";
+        margin: 0 6px;
+    }
+
+    #shows .bit-details-inner-wrapper .bit-titleWrapper::after {
+        content: " — ";
+        margin: 0 6px;
+    }
+}
+
+/* Small screens: keep stacked but center only the location line */
+@media (max-width: 480px) {
+    #shows .bit-details-inner-wrapper {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+
+    #shows .bit-details-inner-wrapper .bit-location-under-mobile {
+        text-align: center !important;
+        align-self: center !important;
+        display: block !important;
+        width: 100% !important;
+    }
+}
+
+/* Dates: brand purple and not bold (desktop + mobile) */
+#shows .bit-date,
+#shows .bit-mobile-date {
+    color: var(--color-primary) !important;
+    font-weight: 400 !important;
+}
+
+/* Event name: bold (both anchor and div variants) */
+#shows .bit-venue {
+    font-weight: 700 !important;
+}
+
+/* Handle second tab format where venue is a div instead of anchor */
+#shows .bit-titleWrapper div.bit-venue {
+    font-weight: 700 !important;
+    display: inline !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Swap order: on small/mid screens hide desktop loc and use mobile/tablet */
+@media (max-width: 1024px) {
+    #shows .bit-location-under-desktop {
+        display: none !important;
+    }
+
+    #shows .bit-location-under-mobile {
+        display: block !important;
+    }
+}
+
+/* Arrange inner content order: date (1) → title (2) → location (3) */
+@media (max-width: 1024px) {
+    #shows .bit-details-inner-wrapper {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+}
+
+/* Light spacing between rows when stacked */
+@media (max-width: 1024px) {
+    #shows .bit-titleWrapper {
+        margin-top: 2px;
+    }
+
+    #shows .bit-location-under-mobile {
+        margin-top: 2px;
+    }
+}
+
+/* Live section: widen section content only for the Shows section */
+#shows .section-content {
+    max-width: 1000px;
 }

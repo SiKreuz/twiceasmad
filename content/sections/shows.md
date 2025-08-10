@@ -58,7 +58,7 @@ data-event-rsvp-cta-border-radius="4px"
 data-follow-section-position="hidden"
 data-play-my-city-position="hidden"
 data-language="de"
-data-layout-breakpoint="200"
+data-layout-breakpoint="480"
 data-bit-logo-position="hidden"
 ></a>
 </div>

@@ -1,0 +1,26 @@
+baseURL = 'https://twiceasmad.de/'
+languageCode = 'de-de'
+title = 'twiceasmad'
+
+[params]
+  bandName = "twiceasmad"
+  description = "Deutscher Indie-Pop"
+
+  # Social Media Links
+  [[params.social]]
+    name = "Instagram" 
+    url = "https://www.instagram.com/twiceasmadband"
+  [[params.social]]
+    name = "Spotify"
+    url = "https://open.spotify.com/artist/3I8XIkGa9s1FmadHhrHX6f"
+  [[params.social]]
+    name = "YouTube"
+    url = "https://www.youtube.com/channel/UCstV9ycujju9tPUZSAeTpWA"
+  [[params.social]]
+    name = "Email"
+    url = "mail@twiceasmad.de"
+  
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

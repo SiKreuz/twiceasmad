@@ -1,0 +1,6 @@
+*.test
+imports.*
+.hugo_build.lock
+dist/
+public/
+.DS_Store 

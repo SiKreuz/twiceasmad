@@ -1,0 +1,92 @@
+{{ define "main" }}
+
+<!-- Hero Section with Full Screen Image -->
+<section id="hero" class="hero-section">
+    <div class="hero-image">
+        <!-- Replace with your band's hero image -->
+        <img src="{{ "images/hero-background.jpg" | relURL }}" alt="{{ .Site.Params.bandName }} Hero Image" class="hero-bg">
+        <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content">
+        <h1 class="band-name">{{ .Site.Params.bandName }}</h1>
+        <p class="band-tagline">{{ .Site.Params.description }}</p>
+        <a href="#about" class="cta-button">Discover Our Music</a>
+    </div>
+    <div class="scroll-indicator">
+        <div class="scroll-arrow"></div>
+    </div>
+</section>
+
+<!-- Navigation -->
+<nav class="main-nav" id="main-nav">
+    <div class="nav-container">
+        <div class="nav-brand">{{ .Site.Params.bandName }}</div>
+        <ul class="nav-menu">
+            {{ range (where .Site.RegularPages "Section" "sections").ByWeight }}
+            <li><a href="#{{ .Params.id }}" class="nav-link">{{ .Title }}</a></li>
+            {{ end }}
+        </ul>
+        <div class="nav-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</nav>
+
+<!-- Main Content Sections -->
+<main class="main-content">
+    {{ range (where .Site.RegularPages "Section" "sections").ByWeight }}
+    <section id="{{ .Params.id }}" class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">{{ .Title }}</h2>
+            </div>
+            <div class="section-content">
+                {{ .Content }}
+            </div>
+        </div>
+    </section>
+    {{ end }}
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>{{ .Site.Params.bandName }}</h3>
+                <p>{{ .Site.Params.description }}</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    {{ range (where .Site.Pages "Section" "sections").ByWeight }}
+                    <li><a href="#{{ .Params.id }}">{{ .Title }}</a></li>
+                    {{ end }}
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    {{ range .Site.Params.social }}
+                      {{ if .url }}
+                        {{ if eq .name "Email" }}
+                          <a href="mailto:{{ .url }}" class="social-link">{{ .name }}</a>
+                        {{ else }}
+                          <a href="{{ .url }}" class="social-link" target="_blank" rel="noopener">{{ .name }}</a>
+                        {{ end }}
+                      {{ end }}
+                    {{ end }}
+                </div>
+            </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; {{ now.Year }} {{ .Site.Params.bandName }}. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+{{ end }}

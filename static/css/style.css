@@ -337,6 +337,111 @@ body {
     color: #ccc;
 }
 
+.footer-legal {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.footer-legal a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-legal a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.footer-legal .separator {
+    margin: 0 0.5rem;
+    color: #777;
+}
+
+/* Legal Pages */
+.legal-page-header {
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    color: white;
+    padding: 6rem 0 4rem;
+    text-align: center;
+}
+
+.page-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.legal-page-content {
+    padding: 4rem 0;
+    background: #f8f9fa;
+    min-height: 60vh;
+}
+
+.legal-content {
+    background: white;
+    padding: 3rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+    max-width: 800px;
+    margin: 0 auto 2rem;
+}
+
+.legal-content h1 {
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 0.5rem;
+}
+
+.legal-content h2 {
+    color: #34495e;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.legal-content h3 {
+    color: #2c3e50;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.2rem;
+}
+
+.legal-content p {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+}
+
+.legal-content ul {
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+}
+
+.legal-content li {
+    margin-bottom: 0.5rem;
+}
+
+.back-link {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.btn-back {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+    font-weight: 500;
+}
+
+.btn-back:hover {
+    background: #2980b9;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .band-name {
@@ -398,6 +503,16 @@ body {
     .content-section {
         padding: 60px 0;
     }
+    
+    /* Legal Pages Mobile */
+    .page-title {
+        font-size: 2.5rem;
+    }
+    
+    .legal-content {
+        padding: 2rem;
+        margin: 0 1rem 2rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -422,5 +537,14 @@ body {
     .cta-button {
         padding: 12px 24px;
         font-size: 0.9rem;
+    }
+    
+    /* Legal Pages Small Mobile */
+    .page-title {
+        font-size: 2rem;
+    }
+    
+    .legal-content {
+        padding: 1.5rem;
     }
 }

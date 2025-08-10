@@ -1,0 +1,70 @@
+{{ define "main" }}
+
+<!-- Legal Page Header -->
+<section class="legal-page-header">
+    <div class="container">
+        <h1 class="page-title">{{ .Title }}</h1>
+    </div>
+</section>
+
+<!-- Legal Page Content -->
+<main class="legal-page-content">
+    <div class="container">
+        <div class="legal-content">
+            {{ .Content }}
+        </div>
+        <div class="back-link">
+            <a href="{{ "/" | relURL }}" class="btn-back">← Back to Home</a>
+        </div>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>{{ .Site.Params.bandName }}</h3>
+                <p>{{ .Site.Params.description }}</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    {{ range (where .Site.RegularPages "Section" "sections").ByWeight }}
+                    <li><a href="{{ "/" | relURL }}#{{ .Params.id }}">{{ .Title }}</a></li>
+                    {{ end }}
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    {{ range .Site.Params.social }}
+                      {{ if .url }}
+                        {{ if eq .name "Email" }}
+                          <a href="mailto:{{ .url }}" class="social-link" aria-label="{{ .name }}">
+                            <i class="fas fa-{{ .icon }}"></i>
+                            <span>{{ .name }}</span>
+                          </a>
+                        {{ else }}
+                          <a href="{{ .url }}" class="social-link" target="_blank" rel="noopener" aria-label="{{ .name }}">
+                            <i class="fab fa-{{ .icon }}"></i>
+                            <span>{{ .name }}</span>
+                          </a>
+                        {{ end }}
+                      {{ end }}
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; {{ now.Year }} {{ .Site.Params.bandName }}. All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="{{ "imprint" | relURL }}">Imprint</a>
+                <span class="separator">|</span>
+                <a href="{{ "privacy" | relURL }}">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+{{ end }}

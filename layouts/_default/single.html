@@ -100,6 +100,11 @@
         </div>
         <div class="footer-bottom">
             <p>&copy; {{ now.Year }} {{ .Site.Params.bandName }}. All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="{{ "imprint" | relURL }}">Imprint</a>
+                <span class="separator">|</span>
+                <a href="{{ "privacy" | relURL }}">Privacy Policy</a>
+            </div>
         </div>
     </div>
 </footer>

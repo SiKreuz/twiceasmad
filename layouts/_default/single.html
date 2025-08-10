@@ -8,6 +8,7 @@
         <div class="hero-overlay"></div>
     </div>
     <div class="hero-content">
+  <img src="{{ "images/logo.png" | relURL }}" alt="{{ .Site.Params.bandName }} Logo" class="hero-logo">
         <h1 class="band-name">{{ .Site.Params.bandName }}</h1>
         <p class="band-tagline">{{ .Site.Params.description }}</p>
         <div class="hero-social-links">
@@ -34,7 +35,10 @@
 <!-- Navigation -->
 <nav class="main-nav" id="main-nav">
     <div class="nav-container">
-        <div class="nav-brand">{{ .Site.Params.bandName }}</div>
+    <a class="nav-brand" href="/" aria-label="{{ .Site.Params.bandName }}">
+      <img src="{{ "images/logo.png" | relURL }}" alt="{{ .Site.Params.bandName }} Logo" class="nav-logo">
+      <span class="nav-brand-text">{{ .Site.Params.bandName }}</span>
+    </a>
         <ul class="nav-menu">
             {{ range (where .Site.RegularPages "Section" "sections").ByWeight }}
             <li><a href="#{{ .Params.id }}" class="nav-link">{{ .Title }}</a></li>

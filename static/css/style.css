@@ -47,6 +47,19 @@ body {
     overflow: hidden;
 }
 
+.hero-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0; /* above image & base overlay, below content */
+    pointer-events: none;
+    background: radial-gradient(ellipse at center,
+        rgba(0, 0, 0, 0.45) 0%,
+        rgba(0, 0, 0, 0.55) 60%,
+        rgba(0, 0, 0, 0.65) 100%
+    );
+}
+
 .hero-image {
     position: absolute;
     top: 0;
@@ -67,7 +80,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.6);
     z-index: -1;
 }
 
@@ -75,20 +88,46 @@ body {
     text-align: center;
     color: white;
     z-index: 1;
+    padding: 1rem 1.25rem;
+}
+
+.hero-logo {
+    height: 150px;
+    width: auto;
+    margin: 0 auto 0.75rem;
+    display: block;
+    filter: drop-shadow(0 4px 14px rgba(0,0,0,0.35));
 }
 
 .band-name {
     font-size: 4rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    color: rgba(var(--color-primary-rgb), 1);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 30px rgba(var(--color-primary-rgb), 0.25);
+    position: relative;
+}
+
+.band-name::after {
+    content: "";
+    display: block;
+    width: 120px;
+    max-width: 40vw;
+    height: 4px;
+    margin: 0.75rem auto 0;
+    background: linear-gradient(90deg, var(--color-primary-400), var(--color-primary));
+    border-radius: 2px;
 }
 
 .band-tagline {
     font-size: 1.5rem;
-    font-weight: 300;
+    font-weight: 400;
     margin-bottom: 2rem;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    display: inline-block;
+    padding: 0.4rem 0.9rem;
+    color: #fff;
+    letter-spacing: 0.3px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .hero-social-links {
@@ -104,10 +143,10 @@ body {
     justify-content: center;
     width: 50px;
     height: 50px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: rgba(var(--color-primary-rgb), 0.1);
+    border: 2px solid rgba(var(--color-primary-rgb), 0.4);
     border-radius: 50%;
-    color: white;
+    color: #fff;
     text-decoration: none;
     font-size: 1.2rem;
     transition: all 0.3s ease;
@@ -115,10 +154,18 @@ body {
 }
 
 .hero-social-link:hover {
-    background: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.6);
+    background: var(--color-primary);
+    border-color: var(--color-primary-600);
     transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 20px rgba(var(--color-primary-rgb), 0.35);
+}
+
+.hero-social-link:focus-visible {
+    outline: none;
+    background: var(--color-primary);
+    border-color: var(--color-primary-600);
+    color: #fff;
+    box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.25);
 }
 
 .cta-button {
@@ -138,6 +185,24 @@ body {
     background: var(--color-primary-600);
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(var(--color-primary-rgb), 0.3);
+}
+
+/* Improve CTA readability on hero */
+.hero-content .cta-button {
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35), 0 0 0 2px rgba(var(--color-primary-rgb), 0.15) inset;
+}
+
+.hero-content .cta-button:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), 0 0 0 2px rgba(var(--color-primary-rgb), 0.25) inset;
+}
+
+@media (max-width: 768px) {
+    .hero-content {
+        padding: 0.75rem 1rem;
+        border-radius: 12px;
+    }
 }
 
 .scroll-indicator {
@@ -196,9 +261,29 @@ body {
 }
 
 .nav-brand {
-    font-size: 1.5rem;
-    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
     color: #333;
+}
+
+.nav-logo {
+    height: 36px;
+    width: auto;
+    display: block;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.25));
+}
+
+.nav-brand-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+/* On top of hero, make nav brand readable */
+.main-nav {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .nav-menu {
@@ -517,6 +602,11 @@ body {
     
     .content-section {
         padding: 60px 0;
+    }
+
+    .hero-logo {
+        height: 56px;
+        margin-bottom: 0.6rem;
     }
     
     /* Legal Pages Mobile */

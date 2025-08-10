@@ -1,25 +1,64 @@
 ---
-title: "Live Shows"
+title: "Live"
 weight: 3
 id: "shows"
 ---
 
-## Upcoming Shows
-
 <div class="show-list">
-  <!-- You can add HTML for better formatting -->
-  <div class="show-item">
-    <strong>Date:</strong> Add your show date<br>
-    <strong>Venue:</strong> Add venue name<br>
-    <strong>Location:</strong> Add city<br>
-    <strong>Tickets:</strong> <a href="#">Link to tickets</a>
-  </div>
+<script charset="utf-8" src="https://widgetv3.bandsintown.com/main.min.js"></script>
+<a class="bit-widget-initializer"
+data-artist-name="id_15543107"
+data-events-to-display=""
+data-background-color="rgba(255,255,255,0.2)"
+data-separator-color="#DDDDDD"
+data-text-color="rgba(78,78,78,1)"
+data-font="Helvetica"
+data-auto-style="true"
+data-button-label-capitalization="capitalize"
+data-header-capitalization="uppercase"
+data-location-capitalization="capitalize"
+data-venue-capitalization="capitalize"
+data-display-local-dates="false"
+data-local-dates-position="tab"
+data-display-past-dates="true"
+data-display-details="false"
+data-display-lineup="false"
+data-display-start-time="false"
+data-social-share-icon="false"
+data-display-limit="all"
+data-date-format="DD. MMMM YYYY"
+data-date-orientation="horizontal"
+data-date-border-color="#4A4A4A"
+data-date-border-width="1px"
+data-date-capitalization="capitalize"
+data-date-border-radius="10px"
+data-event-ticket-cta-size="small"
+data-event-custom-ticket-text=""
+data-event-ticket-text="TICKETS"
+data-event-ticket-icon="false"
+data-event-ticket-cta-text-color="#FFFFFF"
+data-event-ticket-cta-bg-color="rgba(78,78,78,1)"
+data-event-ticket-cta-border-color="rgba(78,78,78,1)"
+data-event-ticket-cta-border-width="0px"
+data-event-ticket-cta-border-radius="4px"
+data-sold-out-button-text-color="#FFFFFF"
+data-sold-out-button-background-color="rgba(208,2,27,1)"
+data-sold-out-button-border-color="rgba(78,78,78,1)"
+data-sold-out-button-clickable="true"
+data-event-rsvp-position="left"
+data-event-rsvp-cta-size="small"
+data-event-rsvp-only-show-icon="true"
+data-event-rsvp-text="Erinnere mich"
+data-event-rsvp-icon="true"
+data-event-rsvp-cta-text-color="rgba(78,78,78,1)"
+data-event-rsvp-cta-bg-color="#FFFFFF"
+data-event-rsvp-cta-border-color="rgba(78,78,78,1)"
+data-event-rsvp-cta-border-width="1px"
+data-event-rsvp-cta-border-radius="4px"
+data-follow-section-position="hidden"
+data-play-my-city-position="hidden"
+data-language="de"
+data-layout-breakpoint="200"
+data-bit-logo-position="hidden"
+></a>
 </div>
-
-## Past Performances
-
-List your past shows and festivals here.
-
-**Festival appearances:**
-- Festival Name (Year)
-- Another Festival (Year)

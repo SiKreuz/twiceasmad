@@ -10,6 +10,21 @@
     <div class="hero-content">
         <h1 class="band-name">{{ .Site.Params.bandName }}</h1>
         <p class="band-tagline">{{ .Site.Params.description }}</p>
+        <div class="hero-social-links">
+            {{ range .Site.Params.social }}
+              {{ if .url }}
+                {{ if eq .name "Email" }}
+                  <a href="mailto:{{ .url }}" class="hero-social-link" aria-label="{{ .name }}">
+                    <i class="fas fa-{{ .icon }}"></i>
+                  </a>
+                {{ else }}
+                  <a href="{{ .url }}" class="hero-social-link" target="_blank" rel="noopener" aria-label="{{ .name }}">
+                    <i class="fab fa-{{ .icon }}"></i>
+                  </a>
+                {{ end }}
+              {{ end }}
+            {{ end }}
+        </div>
     </div>
     <div class="scroll-indicator">
         <div class="scroll-arrow"></div>
@@ -66,9 +81,15 @@
                     {{ range .Site.Params.social }}
                       {{ if .url }}
                         {{ if eq .name "Email" }}
-                          <a href="mailto:{{ .url }}" class="social-link">{{ .name }}</a>
+                          <a href="mailto:{{ .url }}" class="social-link" aria-label="{{ .name }}">
+                            <i class="fas fa-{{ .icon }}"></i>
+                            <span>{{ .name }}</span>
+                          </a>
                         {{ else }}
-                          <a href="{{ .url }}" class="social-link" target="_blank" rel="noopener">{{ .name }}</a>
+                          <a href="{{ .url }}" class="social-link" target="_blank" rel="noopener" aria-label="{{ .name }}">
+                            <i class="fab fa-{{ .icon }}"></i>
+                            <span>{{ .name }}</span>
+                          </a>
                         {{ end }}
                       {{ end }}
                     {{ end }}

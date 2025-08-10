@@ -10,15 +10,23 @@ title = 'twiceasmad'
   [[params.social]]
     name = "Instagram" 
     url = "https://www.instagram.com/twiceasmadband"
+    icon = "instagram"
   [[params.social]]
     name = "Spotify"
     url = "https://open.spotify.com/artist/3I8XIkGa9s1FmadHhrHX6f"
+    icon = "spotify"
+  [[params.social]]
+    name = "TikTok"
+    url = "https://www.tiktok.com/@twiceasmadband"
+    icon = "tiktok"
   [[params.social]]
     name = "YouTube"
     url = "https://www.youtube.com/channel/UCstV9ycujju9tPUZSAeTpWA"
+    icon = "youtube"
   [[params.social]]
     name = "Email"
     url = "mail@twiceasmad.de"
+    icon = "envelope"
   
 [markup]
   [markup.goldmark]

@@ -76,6 +76,36 @@ body {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
+.hero-social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.hero-social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.hero-social-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
 .cta-button {
     display: inline-block;
     padding: 15px 30px;
@@ -275,18 +305,29 @@ body {
 
 .social-links {
     display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
+    flex-direction: column;
 }
 
 .social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
     color: #ccc;
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
+    padding: 0.2rem;
+    border-radius: 5px;
 }
 
 .social-link:hover {
     color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.1);
+}
+
+.social-link i {
+    font-size: 1.2rem;
+    width: 20px;
+    text-align: center;
 }
 
 .footer-bottom {
@@ -304,6 +345,16 @@ body {
     
     .band-tagline {
         font-size: 1.2rem;
+    }
+    
+    .hero-social-links {
+        gap: 1rem;
+    }
+    
+    .hero-social-link {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
     }
     
     .nav-menu {
@@ -355,6 +406,16 @@ body {
     }
     
     .band-tagline {
+        font-size: 1rem;
+    }
+    
+    .hero-social-links {
+        gap: 0.8rem;
+    }
+    
+    .hero-social-link {
+        width: 40px;
+        height: 40px;
         font-size: 1rem;
     }
     

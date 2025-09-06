@@ -150,7 +150,7 @@ Die Verarbeitung durch eingebettete Drittanbieter erfolgt ausschließlich auf Ba
 
 Bei Fragen oder Anliegen zum Datenschutz wenden Sie sich bitte an:
 
-[Ihre E-Mail-Adresse]
+[mail@twiceasmad.de](mailto:mail@twiceasmad.de)
 
 Für Anliegen zu einzelnen Diensten:
 - **YouTube/Google:** [Google Datenschutz-Kontakt](https://support.google.com/policies/contact/general_privacy_form)

@@ -1067,4 +1067,18 @@ body {
         max-width: 250px;
         margin: 0 auto;
     }
+
+    /* Center streaming icons on tablets/phones */
+    .streaming-links {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Extra small devices: ensure full width centering and touch targets */
+    .streaming-links {
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: start;
+    }
 }

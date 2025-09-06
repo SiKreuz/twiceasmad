@@ -1,6 +1,6 @@
 ---
 title: "Bio"
-weight: 1
+weight: 10
 id: "about"
 ---
 

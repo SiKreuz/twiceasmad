@@ -1038,6 +1038,10 @@ body {
     }
 }
 
+#shows .bit-layout-ipad .bit-mobile-event-icons {
+    display: none !important;
+}
+
 /* Live section: widen section content only for the Shows section */
 #shows .section-content {
     max-width: 1000px;

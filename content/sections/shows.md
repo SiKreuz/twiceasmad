@@ -1,6 +1,6 @@
 ---
 title: "Live"
-weight: 2
+weight: 20
 id: "shows"
 ---
 

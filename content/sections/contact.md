@@ -1,6 +1,6 @@
 ---
 title: "Booking"
-weight: 4
+weight: 90
 id: "contact"
 ---
 

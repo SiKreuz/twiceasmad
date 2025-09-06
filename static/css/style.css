@@ -851,18 +851,28 @@ body {
         margin-top: 0 !important;
     }
 
-    /* Prefer tablet location on large screens and hide mobile to avoid duplicates */
-    #shows .bit-location-under-mobile {
+    /* Large screen logic: hide desktop variant (inside date anchor) and use standalone mobile (or tablet if present) for correct order date → title → location */
+    #shows .bit-location-under-desktop {
         display: none !important;
     }
 
-    #shows .bit-location-under-tablet {
-        display: inline !important;
-        align-self: auto !important;
+    /* Default: show mobile location inline */
+    #shows .bit-location-under-mobile {
+        display: inline-block !important;
         white-space: nowrap !important;
         margin: 0 !important;
         padding: 0 !important;
     }
+
+    /* If tablet variant exists, prefer it and hide mobile to avoid duplication */
+    #shows .bit-location-under-tablet {
+        display: inline-block !important;
+        white-space: nowrap !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Hide mobile only when a tablet sibling exists (can't use :has reliably yet; leave both visible if both appear, but force tablet after title by DOM) */
 
     /* Ensure the title doesn't reserve extra space */
     #shows .bit-titleWrapper {
@@ -890,7 +900,7 @@ body {
         display: inline !important;
         width: auto !important;
     }
-    
+
     /* Handle div variant of venue in second tab */
     #shows .bit-titleWrapper div.bit-venue {
         display: inline !important;
@@ -908,21 +918,6 @@ body {
     #shows .bit-details-inner-wrapper .bit-titleWrapper::after {
         content: " — ";
         margin: 0 6px;
-    }
-}
-
-/* Small screens: keep stacked but center only the location line */
-@media (max-width: 480px) {
-    #shows .bit-details-inner-wrapper {
-        flex-direction: column !important;
-        align-items: flex-start !important;
-    }
-
-    #shows .bit-details-inner-wrapper .bit-location-under-mobile {
-        text-align: center !important;
-        align-self: center !important;
-        display: block !important;
-        width: 100% !important;
     }
 }
 
@@ -946,34 +941,100 @@ body {
     padding: 0 !important;
 }
 
-/* Swap order: on small/mid screens hide desktop loc and use mobile/tablet */
-@media (max-width: 1024px) {
-    #shows .bit-location-under-desktop {
-        display: none !important;
-    }
-
-    #shows .bit-location-under-mobile {
-        display: block !important;
-    }
+/* Class-based layout targeting: iPad layout (stacked, centered) */
+#shows .bit-layout-ipad .bit-location-under-desktop {
+    display: none !important;
 }
 
-/* Arrange inner content order: date (1) → title (2) → location (3) */
-@media (max-width: 1024px) {
-    #shows .bit-details-inner-wrapper {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: flex-start !important;
-    }
+#shows .bit-layout-ipad .bit-location-under-mobile {
+    display: block !important;
 }
 
-/* Light spacing between rows when stacked */
-@media (max-width: 1024px) {
-    #shows .bit-titleWrapper {
-        margin-top: 2px;
-    }
+#shows .bit-layout-ipad .bit-details-inner-wrapper {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+}
 
-    #shows .bit-location-under-mobile {
-        margin-top: 2px;
+#shows .bit-layout-ipad .bit-titleWrapper {
+    margin-top: 2px;
+    text-align: center !important;
+}
+
+#shows .bit-layout-ipad .bit-location-under-mobile {
+    margin-top: 2px;
+    text-align: center !important;
+    display: block !important;
+    width: 100% !important;
+}
+
+#shows .bit-layout-ipad .bit-date-wrapper,
+#shows .bit-layout-ipad .bit-date {
+    text-align: center !important;
+}
+
+/* Class-based layout targeting: Desktop layout (ensure only one location shown and correct order) */
+#shows .bit-layout-desktop .bit-location-under-desktop {
+    display: none !important;
+}
+
+#shows .bit-layout-desktop .bit-location-under-mobile {
+    display: block !important;
+}
+
+#shows .bit-layout-desktop .bit-location-under-tablet {
+    display: block !important;
+}
+
+/* Desktop layout on medium screens: stack vertically with correct order */
+#shows .bit-layout-desktop .bit-details-inner-wrapper {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+}
+
+#shows .bit-layout-desktop .bit-titleWrapper {
+    margin-top: 2px;
+    order: 2 !important;
+}
+
+#shows .bit-layout-desktop .bit-location-under-mobile {
+    margin-top: 2px;
+    order: 3 !important;
+}
+
+#shows .bit-layout-desktop .bit-location-under-tablet {
+    margin-top: 2px;
+    order: 3 !important;
+}
+
+#shows .bit-layout-desktop a.bit-details {
+    order: 1 !important;
+}
+
+/* Large screen override: revert desktop layout to single-line row */
+@media (min-width: 1025px) {
+    #shows .bit-layout-desktop .bit-details-inner-wrapper {
+        flex-direction: row !important;
+        align-items: baseline !important;
+        flex-wrap: nowrap !important;
+        white-space: nowrap !important;
+    }
+    #shows .bit-layout-desktop a.bit-details,
+    #shows .bit-layout-desktop .bit-titleWrapper,
+    #shows .bit-layout-desktop .bit-location-under-mobile,
+    #shows .bit-layout-desktop .bit-location-under-tablet {
+        display: inline-block !important;
+        vertical-align: baseline !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        white-space: nowrap !important;
+    }
+    #shows .bit-layout-desktop .bit-titleWrapper,
+    #shows .bit-layout-desktop .bit-location-under-mobile,
+    #shows .bit-layout-desktop .bit-location-under-tablet {
+        margin-top: 0 !important;
     }
 }
 

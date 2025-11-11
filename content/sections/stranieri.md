@@ -6,25 +6,24 @@ id: "stranieri"
 
 <div class="album-layout">
   <div class="album-cover">
-    <img src="/images/cover/fiat.jpg" alt="Cover von Fiat Coupé">
+    <img src="/images/cover/stranieri.jpg" alt="Album Cover von Stranieri">
   </div>
   <div class="album-text">
-    <p><em>Fiat Coupé</em> vermischt Punk und Reggae und erzählt, wie man sich in der Liebe selbst verliert.</p>
-    <p>Der Song ist Teil unseres kommenden Debütalbums <em>Stranieri</em> – ein Konzeptalbum über das Gefühl, fremd zu sein: In Städten, in Beziehungen, vor alten Freunden und am Ende sich selbst.</p>
+    <p>Mit <em>Stranieri</em> (VÖ 22.10.) erscheint unser erstes Album, ein Album über Aufbruch, Selbstsuche und Zusammenhalt. Der Titel bedeutet auf Italienisch „Fremde“ und dient als roter Faden. Jeder Song beleuchtet auf eigene Weise das Gefühl, fremd zu sein. Wenn Schulfreunde zu Bekannten von früher werden, kann das beängstigend und inspirierend zugleich sein.</p>
     <div class="streaming-links">
-      <a href="https://open.spotify.com/album/6fOrSWhUTgIfLkrSs3QFeB" class="streaming-link" aria-label="Spotify">
+      <a href="https://open.spotify.com/album/3QVwwWO7KbF28P9gMAeTTD" class="streaming-link" aria-label="Spotify">
         <i class="fab fa-spotify"></i>
       </a>
-      <a href="https://music.apple.com/de/album/fiat-coup%C3%A9-single/1833919024" class="streaming-link" aria-label="Apple Music">
+      <a href="https://music.apple.com/de/album/stranieri/1846876643" class="streaming-link" aria-label="Apple Music">
         <i class="fab fa-apple"></i>
       </a>
-      <a href="https://tidal.com/browse/album/454704245/u" class="streaming-link" aria-label="Tidal">
+      <a href="https://tidal.com/album/466592674/u" class="streaming-link" aria-label="Tidal">
         <i class="fab fa-tidal"></i>
       </a>
-      <a href="https://link.deezer.com/s/30Y2YCJ3W2Bt6uNecCYdp" class="streaming-link" aria-label="Deezer">
+      <a href="https://link.deezer.com/s/31zAsnOtDF68i8NXI1XCI" class="streaming-link" aria-label="Deezer">
         <i class="fab fa-deezer"></i>
       </a>
-      <a href="https://amazon.de/music/player/albums/B0FMQP3H62" class="streaming-link" aria-label="Amazon Music">
+      <a href="https://music.amazon.com/albums/B0FVYL3674" class="streaming-link" aria-label="Amazon Music">
         <i class="fab fa-amazon"></i>
       </a>
     </div>

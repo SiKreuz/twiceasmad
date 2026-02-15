@@ -5,8 +5,8 @@ id: "contact"
 ---
 
 <div class="contact-intro">
-	<p class="contact-lead">Booking und andere Anfragen</p>
-	<a class="cta-button" href="mailto:mail@twiceasmad.de">✉️ E‑Mail schreiben</a>  
+	<p class="contact-lead">Booking</p>
+	<a class="cta-button" href="mailto:booking@twiceasmad.de">✉️ E‑Mail schreiben</a>  
 </div>
 
 <div class="contact-grid">

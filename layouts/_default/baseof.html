@@ -42,7 +42,7 @@
     <link rel="manifest" href="{{ "favicon/site.webmanifest" | relURL }}">
     <meta name="theme-color" content="#933D83">
 
-    <script defer src="{{ "js/script.js" | relURL }}" data-website-id="dfc06efc-1f28-4a0e-8130-3a096d785130" data-host-url="https://umami.monsi.org"></script>
+    {{ if hugo.IsProduction }}<script defer src="{{ "js/script.js" | relURL }}" data-website-id="dfc06efc-1f28-4a0e-8130-3a096d785130" data-host-url="https://umami.monsi.org"></script>{{ end }}
 </head>
 <body>
     {{ block "main" . }}{{ end }}

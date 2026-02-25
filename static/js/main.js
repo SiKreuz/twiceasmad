@@ -104,3 +104,52 @@ window.addEventListener('scroll', function() {
         }
     });
 });
+
+// ============================================================
+// Consent-gated embed loader  – DSGVO two-click solution
+// Called by the inline onclick on each consent overlay button.
+// No cookies, no localStorage: consent is per page-load only,
+// which is the conservative, legally safe approach.
+// ============================================================
+function consentAndLoad(wrapper) {
+    var provider = wrapper.dataset.provider;
+
+    if (provider === 'youtube') {
+        var iframe = document.createElement('iframe');
+        iframe.src      = wrapper.dataset.src;
+        iframe.width    = '100%';
+        iframe.height   = '450';
+        iframe.title    = wrapper.dataset.title || 'YouTube Video';
+        iframe.frameBorder   = '0';
+        iframe.allow         = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+        iframe.allowFullscreen = true;
+        wrapper.innerHTML = '';
+        wrapper.appendChild(iframe);
+
+    } else if (provider === 'spotify') {
+        var iframe = document.createElement('iframe');
+        iframe.src    = wrapper.dataset.src;
+        iframe.width  = '100%';
+        iframe.height = '500';
+        iframe.style.borderRadius = '12px';
+        iframe.frameBorder = '0';
+        iframe.allow  = 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
+        iframe.loading = 'lazy';
+        wrapper.innerHTML = '';
+        wrapper.appendChild(iframe);
+
+    } else if (provider === 'bandsintown') {
+        var overlay = wrapper.querySelector('.consent-overlay');
+        var widget  = wrapper.querySelector('.bandsintown-widget');
+        if (overlay) overlay.style.display = 'none';
+        if (widget)  widget.style.removeProperty('display');
+        // Inject the Bandsintown script only once
+        if (!document.querySelector('script[src*="bandsintown"]')) {
+            var script = document.createElement('script');
+            script.charset = 'utf-8';
+            script.src = 'https://widgetv3.bandsintown.com/main.min.js';
+            document.head.appendChild(script);
+        }
+    }
+}

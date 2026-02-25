@@ -1,0 +1,18 @@
+{{- $src := .Get "src" -}}
+<div class="consent-embed consent-embed--spotify"
+     data-provider="spotify"
+     data-src="{{ $src }}">
+  <div class="consent-overlay">
+    <span class="consent-overlay__icon">&#9835;</span>
+    <p class="consent-overlay__title">Musik auf Spotify</p>
+    <p class="consent-overlay__text">
+      Dieser Player wird von <strong>Spotify AB, Schweden</strong> bereitgestellt.
+      Beim Laden wird Ihre IP-Adresse an Spotify übertragen; es können Cookies gesetzt
+      und Nutzungsdaten erhoben werden.
+    </p>
+    <button class="consent-overlay__btn" onclick="consentAndLoad(this.closest('.consent-embed'))">
+      Spotify-Player laden &amp; zustimmen
+    </button>
+    <a href="{{ "/privacy" | relURL }}" class="consent-overlay__privacy-link">Datenschutzhinweise</a>
+  </div>
+</div>

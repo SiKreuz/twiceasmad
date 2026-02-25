@@ -1,6 +1,6 @@
 ---
 title: "Datenschutzerklärung"
-date: 2025-08-10
+date: 2026-02-25
 draft: false
 layout: "page"
 ---
@@ -22,7 +22,7 @@ Diese Website ist eine statische Website, die mit Hugo generiert wird und ohne s
 
 ### 2.1 Unser Umgang mit Datenschutz
 
-Als statische Website erheben, speichern oder verarbeiten wir selbst keine personenbezogenen Daten auf unseren Servern. Beim Aufruf eingebetteter Inhalte von Drittanbietern (YouTube, Spotify, Bandsintown) können jedoch durch diese Dienste Daten erhoben werden. Die Verarbeitung erfolgt nach deren eigenen Datenschutzbestimmungen.
+Als statische Website erheben, speichern oder verarbeiten wir selbst keine personenbezogenen Daten auf unseren Servern. Auf dieser Website eingebettete Drittanbieter-Inhalte (YouTube, Spotify, Bandsintown) werden **erst nach Ihrer ausdrücklichen Zustimmung** (Zwei-Klick-Lösung) geladen – bis dahin findet keine Datenübertragung an diese Dienste statt.
 
 ## 3. Eingebettete Drittanbieter-Dienste
 
@@ -35,19 +35,20 @@ Unsere Website bindet Inhalte folgender Drittanbieter ein. Bei Interaktion mit d
 
 **Zweck:** Anzeige von Videoinhalten zu unserer Musik und unseren Auftritten.
 
-**Verarbeitung:**
-- Beim Aufruf eines eingebetteten YouTube-Videos wird Ihre IP-Adresse an Google übermittelt
+**Zwei-Klick-Lösung:** YouTube-Videos werden auf dieser Website nicht automatisch geladen. Stattdessen sehen Sie zunächst eine Vorschaufläche mit Hinweistext. Das Video wird erst geladen, nachdem Sie aktiv auf **„Video laden & zustimmen"** geklickt haben. Erst in diesem Moment wird eine Verbindung zu Google/YouTube hergestellt.
+
+**Verarbeitung nach Zustimmung:**
+- Ihre IP-Adresse wird an Google LLC (USA) übermittelt
 - YouTube kann Cookies und lokalen Speicher für Funktionalität und Analyse setzen
 - Wenn Sie bei Google eingeloggt sind, kann Ihr Nutzungsverhalten Ihrem Profil zugeordnet werden
 - Daten können in die USA übertragen und dort verarbeitet werden
+- Wir verwenden den erweiterten Datenschutzmodus (youtube-nocookie.com), der das Setzen von Cookies vor einer Interaktion einschränkt
 
-**Erweiterter Datenschutzmodus:** Wir verwenden, wo möglich, den erweiterten Datenschutzmodus von YouTube (youtube-nocookie.com), wodurch Cookies erst nach aktiver Interaktion gesetzt werden.
-
-**Rechtsgrundlage:** Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO), wenn Sie das Video abspielen.
+**Rechtsgrundlage:** Ihre ausdrückliche Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) durch Klick auf die Schaltfläche.
 
 **Speicherdauer:** Informationen zur Speicherdauer finden Sie in der [Datenschutzerklärung von Google](https://policies.google.com/privacy).
 
-**Ihre Rechte:** Sie können Ihre Einwilligung widerrufen, indem Sie das Video nicht abspielen. Weitere Informationen finden Sie in der [Datenschutzerklärung von Google](https://policies.google.com/privacy).
+**Ihre Rechte:** Die erteilte Einwilligung gilt nur für den aktuellen Seitenaufruf; beim nächsten Besuch erscheint erneut die Abfrage. Weitere Informationen finden Sie in der [Datenschutzerklärung von Google](https://policies.google.com/privacy).
 
 ### 3.2 Spotify-Artist-Profil
 
@@ -55,16 +56,18 @@ Unsere Website bindet Inhalte folgender Drittanbieter ein. Bei Interaktion mit d
 
 **Zweck:** Anzeige des Künstlerprofils und Musikstreaming-Integration.
 
-**Verarbeitung:**
+**Zwei-Klick-Lösung:** Der Spotify-Player wird erst nach Ihrer aktiven Zustimmung durch Klick auf **„Spotify-Player laden & zustimmen"** geladen. Bis dahin wird keine Verbindung zu Spotify hergestellt.
+
+**Verarbeitung nach Zustimmung:**
 - Übermittlung der IP-Adresse an Spotify
 - Cookies für Player-Funktionalität und Benutzereinstellungen
 - Nutzungsverhalten und Interaktion mit dem Spotify-Widget
 - Wenn Sie bei Spotify eingeloggt sind, kann die Aktivität Ihrem Konto zugeordnet werden
 - Daten werden überwiegend innerhalb der EU (Schweden) verarbeitet
 
-**Rechtsgrundlage:** Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) bei Interaktion mit dem Spotify-Widget.
+**Rechtsgrundlage:** Ihre ausdrückliche Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) durch Klick auf die Schaltfläche.
 
-**Ihre Rechte:** Sie können die Datenverarbeitung vermeiden, indem Sie das Widget nicht nutzen. Details finden Sie in der [Datenschutzerklärung von Spotify](https://www.spotify.com/de/privacy).
+**Ihre Rechte:** Die Einwilligung gilt nur für den aktuellen Seitenaufruf. Details finden Sie in der [Datenschutzerklärung von Spotify](https://www.spotify.com/de/privacy).
 
 ### 3.3 Bandsintown-Konzertübersicht
 
@@ -72,15 +75,17 @@ Unsere Website bindet Inhalte folgender Drittanbieter ein. Bei Interaktion mit d
 
 **Zweck:** Anzeige von bevorstehenden und vergangenen Konzertterminen sowie Ticketinformationen.
 
-**Verarbeitung:**
-- Übermittlung der IP-Adresse und ggf. Standortdaten
+**Zwei-Klick-Lösung:** Das Konzert-Widget und das externe Bandsintown-Skript werden erst geladen, nachdem Sie aktiv auf **„Konzerttermine laden & zustimmen"** geklickt haben. Bis zu diesem Klick erfolgt keine Datenübertragung an Bandsintown.
+
+**Verarbeitung nach Zustimmung:**
+- Übermittlung der IP-Adresse und ggf. Standortdaten an Bandsintown
 - Cookies für Widget-Funktionalität und Benutzereinstellungen
 - Nutzungsverhalten und Interaktion mit Konzertlisten
 - Daten können in die USA übertragen und dort verarbeitet werden
 
-**Rechtsgrundlage:** Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) bei Interaktion mit dem Bandsintown-Widget.
+**Rechtsgrundlage:** Ihre ausdrückliche Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) durch Klick auf die Schaltfläche.
 
-**Ihre Rechte:** Sie können die Datenverarbeitung vermeiden, indem Sie das Widget nicht nutzen. Weitere Informationen finden Sie in der [Datenschutzerklärung von Bandsintown](https://corp.bandsintown.com/privacy).
+**Ihre Rechte:** Die Einwilligung gilt nur für den aktuellen Seitenaufruf. Weitere Informationen finden Sie in der [Datenschutzerklärung von Bandsintown](https://corp.bandsintown.com/privacy).
 
 ## 4. Cookies und Tracking-Technologien
 
@@ -104,7 +109,7 @@ Einige eingebettete Dienste (YouTube/Google und Bandsintown) haben ihren Sitz in
 - **Google/YouTube:** Übermittlung auf Grundlage Ihrer Einwilligung und ggf. Standardvertragsklauseln
 - **Bandsintown:** Übermittlung auf Grundlage Ihrer Einwilligung
 
-Mit der Interaktion mit diesen Inhalten willigen Sie in die Übermittlung Ihrer Daten in diese Länder ein.
+Mit dem Klick auf die jeweilige „Laden & zustimmen"-Schaltfläche willigen Sie in die Übermittlung Ihrer Daten in diese Länder ein.
 
 ## 6. Ihre Rechte nach DSGVO
 
@@ -134,17 +139,15 @@ Wir behalten uns vor, diese Datenschutzerklärung gelegentlich zu aktualisieren.
 
 ## 10. Tipps zur Minimierung der Datenerhebung
 
-Wenn Sie die Datenerhebung minimieren möchten:
+Durch die Zwei-Klick-Lösung auf dieser Website werden Drittanbieter-Inhalte grundsätzlich erst nach Ihrer aktiven Zustimmung geladen. Zusätzliche Maßnahmen:
 
-- **YouTube-Videos:** Nicht auf „Abspielen“ klicken
-- **Spotify-Inhalte:** Nicht mit dem Widget interagieren
-- **Konzertinfos:** Nicht auf Bandsintown-Widgets klicken
-- **Browser-Einstellungen:** Blockieren Sie Drittanbieter-Cookies
-- **Datenschutzorientierte Browser:** Nutzen Sie Browser mit erhöhtem Datenschutz
+- **YouTube, Spotify, Bandsintown:** Klicken Sie die Schaltfläche „Laden & zustimmen" nur, wenn Sie die Inhalte tatsächlich nutzen möchten
+- **Browser-Einstellungen:** Blockieren Sie Drittanbieter-Cookies für zusätzlichen Schutz
+- **Datenschutzorientierte Browser:** Nutzen Sie Browser mit erhöhtem Datenschutz (z. B. Firefox mit uBlock Origin)
 
 ## 11. Rechtsgrundlage im Überblick
 
-Die Verarbeitung durch eingebettete Drittanbieter erfolgt ausschließlich auf Basis Ihrer ausdrücklichen Einwilligung durch Interaktion mit den Inhalten. Sie können diese Einwilligung jederzeit widerrufen, indem Sie nicht interagieren.
+Die Verarbeitung durch eingebettete Drittanbieter erfolgt ausschließlich auf Basis Ihrer ausdrücklichen Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Diese erteilen Sie durch den aktiven Klick auf die jeweilige Schaltfläche „Laden & zustimmen". Bis zu diesem Klick werden keine Daten übertragen. Die Einwilligung gilt jeweils nur für den aktuellen Seitenaufruf und wird nicht gespeichert.
 
 ## 12. Kontakt für Datenschutzanliegen
 

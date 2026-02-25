@@ -1,0 +1,21 @@
+{{- $id := .Get "id" -}}
+{{- $title := .Get "title" | default "YouTube Video" -}}
+<div class="consent-embed consent-embed--youtube"
+     data-provider="youtube"
+     data-src="https://www.youtube-nocookie.com/embed/{{ $id }}"
+     data-title="{{ $title }}">
+  <div class="consent-overlay">
+    <span class="consent-overlay__icon">&#9654;</span>
+    <p class="consent-overlay__title">{{ $title }}</p>
+    <p class="consent-overlay__text">
+      Dieses Video wird von <strong>YouTube (Google LLC, USA)</strong> bereitgestellt.
+      Beim Laden wird Ihre IP-Adresse an Google übertragen; es können Cookies gesetzt werden.
+      Wir verwenden den erweiterten Datenschutzmodus (<em>youtube-nocookie.com</em>), jedoch findet
+      auch dabei ein Verbindungsaufbau zu Google statt.
+    </p>
+    <button class="consent-overlay__btn" onclick="consentAndLoad(this.closest('.consent-embed'))">
+      Video laden &amp; zustimmen
+    </button>
+    <a href="{{ "/privacy" | relURL }}" class="consent-overlay__privacy-link">Datenschutzhinweise</a>
+  </div>
+</div>

@@ -2,6 +2,7 @@
 title: "Shop"
 weight: 30
 id: "shop"
+description: "twiceasmad Merch – Shirts, Caps und mehr im offiziellen Shop. Unterstütze die Band mit stylischem Merchandise."
 ---
 
 <div class="album-layout">

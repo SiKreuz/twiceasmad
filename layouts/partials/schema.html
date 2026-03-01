@@ -1,0 +1,132 @@
+{{/* layouts/partials/schema.html – JSON-LD Structured Data */}}
+
+{{- $site := .Site -}}
+{{- $params := $site.Params -}}
+
+{{/* Derive URLs from arrays to avoid duplication */}}
+{{- $spotifyAlbum := index (where $params.streaming "name" "Spotify") 0 -}}
+{{- $appleMusicAlbum := index (where $params.streaming "name" "Apple Music") 0 -}}
+{{- $spotifyAlbumURL := $spotifyAlbum.url -}}
+{{- $appleMusicAlbumURL := $appleMusicAlbum.url -}} 
+
+{{/* ── WebSite schema (every page) ─────────────────────────────────────── */}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "{{ $params.bandName }}",
+  "url": "{{ $site.BaseURL }}",
+  "description": "{{ $params.description }}",
+  "inLanguage": "de-DE",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "{{ $site.BaseURL }}?s={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+{{/* ── MusicGroup schema (homepage only) ───────────────────────────────── */}}
+{{- $sameAs := slice -}}
+{{- range $params.social -}}
+  {{- if ne .name "Email" -}}
+    {{- $sameAs = $sameAs | append .url -}}
+  {{- end -}}
+{{- end -}}
+{{ if .IsHome }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MusicGroup",
+  "name": "{{ $params.bandName }}",
+  "url": "{{ $site.BaseURL }}",
+  "description": "{{ $params.description }}",
+  "genre": ["Pop", "Indie", "Reggae"],
+  "foundingLocation": {
+    "@type": "Place",
+    "name": "{{ $params.city }}",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "{{ $params.city }}",
+      "addressCountry": "{{ $params.country }}"
+    }
+  },
+  "image": "{{ "images/pressebild.jpg" | absURL }}",
+  "logo": "{{ "images/logo.png" | absURL }}",
+  "sameAs": {{ $sameAs | jsonify }},
+  "album": {
+    "@type": "MusicAlbum",
+    "name": "{{ $params.albumTitle }}",
+    "numTracks": 11,
+    "datePublished": "{{ $params.albumReleaseDate }}",
+    "byArtist": {
+      "@type": "MusicGroup",
+      "name": "{{ $params.bandName }}"
+    },
+    "image": "{{ "images/cover/stranieri.jpg" | absURL }}",
+    "url": "{{ $spotifyAlbumURL }}"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "{{ $params.bookingEmail }}",
+    "contactType": "booking"
+  }
+}
+</script>
+
+{{/* ── MusicAlbum schema (homepage only) ───────────────────────────────── */}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MusicAlbum",
+  "name": "{{ $params.albumTitle }}",
+  "datePublished": "{{ $params.albumReleaseDate }}",
+  "byArtist": {
+    "@type": "MusicGroup",
+    "name": "{{ $params.bandName }}",
+    "url": "{{ $site.BaseURL }}"
+  },
+  "image": "{{ "images/cover/stranieri.jpg" | absURL }}",
+  "description": "Stranieri bedeutet auf Italienisch Fremde. Das Deb\u00fctalbum von twiceasmad \u00fcber Aufbruch, Selbstsuche und Zusammenhalt \u2013 erschienen am 22. Oktober 2024.",
+  "url": "{{ $spotifyAlbumURL }}",
+  "offers": [
+    {
+      "@type": "Offer",
+      "url": "{{ $spotifyAlbumURL }}",
+      "name": "Spotify"
+    },
+    {
+      "@type": "Offer",
+      "url": "{{ $appleMusicAlbumURL }}",
+      "name": "Apple Music"
+    }
+  ]
+}
+</script>
+
+{{/* ── Organization / BreadcrumbList for legal pages ──────────────────── */}}
+{{ else }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "{{ $params.bandName }}",
+      "item": "{{ $site.BaseURL }}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "{{ .Title }}",
+      "item": "{{ .Permalink }}"
+    }
+  ]
+}
+</script>
+{{ end }}

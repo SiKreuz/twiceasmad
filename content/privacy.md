@@ -3,6 +3,8 @@ title: "Datenschutzerklärung"
 date: 2025-08-10
 draft: false
 layout: "page"
+robots: "noindex, follow"
+description: "Datenschutzerklärung von twiceasmad gemäß DSGVO."
 ---
 
 ## 1. Verantwortlicher und Kontakt

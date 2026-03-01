@@ -2,6 +2,7 @@
 title: "Musik"
 weight: 40
 id: "music"
+description: "Musik von twiceasmad – Debütalbum Stranieri jetzt auf Spotify, Apple Music, YouTube und allen Streaming-Plattformen."
 ---
 
 <div class="spotify-embed" style="margin: 20px 0;">

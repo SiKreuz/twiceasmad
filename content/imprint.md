@@ -3,6 +3,8 @@ title: "Impressum"
 date: 2025-08-10
 draft: false
 layout: "page"
+robots: "noindex, follow"
+description: "Impressum von twiceasmad – Angaben gemäß § 5 TMG."
 ---
 
 **Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:**  

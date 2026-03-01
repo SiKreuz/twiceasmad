@@ -1,10 +1,48 @@
 baseURL = 'https://twiceasmad.de/'
 languageCode = 'de-de'
 title = 'twiceasmad'
+enableRobotsTXT = true
+
+[sitemap]
+  changeFreq = 'monthly'
+  filename = 'sitemap.xml'
+  priority = 0.5
 
 [params]
   bandName = "twiceasmad"
-  description = "Pop • Indie • Reggae"
+  description = "twiceasmad – Pop · Indie · Reggae Band aus München. Dicke Bläser, bissiger Rap und Ohrwurm-Melodien. Debütalbum Stranieri jetzt überall erhältlich."
+  tagline = "Pop · Indie · Reggae"
+  keywords = "twiceasmad, Band München, Pop Indie Reggae, Stranieri Album, Live Band München, Konzerte München, Indie Band Deutschland"
+  author = "twiceasmad"
+  city = "München"
+  country = "DE"
+  foundingYear = "2020"
+  genre = "Pop, Indie, Reggae"
+  albumTitle = "Stranieri"
+  albumReleaseDate = "2024-10-22"
+  bookingEmail = "booking@twiceasmad.de"
+
+  # Streaming Platforms
+  [[params.streaming]]
+    name = "Spotify"
+    url = "https://open.spotify.com/album/3QVwwWO7KbF28P9gMAeTTD"
+    icon = "fab fa-spotify"
+  [[params.streaming]]
+    name = "Apple Music"
+    url = "https://music.apple.com/de/album/stranieri/1846876643"
+    icon = "fab fa-apple"
+  [[params.streaming]]
+    name = "Tidal"
+    url = "https://tidal.com/album/466592674/u"
+    icon = "fab fa-tidal"
+  [[params.streaming]]
+    name = "Deezer"
+    url = "https://link.deezer.com/s/31zAsnOtDF68i8NXI1XCI"
+    icon = "fab fa-deezer"
+  [[params.streaming]]
+    name = "Amazon Music"
+    url = "https://music.amazon.com/albums/B0FVYL3674"
+    icon = "fab fa-amazon"
 
   # Social Media Links
   [[params.social]]

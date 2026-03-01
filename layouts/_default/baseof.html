@@ -3,33 +3,55 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
-    <meta name="description" content="{{ .Site.Params.description }}">
-    
+
+    {{- $title := cond .IsHome .Site.Title (printf "%s | %s" .Title .Site.Title) }}
+    {{- $description := or .Params.description .Site.Params.description }}
+
+    <title>{{ $title }}</title>
+    <meta name="description" content="{{ $description }}">
+    <meta name="keywords" content="{{ with .Params.keywords }}{{ delimit . ", " }}{{ else }}{{ .Site.Params.keywords }}{{ end }}">
+    <meta name="author" content="{{ .Site.Params.author }}">
+    <meta name="robots" content="{{ with .Params.robots }}{{ . }}{{ else }}index, follow{{ end }}">
+    <meta name="geo.region" content="DE-BY">
+    <meta name="geo.placename" content="{{ .Site.Params.city }}">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ .Permalink }}">
+
     <!-- Open Graph / Social Media Meta Tags -->
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="{{ if .IsHome }}website{{ else }}article{{ end }}">
     <meta property="og:url" content="{{ .Permalink }}">
-    <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}">
-    <meta property="og:description" content="{{ .Site.Params.description }}">
+    <meta property="og:title" content="{{ $title }}">
+    <meta property="og:description" content="{{ $description }}">
     <meta property="og:image" content="{{ "images/pressebild.jpg" | absURL }}">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="{{ .Site.Params.bandName }} - Pressebild">
     <meta property="og:site_name" content="{{ .Site.Title }}">
-    <meta property="og:locale" content="{{ .Site.LanguageCode | default "de_DE" }}">
-    
+    <meta property="og:locale" content="de_DE">
+
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="{{ .Permalink }}">
-    <meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}">
-    <meta name="twitter:description" content="{{ .Site.Params.description }}">
+    <meta name="twitter:site" content="@twiceasmadband">
+    <meta name="twitter:title" content="{{ $title }}">
+    <meta name="twitter:description" content="{{ $description }}">
     <meta name="twitter:image" content="{{ "images/pressebild.jpg" | absURL }}">
-    
+    <meta name="twitter:image:alt" content="{{ .Site.Params.bandName }} - Pressebild">
+
+    <!-- Structured Data (JSON-LD) -->
+    {{ partial "schema.html" . }}
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+
     <!-- CSS -->
     <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
-    
+
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
-    
+
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
@@ -38,9 +60,10 @@
     <link rel="icon" type="image/svg+xml" href="{{ "favicon/favicon.svg" | relURL }}">
     <link rel="shortcut icon" href="{{ "favicon/favicon.ico" | relURL }}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ "favicon/apple-touch-icon.png" | relURL }}">
-    <meta name="apple-mobile-web-app-title" content="twiceasmad" />
+    <meta name="apple-mobile-web-app-title" content="twiceasmad">
     <link rel="manifest" href="{{ "favicon/site.webmanifest" | relURL }}">
-    <meta name="theme-color" content="#933D83">
+    <meta name="theme-color" content="#933D83" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#5A1F52" media="(prefers-color-scheme: dark)">
 
     {{ if hugo.IsProduction }}<script defer src="{{ "js/script.js" | relURL }}" data-website-id="dfc06efc-1f28-4a0e-8130-3a096d785130" data-host-url="https://umami.monsi.org"></script>{{ end }}
 </head>

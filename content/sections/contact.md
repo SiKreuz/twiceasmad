@@ -2,11 +2,12 @@
 title: "Booking"
 weight: 90
 id: "contact"
+description: "Booking-Anfragen an twiceasmad – Kontakt für Konzerte, Events und Presseanfragen in München und deutschlandweit."
 ---
 
 <div class="contact-intro">
 	<p class="contact-lead">Booking</p>
-	<a class="cta-button" href="mailto:booking@twiceasmad.de">✉️ E‑Mail schreiben</a>  
+	{{< booking-cta >}}
 </div>
 
 <div class="contact-grid">

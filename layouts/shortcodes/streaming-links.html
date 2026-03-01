@@ -1,0 +1,7 @@
+<div class="streaming-links">
+  {{ range .Site.Params.streaming }}
+  <a href="{{ .url }}" class="streaming-link" aria-label="{{ .name }}" target="_blank" rel="noopener">
+    <i class="{{ .icon }}"></i>
+  </a>
+  {{ end }}
+</div>

@@ -1,6 +1,6 @@
 ---
 title: "Bio"
-weight: 10
+weight: 20
 id: "about"
 description: "twiceasmad – die siebenköpfige Band aus München vereint Pop, Indie und Reggae. Finalist des Tassilo Kulturpreises, ausverkauftes Atomic Café und Support von Monobo Son."
 ---

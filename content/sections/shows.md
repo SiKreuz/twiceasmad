@@ -1,6 +1,6 @@
 ---
 title: "Live"
-weight: 20
+weight: 10
 id: "shows"
 description: "Alle Live-Termine von twiceasmad. Konzerte, Tour-Dates und Festivals – jetzt Tickets sichern."
 ---

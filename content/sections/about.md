@@ -5,16 +5,20 @@ id: "about"
 description: "twiceasmad – die siebenköpfige Band aus München vereint Pop, Indie und Reggae. Finalist des Tassilo Kulturpreises, ausverkauftes Atomic Café und Support von Monobo Son."
 ---
 
-Dicke Bläser, bissiger Rap und Ohrwurm-Melodien aus einem trashigen Kleinanzeigen-Synthesizer – verpackt in einem Mix aus Pop, Rock und Reggae.
-Klingt nach viel?
-Ist es auch.
-**twiceasmad** passen in keine Schublade und gehören trotzdem (oder gerade deshalb) zu den spannendsten jungen Live-Bands aus München.
+twiceasmad ist eine siebenköpfige Indie-Pop-Band aus München mit Brass und Rap, die keine halben Sachen macht.
+Alles kommt direkt von der Bühne: kein Playback, nur das, was im Moment passiert.
 
-Ihr Debütalbum ***Stranieri*** (VÖ 22.10.) -- italienisch für „Fremde“ oder „Ausländer“ -- erzählt vom Gefühl, sich fremd zu fühlen:
-In neuen Städten, in Beziehungen, in sich selbst. Der Soundtrack einer Generation im Aufbruch und Umbruch -- irgendwo zwischen Studienabschluss, Barjob und ersten Hochzeiten. Wenn enge Schulfreunde zu Bekannten von früher werden, ist das beängstigend -- und inspirierend.
+Stilistisch bewegen sie sich irgendwo zwischen [Bilderbuch](https://www.bilderbuch-musik.at/), [SEEED](https://www.seeed.de/) und [Von Wegen Lisbeth](https://vonwegenlisbeth.de/):
+Schmutzige E-Gitarren, wuchtige Bläser, bissiger Rap und Synthesizer-Action.
+Daraus entsteht ein dicker, ehrlicher Deutschpop-Sound mit klarer Live-DNA.
 
-Nach Auftritten beim **Oben Ohne Festival**, einem ausverkauften Konzert im **Atomic Café** und einer Nominierung für den Tassilo Kulturpreis geht es für die siebenköpfige Band erstmals auf Tour:
-Im Herbst solo, ab November als Support von **Monobo Son** auf ihrer „Bitte Noch Meer“-Tour.
-Jeder Ton kommt direkt aus den Fingerspitzen, Stimmbändern oder Lungen der Jungs -- live, ehrlich und mit voller Wucht.
+Mit ihrer neuen EP Yab Yum, die im Sommer 2026 erscheint, rückt genau das in den Fokus:
+der Moment, in dem zwischen Menschen Energie entsteht - intensiv, schwer greifbar und jenseits von dem, was sich mit Worten erklären lässt.
+Yab Yum ist kein Konzept.
+Es ist ein Zustand.
+
+Nach ihrem Debütalbum Stranieri (2025) und der gleichnamigen Tour - mit ausverkaufter Import Export Show in München - war die Band von November 2025 bis Januar 2026 als Support von [Monobo Son](https://www.monoboson.com/) auf deren „Bitte Noch Meer“-Tour unterwegs.
+
+Diesen Sommer folgen weitere Festivals, bevor im Herbst 2026 die nächste eigene Tour ansteht - erstmals auch in Berlin, Hamburg und Leipzig.
 
 <img src="/images/pressebild.jpg" alt="Pressebild">

@@ -8,6 +8,14 @@ enableRobotsTXT = true
   filename = 'sitemap.xml'
   priority = 0.5
 
+[module]
+  [[module.imports]]
+    path = 'github.com/hugomods/icons/vendors/font-awesome'
+  [[module.imports]]
+    path = 'github.com/hugomods/icons/vendors/simple-icons'
+  [[module.imports]]
+    path = 'github.com/hugomods/icons/vendors/bootstrap'
+
 [params]
   bandName = "twiceasmad"
   description = "twiceasmad – Pop · Indie · Reggae Band aus München. Dicke Bläser, bissiger Rap und Ohrwurm-Melodien. Debütalbum Stranieri jetzt überall erhältlich."
@@ -26,45 +34,55 @@ enableRobotsTXT = true
   [[params.streaming]]
     name = "Spotify"
     url = "https://open.spotify.com/album/3QVwwWO7KbF28P9gMAeTTD"
-    icon = "fab fa-spotify"
+    icon = "spotify"
+    vendor = "simple-icons"
   [[params.streaming]]
     name = "Apple Music"
     url = "https://music.apple.com/de/album/stranieri/1846876643"
-    icon = "fab fa-apple"
+    icon = "applemusic"
+    vendor = "simple-icons"
   [[params.streaming]]
     name = "Tidal"
     url = "https://tidal.com/album/466592674/u"
-    icon = "fab fa-tidal"
+    icon = "tidal"
+    vendor = "simple-icons"
   [[params.streaming]]
     name = "Deezer"
     url = "https://link.deezer.com/s/31zAsnOtDF68i8NXI1XCI"
-    icon = "fab fa-deezer"
+    icon = "deezer"
+    vendor = "font-awesome-brands"
   [[params.streaming]]
     name = "Amazon Music"
     url = "https://music.amazon.com/albums/B0FVYL3674"
-    icon = "fab fa-amazon"
+    icon = "amazonmusic"
+    vendor = "simple-icons"
 
   # Social Media Links
   [[params.social]]
     name = "Instagram" 
     url = "https://www.instagram.com/twiceasmadband"
     icon = "instagram"
+    vendor = "simple-icons"
   [[params.social]]
     name = "Spotify"
     url = "https://open.spotify.com/artist/3I8XIkGa9s1FmadHhrHX6f"
     icon = "spotify"
+    vendor = "simple-icons"
   [[params.social]]
     name = "TikTok"
     url = "https://www.tiktok.com/@twiceasmadband"
     icon = "tiktok"
+    vendor = "simple-icons"
   [[params.social]]
     name = "YouTube"
     url = "https://www.youtube.com/channel/UCstV9ycujju9tPUZSAeTpWA"
     icon = "youtube"
+    vendor = "simple-icons"
   [[params.social]]
     name = "Email"
     url = "mail@twiceasmad.de"
     icon = "envelope"
+    vendor = "bootstrap"
   
 [markup]
   [markup.goldmark]

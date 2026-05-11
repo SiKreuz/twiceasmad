@@ -21,12 +21,12 @@
                       {{ if .url }}
                         {{ if eq .name "Email" }}
                           <a href="mailto:{{ .url }}" class="social-link" aria-label="{{ .name }}" data-umami-event="Footer Social Click" data-umami-event-platform="{{ .name }}">
-                            <i class="fas fa-{{ .icon }}"></i>
+                            {{ partial "icons/icon" (dict "vendor" .vendor "name" .icon "size" "1.2em") }}
                             <span>{{ .name }}</span>
                           </a>
                         {{ else }}
                           <a href="{{ .url }}" class="social-link" target="_blank" rel="noopener" aria-label="{{ .name }}" data-umami-event="Footer Social Click" data-umami-event-platform="{{ .name }}">
-                            <i class="fab fa-{{ .icon }}"></i>
+                            {{ partial "icons/icon" (dict "vendor" .vendor "name" .icon "size" "1.2em") }}
                             <span>{{ .name }}</span>
                           </a>
                         {{ end }}

@@ -1,7 +1,7 @@
 <div class="streaming-links">
   {{ range .Site.Params.streaming }}
   <a href="{{ .url }}" class="streaming-link" aria-label="{{ .name }}" target="_blank" rel="noopener" data-umami-event="Streaming Link Click" data-umami-event-platform="{{ .name }}">
-    <i class="{{ .icon }}"></i>
+    {{ partial "icons/icon" (dict "vendor" .vendor "name" .icon "size" "1.1em") }}
   </a>
   {{ end }}
 </div>

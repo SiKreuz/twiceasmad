@@ -1,5 +1,5 @@
 baseURL = 'https://twiceasmad.de/'
-languageCode = 'de-de'
+locale = 'de-de'
 title = 'twiceasmad'
 enableRobotsTXT = true
 

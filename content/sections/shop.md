@@ -11,6 +11,6 @@ description: "twiceasmad Merch – Shirts, Caps und mehr im offiziellen Shop. Un
 	</div>
 	<div class="album-text">
 		<p>Schnapp dir jetzt eines unserer Shirts oder die Cap im Shop. Cooler Merch für den Alltag und wir haben noch viele neue Teile in Planung.</p>
-		<a href="https://shop.twiceasmad.de" class="cta-button" target="_blank" rel="noopener">Zum Shop</a>
+		<a href="https://shop.twiceasmad.de" class="cta-button" target="_blank" rel="noopener" data-umami-event="Shop CTA Click">Zum Shop</a>
 	</div>
 </div>

@@ -14,11 +14,11 @@
             {{ range .Site.Params.social }}
               {{ if .url }}
                 {{ if eq .name "Email" }}
-                  <a href="mailto:{{ .url }}" class="hero-social-link" aria-label="{{ .name }}">
+                  <a href="mailto:{{ .url }}" class="hero-social-link" aria-label="{{ .name }}" data-umami-event="Hero Social Click" data-umami-event-platform="{{ .name }}">
                     <i class="fas fa-{{ .icon }}"></i>
                   </a>
                 {{ else }}
-                  <a href="{{ .url }}" class="hero-social-link" target="_blank" rel="noopener" aria-label="{{ .name }}">
+                  <a href="{{ .url }}" class="hero-social-link" target="_blank" rel="noopener" aria-label="{{ .name }}" data-umami-event="Hero Social Click" data-umami-event-platform="{{ .name }}">
                     <i class="fab fa-{{ .icon }}"></i>
                   </a>
                 {{ end }}
@@ -34,13 +34,13 @@
 <!-- Navigation -->
 <nav class="main-nav" id="main-nav">
     <div class="nav-container">
-    <a class="nav-brand" href="/" aria-label="{{ .Site.Params.bandName }}">
+  <a class="nav-brand" href="/" aria-label="{{ .Site.Params.bandName }}" data-umami-event="Nav Brand Click">
       <img src="{{ "images/logo.png" | relURL }}" alt="{{ .Site.Params.bandName }} Logo" class="nav-logo">
       <span class="nav-brand-text">{{ .Site.Params.bandName }}</span>
     </a>
         <ul class="nav-menu">
             {{ range (where .Site.RegularPages "Section" "sections").ByWeight }}
-            <li><a href="#{{ .Params.id }}" class="nav-link">{{ .Title }}</a></li>
+      <li><a href="#{{ .Params.id }}" class="nav-link" data-umami-event="Nav Section Click" data-umami-event-section="{{ .Params.id }}">{{ .Title }}</a></li>
             {{ end }}
         </ul>
     </div>

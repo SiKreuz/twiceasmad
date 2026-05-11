@@ -20,12 +20,12 @@
                     {{ range .Site.Params.social }}
                       {{ if .url }}
                         {{ if eq .name "Email" }}
-                          <a href="mailto:{{ .url }}" class="social-link" aria-label="{{ .name }}">
+                          <a href="mailto:{{ .url }}" class="social-link" aria-label="{{ .name }}" data-umami-event="Footer Social Click" data-umami-event-platform="{{ .name }}">
                             <i class="fas fa-{{ .icon }}"></i>
                             <span>{{ .name }}</span>
                           </a>
                         {{ else }}
-                          <a href="{{ .url }}" class="social-link" target="_blank" rel="noopener" aria-label="{{ .name }}">
+                          <a href="{{ .url }}" class="social-link" target="_blank" rel="noopener" aria-label="{{ .name }}" data-umami-event="Footer Social Click" data-umami-event-platform="{{ .name }}">
                             <i class="fab fa-{{ .icon }}"></i>
                             <span>{{ .name }}</span>
                           </a>
@@ -38,9 +38,9 @@
         <div class="footer-bottom">
             <p>&copy; {{ now.Year }} {{ .Site.Params.bandName }}. Alle Rechte vorbehalten.</p>
             <div class="footer-legal">
-                <a href="{{ "imprint" | relURL }}">Impressum</a>
+            <a href="{{ "imprint" | relURL }}" data-umami-event="Footer Legal Click" data-umami-event-target="imprint">Impressum</a>
                 <span class="separator">|</span>
-                <a href="{{ "privacy" | relURL }}">Datenschutz</a>
+            <a href="{{ "privacy" | relURL }}" data-umami-event="Footer Legal Click" data-umami-event-target="privacy">Datenschutz</a>
             </div>
         </div>
     </div>

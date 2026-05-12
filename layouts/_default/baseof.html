@@ -54,8 +54,8 @@
     <meta name="theme-color" content="#933D83" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#5A1F52" media="(prefers-color-scheme: dark)">
 
-    {{ if hugo.IsProduction }}<script defer src="{{ "js/script.js" | relURL }}" data-website-id="dfc06efc-1f28-4a0e-8130-3a096d785130" data-host-url="https://umami.monsi.org" data-performance="true"></script>{{ end }}
-    {{ if hugo.IsProduction }}<script defer src="{{ "js/recorder.js" | relURL }}" data-website-id="dfc06efc-1f28-4a0e-8130-3a096d785130" data-host-url="https://umami.monsi.org" data-sample-rate="1" data-mask-level="moderate" data-max-duration="600000"></script>{{ end }}
+    <script defer src="{{ "js/script.js" | relURL }}" data-website-id="dfc06efc-1f28-4a0e-8130-3a096d785130" data-host-url="https://umami.monsi.org" data-domains="twiceasmad.de" data-performance="true"></script>
+    <script defer src="{{ "js/recorder.js" | relURL }}" data-website-id="dfc06efc-1f28-4a0e-8130-3a096d785130" data-host-url="https://umami.monsi.org" data-domains="twiceasmad.de" data-sample-rate="1" data-mask-level="moderate" data-max-duration="600000"></script>
 </head>
 <body>
     {{ block "main" . }}{{ end }}

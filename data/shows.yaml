@@ -41,6 +41,12 @@ shows:
     city: "München"
     tickets: "https://rausgegangen.de/events/yab-yum-tour-2026-3/"
 
+  - name: "umsonst & drinnen Landshut"
+    date: "2026-10-21"
+    venue: "Rocketclub"
+    city: "Landshut"
+    tickets: "free"
+
   - name: "Strandbühne Live"
     date: "2026-08-08"
     time: "18:30"
@@ -52,7 +58,7 @@ shows:
     city: "Füssen"
     tickets: "free"
 
-  - name: "Stranieri Tour - Oberaudorf"
+  - name: "Stranieri Tour"
     date: "2026-06-27"
     time: "19:00"
     venue: "Café-Bar Leichtsinn"

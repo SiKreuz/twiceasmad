@@ -764,301 +764,171 @@ body {
     }
 }
 
-/* Bandsintown widget tweaks (scoped to Shows section) */
-/* Ensure location and text columns are left-aligned inside the embed */
-#shows .show-list,
-#shows .show-list * {
-    text-align: left !important;
-}
-
-/* Specifically ensure the location lines render left-aligned on all layouts */
-#shows .bit-location-under-desktop,
-#shows .bit-location-under-mobile,
-#shows .bit-titleWrapper,
-#shows .bit-venue,
-#shows a.bit-details,
-#shows .bit-details-inner-wrapper {
-    text-align: left !important;
-}
-
-/* If the widget uses flex to center, push to the start */
-#shows .bit-details-inner-wrapper,
-#shows .bit-titleWrapper {
-    justify-content: flex-start !important;
-    align-items: flex-start !important;
-}
-
-/* Prevent unexpected centering caused by block-level anchors */
-#shows a.bit-details,
-#shows .bit-titleWrapper a {
-    display: block;
-}
-
-/* Explicit order: date → title → location */
-#shows .bit-details-inner-wrapper a.bit-details {
-    order: 1 !important;
-}
-
-#shows .bit-details-inner-wrapper .bit-titleWrapper {
-    order: 2 !important;
-}
-
-#shows .bit-details-inner-wrapper .bit-location-under-mobile {
-    order: 3 !important;
-}
-
-#shows .bit-details-inner-wrapper .bit-location-under-tablet {
-    order: 3 !important;
-}
-
-/* Responsive layout for the Bandsintown widget */
-/* Large screens: keep date, event name, and location in one line */
-@media (min-width: 1025px) {
-    #shows .bit-details-inner-wrapper {
-        display: flex !important;
-        flex-direction: row !important;
-        align-items: baseline !important;
-        flex-wrap: nowrap !important;
-        justify-content: flex-start !important;
-        gap: 0 !important;
-        /* separators provide spacing */
-        white-space: nowrap !important;
-    }
-
-    /* Prevent wrapping and force inline sizing for the three parts */
-    #shows .bit-details-inner-wrapper a.bit-details,
-    #shows .bit-details-inner-wrapper .bit-titleWrapper,
-    #shows .bit-details-inner-wrapper .bit-location-under-mobile {
-        display: inline-block !important;
-        vertical-align: baseline !important;
-        flex: 0 0 auto !important;
-        width: auto !important;
-        max-width: none !important;
-        float: none !important;
-        clear: none !important;
-    }
-
-    #shows .bit-date,
-    #shows .bit-titleWrapper,
-    #shows .bit-venue,
-    #shows .bit-location-under-mobile {
-        white-space: nowrap !important;
-    }
-
-    /* Let the date wrapper shrink to content instead of a fixed column */
-    #shows .bit-date-wrapper {
-        display: inline-block !important;
-        width: auto !important;
-        min-width: 0 !important;
-        max-width: none !important;
-        flex: 0 0 auto !important;
-    }
-
-    #shows .bit-date {
-        display: inline !important;
-        width: auto !important;
-    }
-
-    /* Inline layout tweaks */
-    #shows .bit-titleWrapper,
-    #shows .bit-location-under-mobile {
-        margin-top: 0 !important;
-    }
-
-    /* Large screen logic: hide desktop variant (inside date anchor) and use standalone mobile (or tablet if present) for correct order date → title → location */
-    #shows .bit-location-under-desktop {
-        display: none !important;
-    }
-
-    /* Default: show mobile location inline */
-    #shows .bit-location-under-mobile {
-        display: inline-block !important;
-        white-space: nowrap !important;
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-
-    /* If tablet variant exists, prefer it and hide mobile to avoid duplication */
-    #shows .bit-location-under-tablet {
-        display: inline-block !important;
-        white-space: nowrap !important;
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-
-    /* Hide mobile only when a tablet sibling exists (can't use :has reliably yet; leave both visible if both appear, but force tablet after title by DOM) */
-
-    /* Ensure the title doesn't reserve extra space */
-    #shows .bit-titleWrapper {
-        margin-right: 0 !important;
-        margin-left: 0 !important;
-        padding-right: 0 !important;
-        padding-left: 0 !important;
-    }
-
-    #shows .bit-titleWrapper a {
-        display: inline !important;
-        width: auto !important;
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-
-    /* Location: no unintended offset */
-    #shows .bit-location-under-mobile {
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-
-    /* Ensure the anchor inside title is inline, not block */
-    #shows .bit-titleWrapper a {
-        display: inline !important;
-        width: auto !important;
-    }
-
-    /* Handle div variant of venue in second tab */
-    #shows .bit-titleWrapper div.bit-venue {
-        display: inline !important;
-        width: auto !important;
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-
-    /* Add dash separators between date → name → location */
-    #shows .bit-details-inner-wrapper .bit-date::after {
-        content: " — ";
-        margin: 0 6px;
-    }
-
-    #shows .bit-details-inner-wrapper .bit-titleWrapper::after {
-        content: " — ";
-        margin: 0 6px;
-    }
-}
-
-/* Dates: brand purple and not bold (desktop + mobile) */
-#shows .bit-date,
-#shows .bit-mobile-date {
-    color: var(--color-primary) !important;
-    font-weight: 400 !important;
-}
-
-/* Event name: bold (both anchor and div variants) */
-#shows .bit-venue {
-    font-weight: 700 !important;
-}
-
-/* Handle second tab format where venue is a div instead of anchor */
-#shows .bit-titleWrapper div.bit-venue {
-    font-weight: 700 !important;
-    display: inline !important;
-    margin: 0 !important;
-    padding: 0 !important;
-}
-
-/* Class-based layout targeting: iPad layout (stacked, centered) */
-#shows .bit-layout-ipad .bit-location-under-desktop {
-    display: none !important;
-}
-
-#shows .bit-layout-ipad .bit-location-under-mobile {
-    display: block !important;
-}
-
-#shows .bit-layout-ipad .bit-details-inner-wrapper {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    text-align: center !important;
-}
-
-#shows .bit-layout-ipad .bit-titleWrapper {
-    margin-top: 2px;
-    text-align: center !important;
-}
-
-#shows .bit-layout-ipad .bit-location-under-mobile {
-    margin-top: 2px;
-    text-align: center !important;
-    display: block !important;
-    width: 100% !important;
-}
-
-#shows .bit-layout-ipad .bit-date-wrapper,
-#shows .bit-layout-ipad .bit-date {
-    text-align: center !important;
-}
-
-/* Class-based layout targeting: Desktop layout (ensure only one location shown and correct order) */
-#shows .bit-layout-desktop .bit-location-under-desktop {
-    display: none !important;
-}
-
-#shows .bit-layout-desktop .bit-location-under-mobile {
-    display: block !important;
-}
-
-#shows .bit-layout-desktop .bit-location-under-tablet {
-    display: block !important;
-}
-
-/* Desktop layout on medium screens: stack vertically with correct order */
-#shows .bit-layout-desktop .bit-details-inner-wrapper {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-}
-
-#shows .bit-layout-desktop .bit-titleWrapper {
-    margin-top: 2px;
-    order: 2 !important;
-}
-
-#shows .bit-layout-desktop .bit-location-under-mobile {
-    margin-top: 2px;
-    order: 3 !important;
-}
-
-#shows .bit-layout-desktop .bit-location-under-tablet {
-    margin-top: 2px;
-    order: 3 !important;
-}
-
-#shows .bit-layout-desktop a.bit-details {
-    order: 1 !important;
-}
-
-/* Large screen override: revert desktop layout to single-line row */
-@media (min-width: 1025px) {
-    #shows .bit-layout-desktop .bit-details-inner-wrapper {
-        flex-direction: row !important;
-        align-items: baseline !important;
-        flex-wrap: nowrap !important;
-        white-space: nowrap !important;
-    }
-    #shows .bit-layout-desktop a.bit-details,
-    #shows .bit-layout-desktop .bit-titleWrapper,
-    #shows .bit-layout-desktop .bit-location-under-mobile,
-    #shows .bit-layout-desktop .bit-location-under-tablet {
-        display: inline-block !important;
-        vertical-align: baseline !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        white-space: nowrap !important;
-    }
-    #shows .bit-layout-desktop .bit-titleWrapper,
-    #shows .bit-layout-desktop .bit-location-under-mobile,
-    #shows .bit-layout-desktop .bit-location-under-tablet {
-        margin-top: 0 !important;
-    }
-}
-
-#shows .bit-layout-ipad .bit-mobile-event-icons {
-    display: none !important;
-}
-
-/* Live section: widen section content only for the Shows section */
+/* Shows section: custom show list */
 #shows .section-content {
     max-width: 1000px;
+}
+
+#shows .show-tabs {
+    display: inline-flex;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+    background: var(--color-primary-100);
+    padding: 0.3rem;
+    border-radius: 999px;
+}
+
+#shows .show-tab-button {
+    border: 0;
+    background: transparent;
+    color: var(--color-primary-600);
+    font-weight: 600;
+    font-size: 0.95rem;
+    line-height: 1;
+    padding: 0.65rem 1rem;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#shows .show-tab-button:hover {
+    background: rgba(var(--color-primary-rgb), 0.12);
+}
+
+#shows .show-tab-button.active {
+    background: var(--color-primary);
+    color: #fff;
+}
+
+#shows .show-card {
+    display: grid;
+    grid-template-columns: minmax(135px, 165px) 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--color-primary-200);
+}
+
+#shows .show-card:first-child {
+    border-top: 1px solid var(--color-primary-200);
+}
+
+#shows .show-date {
+    color: var(--color-primary);
+}
+
+#shows .show-date-main {
+    display: block;
+    font-weight: 700;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+#shows .show-date-time {
+    display: block;
+    margin-top: 0.15rem;
+    color: rgba(var(--color-primary-rgb), 0.72);
+    font-size: 0.82rem;
+    font-weight: 500;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+#shows .show-name {
+    font-size: 1rem;
+    line-height: 1.3;
+    margin: 0 0 0.2rem;
+    color: var(--color-text);
+}
+
+#shows .show-location {
+    font-size: 0.95rem;
+    color: #555;
+    text-decoration: none;
+}
+
+#shows .show-location:hover {
+    color: var(--color-primary-600);
+    text-decoration: underline;
+}
+
+#shows .show-ticket {
+    justify-self: end;
+}
+
+#shows .show-ticket-link,
+#shows .show-ticket-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.45rem 0.75rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+#shows .show-ticket-link {
+    background: var(--color-primary);
+    color: #fff;
+    text-decoration: none;
+}
+
+#shows .show-ticket-link:hover {
+    background: var(--color-primary-600);
+}
+
+#shows .show-ticket-badge.is-soon {
+    border: 1px solid var(--color-primary-400);
+    color: var(--color-primary-600);
+    background: transparent;
+}
+
+#shows .show-ticket-badge.is-free {
+    background: #e8f7ea;
+    color: #216b34;
+    border: 1px solid #b7dfbf;
+}
+
+#shows .show-ticket-badge.is-past {
+    border: 1px solid #ccc;
+    color: #666;
+    background: #f3f3f3;
+}
+
+
+
+#shows .show-empty {
+    margin: 0.75rem 0 0;
+    padding: 1rem;
+    border-radius: 10px;
+    background: var(--color-primary-100);
+    color: var(--color-primary-600);
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    #shows .show-tabs {
+        width: 100%;
+        justify-content: center;
+    }
+
+    #shows .show-card {
+        grid-template-columns: 1fr;
+        gap: 0.45rem;
+        padding: 0.85rem 0;
+    }
+
+    #shows .show-ticket {
+        justify-self: start;
+    }
+
+    #shows .show-ticket-link,
+    #shows .show-ticket-badge {
+        font-size: 0.78rem;
+    }
 }
 
 /* Album Layout for Stranieri Section */

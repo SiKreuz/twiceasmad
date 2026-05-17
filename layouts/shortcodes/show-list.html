@@ -1,0 +1,137 @@
+{{- $events := hugo.Data.shows.shows | default (slice) -}}
+{{- $now := now -}}
+{{- $upcoming := slice -}}
+{{- $past := slice -}}
+
+{{- range $event := $events -}}
+  {{- $hasTime := and (isset $event "time") (ne (trim $event.time " ") "") -}}
+  {{- $eventAtRaw := "" -}}
+  {{- if $hasTime -}}
+    {{- $eventAtRaw = printf "%sT%s:00" $event.date $event.time -}}
+  {{- else -}}
+    {{- $eventAtRaw = printf "%sT23:59:59" $event.date -}}
+  {{- end -}}
+  {{- $eventAt := time $eventAtRaw -}}
+  {{- $eventWithMeta := merge $event (dict "_eventAt" $eventAt) -}}
+
+  {{- if lt $eventAt $now -}}
+    {{- $past = $past | append $eventWithMeta -}}
+  {{- else -}}
+    {{- $upcoming = $upcoming | append $eventWithMeta -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $upcoming = sort $upcoming "_eventAt" "asc" -}}
+{{- $past = sort $past "_eventAt" "desc" -}}
+
+<div class="show-list" data-show-list>
+  <div class="show-tabs" role="tablist" aria-label="Live-Termine">
+    <button type="button" class="show-tab-button active" data-show-tab="upcoming" aria-selected="true">Kommende</button>
+    {{- if gt (len $past) 0 -}}
+      <button type="button" class="show-tab-button" data-show-tab="past" aria-selected="false">Vergangene</button>
+    {{- end -}}
+  </div>
+
+  <div class="show-tab-panel" data-show-panel="upcoming">
+    {{- if gt (len $upcoming) 0 -}}
+      {{- range $upcoming -}}
+        {{- $eventDate := time .date -}}
+        {{- $hasTime := and (isset . "time") (ne (trim .time " ") "") -}}
+        {{- $mapsQuery := "" -}}
+        {{- if and .venue .city -}}
+          {{- $mapsQuery = printf "%s %s" .venue .city -}}
+        {{- else if .venue -}}
+          {{- $mapsQuery = .venue -}}
+        {{- else if .city -}}
+          {{- $mapsQuery = .city -}}
+        {{- end -}}
+
+        <article class="show-card">
+          <p class="show-date" aria-label="Datum und Uhrzeit">
+            <span class="show-date-main">{{ $eventDate.Format "02.01.2006" }}</span>
+            {{- if $hasTime }}
+              <span class="show-date-time">{{ .time }} Uhr</span>
+            {{- end -}}
+          </p>
+
+          <div class="show-info">
+            <h3 class="show-name">{{ .name }}</h3>
+            {{- if $mapsQuery -}}
+              <a
+                class="show-location"
+                href="https://www.google.com/maps/search/?api=1&amp;query={{ $mapsQuery | urlquery }}"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {{ with .venue }}{{ . }}{{ end }}{{ if and .venue .city }}, {{ end }}{{ with .city }}{{ . }}{{ end }}
+              </a>
+            {{- else -}}
+              <p class="show-location">Ort folgt</p>
+            {{- end -}}
+          </div>
+
+          <div class="show-ticket">
+            {{- $ticketValue := .tickets | default "" -}}
+            {{- if or (hasPrefix $ticketValue "https://") (hasPrefix $ticketValue "http://") -}}
+              <a class="show-ticket-link" href="{{ $ticketValue }}" target="_blank" rel="noopener noreferrer">Tickets</a>
+            {{- else if eq $ticketValue "coming-soon" -}}
+              <span class="show-ticket-badge is-soon">Bald verfügbar</span>
+            {{- else if eq $ticketValue "free" -}}
+              <span class="show-ticket-badge is-free">Freier Eintritt</span>
+            {{- else -}}
+              <span class="show-ticket-badge is-soon">Info folgt</span>
+            {{- end -}}
+          </div>
+        </article>
+      {{- end -}}
+    {{- else -}}
+      <p class="show-empty">Neue Termine folgen bald!</p>
+    {{- end -}}
+  </div>
+
+  {{- if gt (len $past) 0 -}}
+    <div class="show-tab-panel" data-show-panel="past" hidden>
+      {{- range $past -}}
+        {{- $eventDate := time .date -}}
+        {{- $hasTime := and (isset . "time") (ne (trim .time " ") "") -}}
+        {{- $mapsQuery := "" -}}
+        {{- if and .venue .city -}}
+          {{- $mapsQuery = printf "%s %s" .venue .city -}}
+        {{- else if .venue -}}
+          {{- $mapsQuery = .venue -}}
+        {{- else if .city -}}
+          {{- $mapsQuery = .city -}}
+        {{- end -}}
+
+        <article class="show-card is-past">
+          <p class="show-date" aria-label="Datum und Uhrzeit">
+            <span class="show-date-main">{{ $eventDate.Format "02.01.2006" }}</span>
+            {{- if $hasTime }}
+              <span class="show-date-time">{{ .time }} Uhr</span>
+            {{- end -}}
+          </p>
+
+          <div class="show-info">
+            <h3 class="show-name">{{ .name }}</h3>
+            {{- if $mapsQuery -}}
+              <a
+                class="show-location"
+                href="https://www.google.com/maps/search/?api=1&amp;query={{ $mapsQuery | urlquery }}"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {{ with .venue }}{{ . }}{{ end }}{{ if and .venue .city }}, {{ end }}{{ with .city }}{{ . }}{{ end }}
+              </a>
+            {{- else -}}
+              <p class="show-location">Ort unbekannt</p>
+            {{- end -}}
+          </div>
+
+          <div class="show-ticket">
+            <span class="show-ticket-badge is-past">Vergangen</span>
+          </div>
+        </article>
+      {{- end -}}
+    </div>
+  {{- end -}}
+</div>

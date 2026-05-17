@@ -24,7 +24,7 @@ Diese Website ist eine statische Website, die mit Hugo generiert wird und ohne s
 
 ### 2.1 Unser Umgang mit Datenschutz
 
-Als statische Website erheben, speichern oder verarbeiten wir selbst keine personenbezogenen Daten auf unseren Servern. Beim Aufruf eingebetteter Inhalte von Drittanbietern (YouTube, Spotify, Bandsintown) können jedoch durch diese Dienste Daten erhoben werden. Die Verarbeitung erfolgt nach deren eigenen Datenschutzbestimmungen.
+Als statische Website erheben, speichern oder verarbeiten wir selbst keine personenbezogenen Daten auf unseren Servern. Beim Aufruf eingebetteter Inhalte von Drittanbietern (YouTube, Spotify) können jedoch durch diese Dienste Daten erhoben werden. Die Verarbeitung erfolgt nach deren eigenen Datenschutzbestimmungen.
 
 ## 3. Eingebettete Drittanbieter-Dienste
 
@@ -68,22 +68,6 @@ Unsere Website bindet Inhalte folgender Drittanbieter ein. Bei Interaktion mit d
 
 **Ihre Rechte:** Sie können die Datenverarbeitung vermeiden, indem Sie das Widget nicht nutzen. Details finden Sie in der [Datenschutzerklärung von Spotify](https://www.spotify.com/de/privacy).
 
-### 3.3 Bandsintown-Konzertübersicht
-
-**Anbieter:** Bandsintown, LLC (USA)
-
-**Zweck:** Anzeige von bevorstehenden und vergangenen Konzertterminen sowie Ticketinformationen.
-
-**Verarbeitung:**
-- Übermittlung der IP-Adresse und ggf. Standortdaten
-- Cookies für Widget-Funktionalität und Benutzereinstellungen
-- Nutzungsverhalten und Interaktion mit Konzertlisten
-- Daten können in die USA übertragen und dort verarbeitet werden
-
-**Rechtsgrundlage:** Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) bei Interaktion mit dem Bandsintown-Widget.
-
-**Ihre Rechte:** Sie können die Datenverarbeitung vermeiden, indem Sie das Widget nicht nutzen. Weitere Informationen finden Sie in der [Datenschutzerklärung von Bandsintown](https://corp.bandsintown.com/privacy).
-
 ## 4. Cookies und Tracking-Technologien
 
 ### 4.1 Eigene Cookies
@@ -101,10 +85,9 @@ Die oben genannten eingebetteten Dienste können beim Interagieren Cookies setze
 
 ## 5. Datenübermittlung in Drittländer
 
-Einige eingebettete Dienste (YouTube/Google und Bandsintown) haben ihren Sitz in den USA, einem Land ohne angemessenes Datenschutzniveau laut EU-Kommission. Die Übermittlung erfolgt auf Basis Ihrer ausdrücklichen Einwilligung.
+Einige eingebettete Dienste (YouTube/Google) haben ihren Sitz in den USA, einem Land ohne angemessenes Datenschutzniveau laut EU-Kommission. Die Übermittlung erfolgt auf Basis Ihrer ausdrücklichen Einwilligung.
 
 - **Google/YouTube:** Übermittlung auf Grundlage Ihrer Einwilligung und ggf. Standardvertragsklauseln
-- **Bandsintown:** Übermittlung auf Grundlage Ihrer Einwilligung
 
 Mit der Interaktion mit diesen Inhalten willigen Sie in die Übermittlung Ihrer Daten in diese Länder ein.
 
@@ -140,7 +123,7 @@ Wenn Sie die Datenerhebung minimieren möchten:
 
 - **YouTube-Videos:** Nicht auf „Abspielen“ klicken
 - **Spotify-Inhalte:** Nicht mit dem Widget interagieren
-- **Konzertinfos:** Nicht auf Bandsintown-Widgets klicken
+- **Konzertinfos:** Keine externen Ticket-Links öffnen
 - **Browser-Einstellungen:** Blockieren Sie Drittanbieter-Cookies
 - **Datenschutzorientierte Browser:** Nutzen Sie Browser mit erhöhtem Datenschutz
 
@@ -157,4 +140,3 @@ Bei Fragen oder Anliegen zum Datenschutz wenden Sie sich bitte an:
 Für Anliegen zu einzelnen Diensten:
 - **YouTube/Google:** [Google Datenschutz-Kontakt](https://support.google.com/policies/contact/general_privacy_form)
 - **Spotify:** [Spotify Datenschutz-Kontakt](https://support.spotify.com/contact-privacy-office/)
-- **Bandsintown:** [Bandsintown Privacy Request](https://www.bandsintown.com/privacy_request/)

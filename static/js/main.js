@@ -8,27 +8,34 @@ document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('.nav-link');
     
     // Show navigation after scrolling past hero section
-    let heroHeight = document.querySelector('.hero-section').offsetHeight;
-    
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > heroHeight / 2) {
-            nav.classList.add('visible');
-        } else {
-            nav.classList.remove('visible');
-        }
-    });
+    const heroSection = document.querySelector('.hero-section');
+    if (nav && heroSection) {
+        let heroHeight = heroSection.offsetHeight;
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > heroHeight / 2) {
+                nav.classList.add('visible');
+            } else {
+                nav.classList.remove('visible');
+            }
+        });
+    }
     
     // Mobile menu toggle
-    navToggle.addEventListener('click', function() {
-        navToggle.classList.toggle('active');
-        navMenu.classList.toggle('active');
-    });
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', function() {
+            navToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+    }
     
     // Close mobile menu when clicking on a link
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
-            navToggle.classList.remove('active');
-            navMenu.classList.remove('active');
+            if (navToggle && navMenu) {
+                navToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
         });
     });
     
@@ -38,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
-                const navHeight = nav.offsetHeight;
+                const navHeight = nav ? nav.offsetHeight : 0;
                 const targetPosition = target.offsetTop - navHeight;
                 
                 window.scrollTo({
@@ -81,12 +88,39 @@ document.addEventListener('DOMContentLoaded', function() {
             heroImage.style.transform = `translateY(${rate}px)`;
         });
     }
+
+    // Show list tabs (Kommende / Vergangene)
+    const showList = document.querySelector('[data-show-list]');
+    if (showList) {
+        const tabButtons = showList.querySelectorAll('[data-show-tab]');
+        const panels = showList.querySelectorAll('[data-show-panel]');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const target = this.dataset.showTab;
+
+                tabButtons.forEach(btn => {
+                    const active = btn.dataset.showTab === target;
+                    btn.classList.toggle('active', active);
+                    btn.setAttribute('aria-selected', active ? 'true' : 'false');
+                });
+
+                panels.forEach(panel => {
+                    panel.hidden = panel.dataset.showPanel !== target;
+                });
+            });
+        });
+    }
 });
 
 // Add active class to navigation links based on scroll position
 window.addEventListener('scroll', function() {
     const sections = document.querySelectorAll('.content-section');
     const navLinks = document.querySelectorAll('.nav-link');
+
+    if (!sections.length || !navLinks.length) {
+        return;
+    }
     
     let current = '';
     sections.forEach(section => {

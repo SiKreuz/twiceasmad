@@ -12,6 +12,12 @@ shows:
     city: "Herrsching am Ammersee"
     tickets: "https://1250jahreherrsching.leoticket.de/fs/2c88dbbd-1926-47c8-8166-b5c97f68e669"
 
+  - name: "umsonst & draußen Rosenheim"
+    date: "2026-06-12"
+    venue: "Salzstadel"
+    city: "Rosenheim"
+    tickets: "free"
+
   - name: "Martharockt 2026"
     date: "2026-06-20"
     time: "17:00"
@@ -27,7 +33,6 @@ shows:
 
   - name: "Streetfestival Füssen 2026"
     date: "2026-08-01"
-    time: "17:00"
     city: "Füssen"
     tickets: "free"
 

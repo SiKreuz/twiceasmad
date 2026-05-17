@@ -73,7 +73,7 @@
           <div class="show-ticket">
             {{- $ticketValue := .tickets | default "" -}}
             {{- if or (hasPrefix $ticketValue "https://") (hasPrefix $ticketValue "http://") -}}
-              <a class="show-ticket-link" href="{{ $ticketValue }}" target="_blank" rel="noopener noreferrer">Tickets</a>
+              <a class="show-ticket-link" href="{{ $ticketValue }}" target="_blank" rel="noopener noreferrer" data-umami-event="Show Ticket Click" data-umami-event-date="{{ .date }}" data-umami-event-name="{{ .name }}">Tickets</a>
             {{- else if eq $ticketValue "coming-soon" -}}
               <span class="show-ticket-badge is-soon">Bald verfügbar</span>
             {{- else if eq $ticketValue "free" -}}

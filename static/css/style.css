@@ -803,9 +803,9 @@ body {
 #shows .show-card {
     display: grid;
     grid-template-columns: minmax(135px, 165px) 1fr auto;
-    align-items: center;
+    align-items: start;
     gap: 1rem;
-    padding: 0.9rem 0;
+    padding: 0.6rem 0;
     border-bottom: 1px solid var(--color-primary-200);
 }
 
@@ -815,10 +815,13 @@ body {
 
 #shows .show-date {
     color: var(--color-primary);
+    margin: 0;
+    line-height: 1.15;
 }
 
 #shows .show-date-main {
     display: block;
+    font-size: 1rem;
     font-weight: 700;
     line-height: 1.2;
     white-space: nowrap;
@@ -836,13 +839,22 @@ body {
 
 #shows .show-name {
     font-size: 1rem;
-    line-height: 1.3;
-    margin: 0 0 0.2rem;
+    line-height: 1.2;
+    margin: 0;
     color: var(--color-text);
 }
 
+#shows .show-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.05rem;
+}
+
 #shows .show-location {
+    display: block;
     font-size: 0.95rem;
+    line-height: 1.15;
+    margin: 0;
     color: #555;
     text-decoration: none;
 }
@@ -917,8 +929,8 @@ body {
 
     #shows .show-card {
         grid-template-columns: 1fr;
-        gap: 0.45rem;
-        padding: 0.85rem 0;
+        gap: 0.25rem;
+        padding: 0.4rem 0;
     }
 
     #shows .show-ticket {

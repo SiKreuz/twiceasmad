@@ -338,12 +338,6 @@ shows:
     venue: "KUBU"
     tickets: "free"
 
-  - name: "Support für The MoG Collective"
-    date: "2025-05-12"
-    venue: "Hansa 39"
-    city: "München"
-    tickets: "coming-soon"
-
   - name: "Märchenbazar 2023"
     date: "2023-11-25"
     venue: "Märchenbazar"
@@ -354,6 +348,12 @@ shows:
     date: "2023-06-17"
     city: "Grafing"
     tickets: "free"
+
+  - name: "Support für The MoG Collective"
+    date: "2023-05-12"
+    venue: "Hansa 39"
+    city: "München"
+    tickets: "coming-soon"
 
   - name: "Märchenbazar 2022"
     date: "2022-11-29"

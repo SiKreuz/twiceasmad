@@ -893,6 +893,16 @@ body {
     background: var(--color-primary-600);
 }
 
+#shows .show-ticket-link.is-free {
+    background: #e8f7ea;
+    color: #216b34;
+    border: 1px solid #b7dfbf;
+}
+
+#shows .show-ticket-link.is-free:hover {
+    background: #d0f0d5;
+}
+
 #shows .show-ticket-badge.is-soon {
     border: 1px solid var(--color-primary-400);
     color: var(--color-primary-600);

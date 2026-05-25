@@ -77,7 +77,11 @@
             {{- else if eq $ticketValue "coming-soon" -}}
               <span class="show-ticket-badge is-soon">Bald verfügbar</span>
             {{- else if eq $ticketValue "free" -}}
-              <span class="show-ticket-badge is-free">Freier Eintritt</span>
+              {{- with .venue_url -}}
+                <a class="show-ticket-link is-free" href="{{ . }}" target="_blank" rel="noopener noreferrer">Freier Eintritt</a>
+              {{- else -}}
+                <span class="show-ticket-badge is-free">Freier Eintritt</span>
+              {{- end -}}
             {{- else -}}
               <span class="show-ticket-badge is-soon">Info folgt</span>
             {{- end -}}

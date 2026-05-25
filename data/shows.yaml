@@ -46,6 +46,7 @@ shows:
     venue: "Rocketclub"
     city: "Landshut"
     tickets: "free"
+    venue_url: "https://rocketclub.de/programm/konzerte/846-umsonst-drinnen-50"
 
   - name: "Strandbühne Live"
     date: "2026-08-08"
@@ -64,6 +65,7 @@ shows:
     venue: "Café-Bar Leichtsinn"
     city: "Oberaudorf"
     tickets: "free"
+    venue_url: "https://leichtsinn.bar/veranstaltung/twiceasmad-2026-06-27"
 
   - name: "Martharockt 2026"
     date: "2026-06-20"
@@ -89,6 +91,7 @@ shows:
     venue: "Minna Thiel"
     city: "München"
     tickets: "free"
+    venue_url: "https://rausgegangen.de/events/minna-thiel-sommerfest-mit-twiceasmad-und-nana-forest-eintri-0"
 
   - name: "Stranieri Tour"
     date: "2026-05-09"

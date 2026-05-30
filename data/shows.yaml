@@ -48,6 +48,13 @@ shows:
     tickets: "free"
     venue_url: "https://rocketclub.de/programm/konzerte/846-umsonst-drinnen-50"
 
+  - name: "Club-Geburtstag"
+    date: "2026-10-16"
+    time: "20:00"
+    venue: "Gutzkowclub"
+    city: "Dresden"
+    tickets: "coming-soon"
+
   - name: "Strandbühne Live"
     date: "2026-08-08"
     time: "18:30"

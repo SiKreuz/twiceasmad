@@ -4,7 +4,6 @@
     class="newsletter-form"
     action="https://newsletter.twiceasmad.de/subscription/form"
     method="POST"
-    data-umami-event="Newsletter Subscribe"
   >
     <input type="hidden" name="nonce" />
     <input type="hidden" name="l" value="ba86ab19-fd03-413e-9014-0e9362f0e50e" />
@@ -29,7 +28,7 @@
       >
       <script src="https://newsletter.twiceasmad.de/public/static/altcha.umd.js"></script>
       <altcha-widget challengeurl="https://newsletter.twiceasmad.de/api/public/captcha/altcha"></altcha-widget>
-      <button class="newsletter-submit" type="submit">Anmelden</button>
+      <button class="newsletter-submit" type="submit" data-umami-event="Newsletter Subscribe">Anmelden</button>
     </div>
     <p class="newsletter-feedback" aria-live="polite"></p>
   </form>

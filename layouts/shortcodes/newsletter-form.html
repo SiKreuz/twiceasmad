@@ -1,0 +1,69 @@
+<div class="newsletter-wrapper">
+  <p class="newsletter-lead">Shows. Merch. Rabatte. Sei der erste, der davon erfährt.</p>
+  <form
+    class="newsletter-form"
+    action="https://newsletter.twiceasmad.de/subscription/form"
+    method="POST"
+    data-umami-event="Newsletter Subscribe"
+  >
+    <input type="hidden" name="nonce" />
+    <input type="hidden" name="l" value="ba86ab19-fd03-413e-9014-0e9362f0e50e" />
+    <div class="newsletter-fields">
+      <input
+        class="newsletter-input"
+        type="email"
+        name="email"
+        placeholder="deine@email.de"
+        required
+        autocomplete="email"
+        aria-label="E-Mail-Adresse"
+      >
+      <input
+        class="newsletter-input"
+        type="text"
+        name="name"
+        placeholder="Dein Name"
+        required
+        autocomplete="name"
+        aria-label="Name"
+      >
+      <script src="https://newsletter.twiceasmad.de/public/static/altcha.umd.js"></script>
+      <altcha-widget challengeurl="https://newsletter.twiceasmad.de/api/public/captcha/altcha"></altcha-widget>
+      <button class="newsletter-submit" type="submit">Anmelden</button>
+    </div>
+    <p class="newsletter-feedback" aria-live="polite"></p>
+  </form>
+</div>
+
+<script>
+(function () {
+  var form = document.querySelector('.newsletter-form');
+  if (!form) return;
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var btn = form.querySelector('.newsletter-submit');
+    var feedback = form.querySelector('.newsletter-feedback');
+    btn.disabled = true;
+    btn.textContent = '…';
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+    })
+      .then(function (res) {
+        if (res.ok) {
+          form.querySelector('.newsletter-fields').style.display = 'none';
+          feedback.textContent = 'Du bist dabei! Schau kurz in dein Postfach.';
+          feedback.className = 'newsletter-feedback is-success';
+        } else {
+          throw new Error('server');
+        }
+      })
+      .catch(function () {
+        feedback.textContent = 'Da ist was schiefgelaufen. Versuch es nochmal.';
+        feedback.className = 'newsletter-feedback is-error';
+        btn.disabled = false;
+        btn.textContent = 'Anmelden';
+      });
+  });
+})();
+</script>

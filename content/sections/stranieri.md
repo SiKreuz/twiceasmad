@@ -1,6 +1,6 @@
 ---
 title: "Stranieri"
-weight: 1
+weight: 21
 id: "stranieri"
 description: "Stranieri – das Debütalbum von twiceasmad. Veröffentlicht am 22. Oktober 2024. Jetzt auf Spotify, Apple Music, Tidal, Deezer und Amazon Music streamen."
 ---

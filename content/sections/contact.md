@@ -6,7 +6,6 @@ description: "Booking-Anfragen an twiceasmad – Kontakt für Konzerte, Events u
 ---
 
 <div class="contact-intro">
-	<p class="contact-lead">Booking</p>
 	{{< booking-cta >}}
 </div>
 

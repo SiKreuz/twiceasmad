@@ -109,6 +109,7 @@ shows:
 
   - name: "umsonst & draußen Rosenheim"
     date: "2026-06-12"
+    time: "17:00"
     venue: "Salzstadel"
     city: "Rosenheim"
     tickets: "free"

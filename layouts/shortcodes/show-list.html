@@ -1,141 +1,68 @@
-{{- $events := hugo.Data.shows.shows | default (slice) -}}
-{{- $now := now -}}
-{{- $upcoming := slice -}}
-{{- $past := slice -}}
+{{/*
+  show-list shortcode.
+  Default ({{< show-list >}}): full list with Kommende / Vergangene tabs — used on the /live/ page.
+  Teaser ({{< show-list mode="teaser" >}}): a season-aware subset of upcoming shows + a link to /live/ — used on the homepage.
 
-{{- range $event := $events -}}
-  {{- $hasTime := and (isset $event "time") (ne (trim $event.time " ") "") -}}
-  {{- $eventAtRaw := "" -}}
-  {{- if $hasTime -}}
-    {{- $eventAtRaw = printf "%sT%s:00" $event.date $event.time -}}
-  {{- else -}}
-    {{- $eventAtRaw = printf "%sT23:59:59" $event.date -}}
+  Teaser selection (no fixed count):
+    1. If any upcoming show has `highlight: true`, show exactly those (manual editorial control).
+    2. Otherwise show every upcoming show within `homeUpcomingWindowMonths` (festival summer / autumn tour adapts by itself).
+    3. Fallback: if nothing matches, show the single next upcoming show so the homepage is never empty.
+*/}}
+{{- $data := partial "get-shows.html" . -}}
+{{- $upcoming := $data.upcoming -}}
+{{- $past := $data.past -}}
+{{- $mode := .Get "mode" | default "full" -}}
+
+{{- if eq $mode "teaser" -}}
+  {{- /* Show pinned shows if any (highlight: true), otherwise the next N upcoming. */ -}}
+  {{- $count := int (.Site.Params.homeUpcomingCount | default 6) -}}
+  {{- $list := where $upcoming "highlight" true -}}
+  {{- if eq (len $list) 0 -}}
+    {{- $list = first $count $upcoming -}}
   {{- end -}}
-  {{- $eventAt := time $eventAtRaw -}}
-  {{- $eventWithMeta := merge $event (dict "_eventAt" $eventAt) -}}
+  {{- $totalUpcoming := len $upcoming -}}
+  {{- $more := sub $totalUpcoming (len $list) -}}
+  {{- $pastCount := len $past -}}
 
-  {{- if lt $eventAt $now -}}
-    {{- $past = $past | append $eventWithMeta -}}
-  {{- else -}}
-    {{- $upcoming = $upcoming | append $eventWithMeta -}}
-  {{- end -}}
-{{- end -}}
-
-{{- $upcoming = sort $upcoming "_eventAt" "asc" -}}
-{{- $past = sort $past "_eventAt" "desc" -}}
-
-<div class="show-list" data-show-list>
-  <div class="show-tabs" role="tablist" aria-label="Live-Termine">
-    <button type="button" class="show-tab-button active" data-show-tab="upcoming" aria-selected="true">Kommende</button>
-    {{- if gt (len $past) 0 -}}
-      <button type="button" class="show-tab-button" data-show-tab="past" aria-selected="false">Vergangene</button>
-    {{- end -}}
-  </div>
-
-  <div class="show-tab-panel" data-show-panel="upcoming">
-    {{- if gt (len $upcoming) 0 -}}
-      {{- range $upcoming -}}
-        {{- $eventDate := time .date -}}
-        {{- $hasTime := and (isset . "time") (ne (trim .time " ") "") -}}
-        {{- $mapsQuery := "" -}}
-        {{- if and .venue .city -}}
-          {{- $mapsQuery = printf "%s %s" .venue .city -}}
-        {{- else if .venue -}}
-          {{- $mapsQuery = .venue -}}
-        {{- else if .city -}}
-          {{- $mapsQuery = .city -}}
-        {{- end -}}
-
-        <article class="show-card">
-          <p class="show-date" aria-label="Datum und Uhrzeit">
-            <span class="show-date-main">{{ $eventDate.Format "02.01.2006" }}</span>
-            {{- if $hasTime }}
-              <span class="show-date-time">{{ .time }} Uhr</span>
-            {{- end -}}
-          </p>
-
-          <div class="show-info">
-            <h3 class="show-name">{{ .name }}</h3>
-            {{- if $mapsQuery -}}
-              <a
-                class="show-location"
-                href="https://www.google.com/maps/search/?api=1&amp;query={{ $mapsQuery | urlquery }}"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {{ with .venue }}{{ . }}{{ end }}{{ if and .venue .city }}, {{ end }}{{ with .city }}{{ . }}{{ end }}
-              </a>
-            {{- else -}}
-              <p class="show-location">Ort folgt</p>
-            {{- end -}}
-          </div>
-
-          <div class="show-ticket">
-            {{- $ticketValue := .tickets | default "" -}}
-            {{- if or (hasPrefix $ticketValue "https://") (hasPrefix $ticketValue "http://") -}}
-              <a class="show-ticket-link" href="{{ $ticketValue }}" target="_blank" rel="noopener noreferrer" data-umami-event="Show Ticket Click" data-umami-event-date="{{ .date }}" data-umami-event-name="{{ .name }}">Tickets</a>
-            {{- else if eq $ticketValue "coming-soon" -}}
-              <span class="show-ticket-badge is-soon">Bald verfügbar</span>
-            {{- else if eq $ticketValue "free" -}}
-              {{- with .venue_url -}}
-                <a class="show-ticket-link is-free" href="{{ . }}" target="_blank" rel="noopener noreferrer">Freier Eintritt</a>
-              {{- else -}}
-                <span class="show-ticket-badge is-free">Freier Eintritt</span>
-              {{- end -}}
-            {{- else -}}
-              <span class="show-ticket-badge is-soon">Info folgt</span>
-            {{- end -}}
-          </div>
-        </article>
-      {{- end -}}
-    {{- else -}}
-      <p class="show-empty">Neue Termine folgen bald!</p>
-    {{- end -}}
-  </div>
-
-  {{- if gt (len $past) 0 -}}
-    <div class="show-tab-panel" data-show-panel="past" hidden>
-      {{- range $past -}}
-        {{- $eventDate := time .date -}}
-        {{- $hasTime := and (isset . "time") (ne (trim .time " ") "") -}}
-        {{- $mapsQuery := "" -}}
-        {{- if and .venue .city -}}
-          {{- $mapsQuery = printf "%s %s" .venue .city -}}
-        {{- else if .venue -}}
-          {{- $mapsQuery = .venue -}}
-        {{- else if .city -}}
-          {{- $mapsQuery = .city -}}
-        {{- end -}}
-
-        <article class="show-card is-past">
-          <p class="show-date" aria-label="Datum und Uhrzeit">
-            <span class="show-date-main">{{ $eventDate.Format "02.01.2006" }}</span>
-            {{- if $hasTime }}
-              <span class="show-date-time">{{ .time }} Uhr</span>
-            {{- end -}}
-          </p>
-
-          <div class="show-info">
-            <h3 class="show-name">{{ .name }}</h3>
-            {{- if $mapsQuery -}}
-              <a
-                class="show-location"
-                href="https://www.google.com/maps/search/?api=1&amp;query={{ $mapsQuery | urlquery }}"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {{ with .venue }}{{ . }}{{ end }}{{ if and .venue .city }}, {{ end }}{{ with .city }}{{ . }}{{ end }}
-              </a>
-            {{- else -}}
-              <p class="show-location">Ort unbekannt</p>
-            {{- end -}}
-          </div>
-
-          <div class="show-ticket">
-            <span class="show-ticket-badge is-past">Vergangen</span>
-          </div>
-        </article>
+  <div class="show-list show-list-teaser" data-show-list>
+    <div class="show-tab-panel" data-show-panel="upcoming">
+      {{- if gt (len $list) 0 -}}
+        {{- range $list -}}{{ partial "show-card.html" . }}{{- end -}}
+      {{- else -}}
+        <p class="show-empty">Neue Termine folgen bald!</p>
       {{- end -}}
     </div>
-  {{- end -}}
-</div>
+    <div class="show-teaser-more">
+      {{- if gt $more 0 }}
+      <p class="show-teaser-note">Das sind nur die nächsten Termine – insgesamt {{ $totalUpcoming }} kommende Konzerte{{ if gt $pastCount 0 }} und ein Tour-Archiv mit {{ $pastCount }} vergangenen Shows{{ end }}.</p>
+      {{- else if gt $pastCount 0 }}
+      <p class="show-teaser-note">Schau dir auch unser Tour-Archiv mit {{ $pastCount }} vergangenen Shows an.</p>
+      {{- end }}
+      <a href="{{ "/live/" | relURL }}" class="cta-button show-all-cta" data-umami-event="Shows See All">Alle Termine ansehen →</a>
+    </div>
+  </div>
+
+{{- else -}}
+  <div class="show-list" data-show-list>
+    <div class="show-tabs" role="tablist" aria-label="Live-Termine">
+      <button type="button" class="show-tab-button active" data-show-tab="upcoming" aria-selected="true">Kommende</button>
+      {{- if gt (len $past) 0 -}}
+        <button type="button" class="show-tab-button" data-show-tab="past" aria-selected="false">Vergangene</button>
+      {{- end -}}
+    </div>
+
+    <div class="show-tab-panel" data-show-panel="upcoming">
+      {{- if gt (len $upcoming) 0 -}}
+        {{- range $upcoming -}}{{ partial "show-card.html" . }}{{- end -}}
+      {{- else -}}
+        <p class="show-empty">Neue Termine folgen bald!</p>
+      {{- end -}}
+    </div>
+
+    {{- if gt (len $past) 0 -}}
+      <div class="show-tab-panel" data-show-panel="past" hidden>
+        {{- range $past -}}{{ partial "show-card.html" (merge . (dict "_isPast" true)) }}{{- end -}}
+      </div>
+    {{- end -}}
+  </div>
+{{- end -}}

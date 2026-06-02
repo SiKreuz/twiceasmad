@@ -45,6 +45,11 @@
   "url": "{{ $site.BaseURL }}",
   "description": "{{ $params.description }}",
   "genre": ["Pop", "Indie", "Reggae"],
+  "foundingDate": "{{ $params.foundingYear }}",
+  "areaServed": [
+    { "@type": "City", "name": "{{ $params.city }}" },
+    { "@type": "Country", "name": "Deutschland" }
+  ],
   "foundingLocation": {
     "@type": "Place",
     "name": "{{ $params.city }}",
@@ -56,7 +61,7 @@
   },
   "image": "{{ "images/pressebild.jpg" | absURL }}",
   "logo": "{{ "images/logo.png" | absURL }}",
-  "sameAs": {{ $sameAs | jsonify }},
+  "sameAs": {{ $sameAs | jsonify | safeJS }},
   "album": {
     "@type": "MusicAlbum",
     "name": "{{ $params.albumTitle }}",
@@ -73,6 +78,20 @@
     "@type": "ContactPoint",
     "email": "{{ $params.bookingEmail }}",
     "contactType": "booking"
+  },
+  "makesOffer": {
+    "@type": "Offer",
+    "itemOffered": {
+      "@type": "Service",
+      "name": "Live-Konzert / Band-Booking",
+      "serviceType": "Live-Musik"
+    },
+    "areaServed": [
+      { "@type": "City", "name": "{{ $params.city }}" },
+      { "@type": "Country", "name": "Deutschland" }
+    ],
+    "availability": "https://schema.org/InStock",
+    "url": "{{ $site.BaseURL }}#contact"
   }
 }
 </script>
@@ -129,4 +148,41 @@
   ]
 }
 </script>
+
+{{/* ── MusicEvent schema (pages with `events: true`, e.g. /live/) ──────── */}}
+{{/* Built as dicts and emitted with `jsonify | safeJS` so html/template does not
+     double-escape inside <script> (a bare jsonify here would be re-escaped). */}}
+{{- if .Params.events -}}
+  {{- $liveURL := printf "%slive/" $site.BaseURL -}}
+  {{- $image := slice ("images/pressebild.jpg" | absURL) -}}
+  {{- $upcoming := (partial "get-shows.html" .).upcoming -}}
+  {{- range $upcoming -}}
+    {{- if .city -}}
+      {{- $ticket := .tickets | default "" -}}
+      {{- $addr := dict "@type" "PostalAddress" "addressLocality" .city "addressCountry" (.country | default "DE") -}}
+      {{- with .street }}{{- $addr = merge $addr (dict "streetAddress" .) -}}{{- end -}}
+      {{- with .zip }}{{- $addr = merge $addr (dict "postalCode" (printf "%v" .)) -}}{{- end -}}
+      {{- $ev := dict
+        "@context" "https://schema.org"
+        "@type" "MusicEvent"
+        "name" (printf "%s – %s live in %s" .name $params.bandName .city)
+        "startDate" ._startDate
+        "eventStatus" "https://schema.org/EventScheduled"
+        "eventAttendanceMode" "https://schema.org/OfflineEventAttendanceMode"
+        "location" (dict "@type" "Place" "name" (.venue | default .city) "address" $addr)
+        "performer" (dict "@type" "MusicGroup" "name" $params.bandName "url" $site.BaseURL)
+        "image" $image
+        "url" $liveURL
+      -}}
+      {{- with .venue }}{{- $ev = merge $ev (dict "organizer" (dict "@type" "Organization" "name" .)) -}}{{- end -}}
+      {{- if or (hasPrefix $ticket "http://") (hasPrefix $ticket "https://") -}}
+        {{- $ev = merge $ev (dict "offers" (dict "@type" "Offer" "url" $ticket "availability" "https://schema.org/InStock")) -}}
+      {{- else if eq $ticket "free" -}}
+        {{- $freeURL := cond (ne (.venue_url | default "") "") (.venue_url | default "") $liveURL -}}
+        {{- $ev = merge $ev (dict "offers" (dict "@type" "Offer" "price" "0" "priceCurrency" "EUR" "availability" "https://schema.org/InStock" "url" $freeURL)) -}}
+      {{- end -}}
+<script type="application/ld+json">{{ $ev | jsonify | safeJS }}</script>
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
 {{ end }}

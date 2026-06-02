@@ -4,7 +4,7 @@
 <section id="hero" class="hero-section">
     <div class="hero-image">
         <!-- Replace with your band's hero image -->
-        <img src="{{ "images/hero-background.jpg" | relURL }}" alt="{{ .Site.Params.bandName }} Hero Image" class="hero-bg">
+        <img src="{{ "images/hero-background.jpg" | relURL }}" alt="{{ .Site.Params.bandName }} – {{ .Site.Params.tagline }} Band aus München live" class="hero-bg" width="1280" height="720" fetchpriority="high">
         <div class="hero-overlay"></div>
     </div>
     <div class="hero-content">
@@ -35,7 +35,7 @@
 <nav class="main-nav" id="main-nav">
     <div class="nav-container">
   <a class="nav-brand" href="/" aria-label="{{ .Site.Params.bandName }}" data-umami-event="Nav Brand Click">
-      <img src="{{ "images/logo.png" | relURL }}" alt="{{ .Site.Params.bandName }} Logo" class="nav-logo">
+      <img src="{{ "images/logo.png" | relURL }}" alt="{{ .Site.Params.bandName }} Logo" class="nav-logo" width="40" height="40">
       <span class="nav-brand-text">{{ .Site.Params.bandName }}</span>
     </a>
         <ul class="nav-menu">

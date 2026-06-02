@@ -1,0 +1,33 @@
+{{ define "main" }}
+
+<!-- Colored header band (same as the legal pages) with title + intro -->
+<section class="legal-page-header">
+    <div class="container">
+        <h1 class="page-title">{{ .Title }}</h1>
+        {{- with .Params.lead }}
+        <p class="page-lead">{{ . | markdownify }}</p>
+        {{- end }}
+    </div>
+</section>
+
+<!--
+  id="shows" so the show-list CSS (scoped to #shows in style.css) applies, matching the homepage.
+  no-reveal exempts it from main.js's opacity:0 fade-in, which is unreliable on a page-tall element.
+-->
+<main class="main-content">
+    <section id="shows" class="content-section live-page no-reveal">
+        <div class="container">
+            <div class="section-content">
+                {{ .Content }}
+            </div>
+            <div class="back-link">
+                <a href="{{ "/" | relURL }}#shows" class="btn-back">← Zurück zur Startseite</a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+{{ partial "footer.html" . }}
+
+{{ end }}

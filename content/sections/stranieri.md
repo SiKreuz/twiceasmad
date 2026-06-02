@@ -7,7 +7,7 @@ description: "Stranieri – das Debütalbum von twiceasmad. Veröffentlicht am 2
 
 <div class="album-layout">
   <div class="album-cover">
-    <img src="/images/cover/stranieri.jpg" alt="Album Cover von Stranieri">
+    <img src="/images/cover/stranieri.jpg" alt="Album Cover von Stranieri – Debütalbum von twiceasmad" loading="lazy" width="4000" height="4000">
   </div>
   <div class="album-text">
     <p>Mit <em>Stranieri</em> (VÖ 22.10.) erscheint unser erstes Album, ein Album über Aufbruch, Selbstsuche und Zusammenhalt. Der Titel bedeutet auf Italienisch „Fremde“ und dient als roter Faden. Jeder Song beleuchtet auf eigene Weise das Gefühl, fremd zu sein. Wenn Schulfreunde zu Bekannten von früher werden, kann das beängstigend und inspirierend zugleich sein.</p>

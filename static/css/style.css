@@ -375,6 +375,32 @@ body {
     margin-bottom: 1.5rem;
 }
 
+/* Prose / content links — use brand color instead of default browser blue.
+   Exclude button-style links (.btn-*, .cta-button, .*-button) so we don't
+   override their own background/text colors. */
+.section-content a:not([class*="btn"]):not([class*="button"]):not([class*="cta"]),
+.legal-content a:not([class*="btn"]):not([class*="button"]):not([class*="cta"]) {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-decoration-color: rgba(var(--color-primary-rgb), 0.4);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.section-content a:not([class*="btn"]):not([class*="button"]):not([class*="cta"]):hover,
+.legal-content a:not([class*="btn"]):not([class*="button"]):not([class*="cta"]):hover {
+    color: var(--color-primary-600);
+    text-decoration-color: var(--color-primary-600);
+}
+
+.section-content a:not([class*="btn"]):not([class*="button"]):not([class*="cta"]):focus-visible,
+.legal-content a:not([class*="btn"]):not([class*="button"]):not([class*="cta"]):focus-visible {
+    outline: 2px solid rgba(var(--color-primary-rgb), 0.5);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
 .section-content img {
     max-width: 100%;
     height: auto;
@@ -567,6 +593,19 @@ body {
     font-size: 3rem;
     font-weight: 700;
     margin-bottom: 1rem;
+}
+
+.page-lead {
+    max-width: 760px;
+    margin: 0 auto;
+    font-size: 1.15rem;
+    line-height: 1.6;
+    opacity: 0.95;
+}
+
+.page-lead a {
+    color: #fff;
+    text-decoration: underline;
 }
 
 .legal-page-content {
@@ -930,6 +969,19 @@ body {
     background: var(--color-primary-100);
     color: var(--color-primary-600);
     font-weight: 600;
+}
+
+/* Homepage teaser: make it obvious there are more shows + a full archive */
+#shows .show-teaser-more {
+    text-align: center;
+    margin-top: 2.5rem;
+}
+
+#shows .show-teaser-note {
+    color: #666;
+    font-size: 1.05rem;
+    margin: 0 auto 1.25rem;
+    max-width: 640px;
 }
 
 @media (max-width: 768px) {

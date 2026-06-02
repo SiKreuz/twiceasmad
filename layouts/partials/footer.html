@@ -12,6 +12,7 @@
                     {{ range (where .Site.RegularPages "Section" "sections").ByWeight }}
                     <li><a href="{{ if .IsHome }}#{{ .Params.id }}{{ else }}{{ "/" | relURL }}#{{ .Params.id }}{{ end }}">{{ .Title }}</a></li>
                     {{ end }}
+                    <li><a href="{{ "/live/" | relURL }}" data-umami-event="Footer Live Link">Alle Live-Termine</a></li>
                 </ul>
             </div>
             <div class="footer-social">

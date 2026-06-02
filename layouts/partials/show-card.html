@@ -1,0 +1,62 @@
+{{/*
+  show-card.html — renders a single show card.
+  Input: a show dict from get-shows.html. Pass `_isPast: true` (merged in) to render the past variant.
+*/}}
+{{- $e := . -}}
+{{- $isPast := $e._isPast | default false -}}
+{{- $eventDate := $e._at -}}
+{{- $hasTime := $e._hasTime -}}
+{{- $mapsQuery := "" -}}
+{{- if and $e.venue $e.city -}}
+  {{- $mapsQuery = printf "%s %s" $e.venue $e.city -}}
+{{- else if $e.venue -}}
+  {{- $mapsQuery = $e.venue -}}
+{{- else if $e.city -}}
+  {{- $mapsQuery = $e.city -}}
+{{- end -}}
+
+<article class="show-card{{ if $isPast }} is-past{{ end }}">
+  <p class="show-date" aria-label="Datum und Uhrzeit">
+    <span class="show-date-main">{{ $eventDate.Format "02.01.2006" }}</span>
+    {{- if $hasTime }}
+      <span class="show-date-time">{{ $e.time }} Uhr</span>
+    {{- end -}}
+  </p>
+
+  <div class="show-info">
+    <h3 class="show-name">{{ $e.name }}</h3>
+    {{- if $mapsQuery -}}
+      <a
+        class="show-location"
+        href="https://www.google.com/maps/search/?api=1&amp;query={{ $mapsQuery | urlquery }}"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {{ with $e.venue }}{{ . }}{{ end }}{{ if and $e.venue $e.city }}, {{ end }}{{ with $e.city }}{{ . }}{{ end }}
+      </a>
+    {{- else -}}
+      <p class="show-location">{{ if $isPast }}Ort unbekannt{{ else }}Ort folgt{{ end }}</p>
+    {{- end -}}
+  </div>
+
+  <div class="show-ticket">
+    {{- if $isPast -}}
+      <span class="show-ticket-badge is-past">Vergangen</span>
+    {{- else -}}
+      {{- $ticketValue := $e.tickets | default "" -}}
+      {{- if or (hasPrefix $ticketValue "https://") (hasPrefix $ticketValue "http://") -}}
+        <a class="show-ticket-link" href="{{ $ticketValue }}" target="_blank" rel="noopener noreferrer" data-umami-event="Show Ticket Click" data-umami-event-date="{{ $e.date }}" data-umami-event-name="{{ $e.name }}">Tickets</a>
+      {{- else if eq $ticketValue "coming-soon" -}}
+        <span class="show-ticket-badge is-soon">Bald verfügbar</span>
+      {{- else if eq $ticketValue "free" -}}
+        {{- with $e.venue_url -}}
+          <a class="show-ticket-link is-free" href="{{ . }}" target="_blank" rel="noopener noreferrer">Freier Eintritt</a>
+        {{- else -}}
+          <span class="show-ticket-badge is-free">Freier Eintritt</span>
+        {{- end -}}
+      {{- else -}}
+        <span class="show-ticket-badge is-soon">Info folgt</span>
+      {{- end -}}
+    {{- end -}}
+  </div>
+</article>

@@ -1,3 +1,30 @@
+# Fields per show:
+#   name      (required)  Event / tour name
+#   date      (required)  YYYY-MM-DD
+#   time      (optional)  HH:MM — when set, used for the schema.org startDate (Europe/Berlin)
+#   venue     (optional)  Venue name
+#   city      (optional)  City — required for a show to appear in MusicEvent structured data
+#   tickets   (optional)  ticket URL | "free" | "coming-soon"
+#   venue_url (optional)  Link used for "free" shows when there is no ticket URL
+#
+# For Google event rich results, add the venue's real postal address (street + zip):
+#   street    (optional)  e.g. "Blumenstraße 7"
+#   zip       (optional)  e.g. "80331"
+#   country   (optional)  ISO country code, defaults to "DE"
+#
+# Homepage teaser control:
+#   highlight (optional)  true  → pin this show to the homepage teaser (overrides the default "next 6")
+#
+# Example with full address (qualifies for event rich results):
+#   - name: "Indie-Nacht"
+#     date: "2027-01-10"
+#     time: "18:00"
+#     venue: "Feierwerk Funkstation"
+#     city: "München"
+#     street: "Hansastraße 41"
+#     zip: "81373"
+#     tickets: "https://example.com/tickets"
+
 shows:
   - name: "Yab Yum Tour"
     date: "2026-12-05"

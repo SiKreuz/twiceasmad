@@ -1,0 +1,36 @@
+{{/*
+  get-shows.html — single source of truth for parsing data/shows.yaml.
+  Returns a dict: { "upcoming": [...], "past": [...] }, each show enriched with:
+    ._at        time.Time (parsed in Europe/Berlin, DST-aware) used for sorting/splitting
+    ._hasTime   bool — whether an explicit start time was given
+    ._startDate ISO-8601 string for schema.org startDate
+                (with timezone offset when a time exists, date-only otherwise — never a fake T00:00:00)
+  Used by the show-list shortcode (display) and schema.html (MusicEvent JSON-LD).
+*/}}
+{{- $events := index hugo.Data.shows "shows" | default slice -}}
+{{- $now := now -}}
+{{- $upcoming := slice -}}
+{{- $past := slice -}}
+
+{{- range $e := $events -}}
+  {{- $hasTime := and (isset $e "time") (ne (trim (string $e.time) " ") "") -}}
+  {{- $raw := "" -}}
+  {{- if $hasTime -}}
+    {{- $raw = printf "%sT%s:00" (string $e.date) (string $e.time) -}}
+  {{- else -}}
+    {{- $raw = printf "%sT23:59:59" (string $e.date) -}}
+  {{- end -}}
+  {{- $at := time.AsTime $raw "Europe/Berlin" -}}
+  {{- $startDate := cond $hasTime ($at.Format "2006-01-02T15:04:05-07:00") (string $e.date) -}}
+  {{- $m := merge $e (dict "_at" $at "_hasTime" $hasTime "_startDate" $startDate) -}}
+  {{- if lt $at $now -}}
+    {{- $past = $past | append $m -}}
+  {{- else -}}
+    {{- $upcoming = $upcoming | append $m -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $upcoming = sort $upcoming "_at" "asc" -}}
+{{- $past = sort $past "_at" "desc" -}}
+
+{{- return (dict "upcoming" $upcoming "past" $past) -}}

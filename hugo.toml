@@ -2,6 +2,7 @@ baseURL = 'https://twiceasmad.de/'
 locale = 'de-de'
 title = 'twiceasmad'
 enableRobotsTXT = true
+disableKinds = ['taxonomy', 'term']
 
 [sitemap]
   changeFreq = 'monthly'
@@ -18,13 +19,15 @@ enableRobotsTXT = true
 
 [params]
   bandName = "twiceasmad"
+  seoTitle = "twiceasmad — Indie · Pop · Reggae Band aus München"
   description = "twiceasmad – Pop · Indie · Reggae Band aus München. Dicke Bläser, bissiger Rap und Ohrwurm-Melodien. Debütalbum Stranieri jetzt überall erhältlich."
   tagline = "Pop · Indie · Reggae"
   keywords = "twiceasmad, Band München, Pop Indie Reggae, Stranieri Album, Live Band München, Konzerte München, Indie Band Deutschland"
   author = "twiceasmad"
   city = "München"
   country = "DE"
-  foundingYear = "2020"
+  foundingYear = "2017"
+  homeUpcomingCount = 6
   genre = "Pop, Indie, Reggae"
   albumTitle = "Stranieri"
   albumReleaseDate = "2024-10-22"

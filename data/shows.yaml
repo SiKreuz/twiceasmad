@@ -95,6 +95,13 @@ shows:
     city: "Grafrath"
     tickets: "https://eventfrog.de/de/p/festivals/pop-rock/martha-rockt-7426556785647945814.html"
 
+  - name: "Xtra Sounds"
+    date: "2026-06-19"
+    time: "20:00"
+    city: "Lindau"
+    venue: "Jugendzentrum Xtra"
+    tickets: "free"
+
   - name: "umsonst & draußen Rosenheim"
     date: "2026-06-12"
     time: "17:00"

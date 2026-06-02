@@ -10,9 +10,12 @@
                 <h4>{{ if .IsHome }}Quick Links{{ else }}Links{{ end }}</h4>
                 <ul>
                     {{ range (where .Site.RegularPages "Section" "sections").ByWeight }}
+                    {{ if eq .Params.id "shows" }}
+                    <li><a href="{{ "/live/" | relURL }}" data-umami-event="Footer Live Link">{{ .Title }}</a></li>
+                    {{ else }}
                     <li><a href="{{ if .IsHome }}#{{ .Params.id }}{{ else }}{{ "/" | relURL }}#{{ .Params.id }}{{ end }}">{{ .Title }}</a></li>
                     {{ end }}
-                    <li><a href="{{ "/live/" | relURL }}" data-umami-event="Footer Live Link">Alle Live-Termine</a></li>
+                    {{ end }}
                 </ul>
             </div>
             <div class="footer-social">

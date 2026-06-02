@@ -40,7 +40,11 @@
     </a>
         <ul class="nav-menu">
             {{ range (where .Site.RegularPages "Section" "sections").ByWeight }}
+              {{ if eq .Params.id "shows" }}
+      <li><a href="{{ "/live/" | relURL }}" class="nav-link" data-umami-event="Nav Live Link">{{ .Title }}</a></li>
+              {{ else }}
       <li><a href="#{{ .Params.id }}" class="nav-link" data-umami-event="Nav Section Click" data-umami-event-section="{{ .Params.id }}">{{ .Title }}</a></li>
+              {{ end }}
             {{ end }}
         </ul>
     </div>

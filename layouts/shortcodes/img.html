@@ -1,0 +1,41 @@
+{{- /*
+  Responsive image shortcode.
+  Params:
+    src     – path of the image under assets/ (required), e.g. "images/pressebild.jpg"
+    alt     – alt text (required)
+    width   – intended display width in px (default 800); used for intrinsic size + srcset base
+    class   – optional class for the <img>
+    sizes   – optional sizes attribute (default "<width>px")
+    loading – optional, "lazy" (default) or "eager"
+  Emits a <picture> with a WebP srcset (1x + 2x, never upscaled past the source)
+  and a same-format fallback. Intrinsic width/height are set to avoid layout shift.
+*/ -}}
+{{- $src := .Get "src" -}}
+{{- $alt := .Get "alt" | default "" -}}
+{{- $w := int (.Get "width" | default 800) -}}
+{{- $class := .Get "class" -}}
+{{- $loading := .Get "loading" | default "lazy" -}}
+{{- $sizes := .Get "sizes" | default (printf "%dpx" $w) -}}
+{{- $img := resources.Get $src -}}
+{{- if not $img -}}
+  {{- errorf "img shortcode: resource not found in assets/: %q" $src -}}
+{{- end -}}
+{{- $ratio := div (float $img.Width) (float $img.Height) -}}
+{{- $h := int (math.Round (div (float $w) $ratio)) -}}
+{{- /* 1x and 2x targets, clamped to the source width so we never upscale */ -}}
+{{- $seen := slice -}}
+{{- $webpSet := slice -}}
+{{- range (slice $w (mul $w 2)) -}}
+  {{- $tw := cond (gt . $img.Width) $img.Width . -}}
+  {{- if not (in $seen $tw) -}}
+    {{- $seen = $seen | append $tw -}}
+    {{- $v := $img.Process (printf "resize %dx webp" $tw) -}}
+    {{- $webpSet = $webpSet | append (printf "%s %dw" $v.RelPermalink $tw) -}}
+  {{- end -}}
+{{- end -}}
+{{- $baseW := cond (gt $w $img.Width) $img.Width $w -}}
+{{- $fallback := $img.Process (printf "resize %dx" $baseW) -}}
+<picture>
+  <source type="image/webp" srcset="{{ delimit $webpSet ", " }}" sizes="{{ $sizes }}">
+  <img src="{{ $fallback.RelPermalink }}" alt="{{ $alt }}"{{ with $class }} class="{{ . }}"{{ end }} width="{{ $w }}" height="{{ $h }}" loading="{{ $loading }}" decoding="async">
+</picture>

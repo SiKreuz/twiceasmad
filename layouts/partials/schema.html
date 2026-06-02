@@ -3,6 +3,11 @@
 {{- $site := .Site -}}
 {{- $params := $site.Params -}}
 
+{{/* Processed image permalinks (absolute) — sources live under assets/ */}}
+{{- $pressebild := (resources.Get "images/pressebild.jpg").Process "resize 1200x jpg" -}}
+{{- $logoImg := (resources.Get "images/logo.png").Process "resize 512x" -}}
+{{- $coverImg := (resources.Get "images/cover/stranieri.jpg").Process "resize 1000x jpg" -}}
+
 {{/* Derive URLs from arrays to avoid duplication */}}
 {{- $spotifyAlbum := index (where $params.streaming "name" "Spotify") 0 -}}
 {{- $appleMusicAlbum := index (where $params.streaming "name" "Apple Music") 0 -}}
@@ -59,8 +64,8 @@
       "addressCountry": "{{ $params.country }}"
     }
   },
-  "image": "{{ "images/pressebild.jpg" | absURL }}",
-  "logo": "{{ "images/logo.png" | absURL }}",
+  "image": "{{ $pressebild.Permalink }}",
+  "logo": "{{ $logoImg.Permalink }}",
   "sameAs": {{ $sameAs | jsonify | safeJS }},
   "album": {
     "@type": "MusicAlbum",
@@ -71,7 +76,7 @@
       "@type": "MusicGroup",
       "name": "{{ $params.bandName }}"
     },
-    "image": "{{ "images/cover/stranieri.jpg" | absURL }}",
+    "image": "{{ $coverImg.Permalink }}",
     "url": "{{ $spotifyAlbumURL }}"
   },
   "contactPoint": {
@@ -108,7 +113,7 @@
     "name": "{{ $params.bandName }}",
     "url": "{{ $site.BaseURL }}"
   },
-  "image": "{{ "images/cover/stranieri.jpg" | absURL }}",
+  "image": "{{ $coverImg.Permalink }}",
   "description": "Stranieri bedeutet auf Italienisch Fremde. Das Deb\u00fctalbum von twiceasmad \u00fcber Aufbruch, Selbstsuche und Zusammenhalt \u2013 erschienen am 22. Oktober 2024.",
   "url": "{{ $spotifyAlbumURL }}",
   "offers": [
@@ -154,7 +159,7 @@
      double-escape inside <script> (a bare jsonify here would be re-escaped). */}}
 {{- if .Params.events -}}
   {{- $liveURL := printf "%slive/" $site.BaseURL -}}
-  {{- $image := slice ("images/pressebild.jpg" | absURL) -}}
+  {{- $image := slice $pressebild.Permalink -}}
   {{- $upcoming := (partial "get-shows.html" .).upcoming -}}
   {{- range $upcoming -}}
     {{- if .city -}}

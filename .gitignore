@@ -3,5 +3,6 @@ imports.*
 .hugo_build.lock
 dist/
 public/
+resources/
 .DS_Store
 /.claude/settings.local.json

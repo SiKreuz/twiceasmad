@@ -3,8 +3,24 @@
 <!-- Hero Section with Full Screen Image -->
 <section id="hero" class="hero-section">
     <div class="hero-image">
-        <!-- Replace with your band's hero image -->
-        <img src="{{ "images/hero-background.jpg" | relURL }}" alt="{{ .Site.Params.bandName }} – {{ .Site.Params.tagline }} Band aus München live" class="hero-bg" width="1280" height="720" fetchpriority="high">
+        {{- $hero := resources.Get "images/hero-background.jpg" -}}
+        {{- $heroWebp := slice -}}
+        {{- range (slice 1280 1920 2560) -}}
+          {{- if le . $hero.Width -}}
+            {{- $v := $hero.Process (printf "resize %dx webp q82" .) -}}
+            {{- $heroWebp = $heroWebp | append (printf "%s %dw" $v.RelPermalink .) -}}
+          {{- end -}}
+        {{- end -}}
+        {{- if not $heroWebp -}}
+          {{- $v := $hero.Process (printf "resize %dx webp q82" $hero.Width) -}}
+          {{- $heroWebp = $heroWebp | append (printf "%s %dw" $v.RelPermalink $hero.Width) -}}
+        {{- end -}}
+        {{- $heroFallbackW := cond (gt 1920 $hero.Width) $hero.Width 1920 -}}
+        {{- $heroJpg := $hero.Process (printf "resize %dx q82" $heroFallbackW) -}}
+        <picture>
+            <source type="image/webp" srcset="{{ delimit $heroWebp ", " }}" sizes="100vw">
+            <img src="{{ $heroJpg.RelPermalink }}" alt="{{ .Site.Params.bandName }} – {{ .Site.Params.tagline }} Band aus München live" class="hero-bg" width="{{ $hero.Width }}" height="{{ $hero.Height }}" fetchpriority="high" decoding="async">
+        </picture>
         <div class="hero-overlay"></div>
     </div>
     <div class="hero-content">
@@ -35,7 +51,13 @@
 <nav class="main-nav" id="main-nav">
     <div class="nav-container">
   <a class="nav-brand" href="/" aria-label="{{ .Site.Params.bandName }}" data-umami-event="Nav Brand Click">
-      <img src="{{ "images/logo.png" | relURL }}" alt="{{ .Site.Params.bandName }} Logo" class="nav-logo" width="40" height="40">
+      {{- $logo := resources.Get "images/logo.png" -}}
+      {{- $logoWebp := $logo.Process "resize 80x webp" -}}
+      {{- $logoPng := $logo.Process "resize 80x" -}}
+      <picture>
+        <source type="image/webp" srcset="{{ $logoWebp.RelPermalink }}">
+        <img src="{{ $logoPng.RelPermalink }}" alt="{{ .Site.Params.bandName }} Logo" class="nav-logo" width="40" height="40" decoding="async">
+      </picture>
       <span class="nav-brand-text">{{ .Site.Params.bandName }}</span>
     </a>
         <ul class="nav-menu">

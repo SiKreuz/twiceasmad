@@ -9,6 +9,10 @@ disableKinds = ['taxonomy', 'term']
   filename = 'sitemap.xml'
   priority = 0.5
 
+[imaging]
+  quality = 80
+  resampleFilter = 'Lanczos'
+
 [module]
   [[module.imports]]
     path = 'github.com/hugomods/icons/vendors/font-awesome'

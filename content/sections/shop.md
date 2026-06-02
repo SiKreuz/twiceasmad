@@ -7,7 +7,7 @@ description: "twiceasmad Merch – Shirts, Caps und mehr im offiziellen Shop. Un
 
 <div class="album-layout">
 	<div class="album-cover">
-		<img src="/images/cap.jpg" alt="twiceasmad Cap aus dem Shop" loading="lazy" width="2048" height="2048">
+		{{< img src="images/cap.jpg" alt="twiceasmad Cap aus dem Shop" width="700" >}}
 	</div>
 	<div class="album-text">
 		<p>Schnapp dir jetzt eines unserer Shirts oder die Cap im Shop. Cooler Merch für den Alltag und wir haben noch viele neue Teile in Planung.</p>

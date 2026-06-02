@@ -21,4 +21,4 @@ Nach ihrem Debütalbum Stranieri (2025) und der gleichnamigen Tour - mit ausverk
 
 Diesen Sommer folgen weitere Festivals, bevor im Herbst 2026 die nächste eigene Tour ansteht - erstmals auch in Berlin, Hamburg und Leipzig.
 
-<img src="/images/pressebild.jpg" alt="twiceasmad – Pressebild der Band aus München" loading="lazy" width="1920" height="1213">
+{{< img src="images/pressebild.jpg" alt="twiceasmad – Pressebild der Band aus München" width="960" >}}

@@ -13,7 +13,7 @@
 #   country   (optional)  ISO country code, defaults to "DE"
 #
 # Homepage teaser control:
-#   highlight (optional)  true  → pin this show to the homepage teaser (overrides the default "next 6")
+#   highlight (optional)  true  → additionally show this upcoming show in the homepage teaser, even if it isn't among the next 6
 #
 # Example with full address (qualifies for event rich results):
 #   - name: "Indie-Nacht"
@@ -62,6 +62,7 @@ shows:
     tickets: "https://rausgegangen.de/events/yab-yum-tour-2026-1/"
 
   - name: "Yab Yum Tour"
+    highlight: true
     date: "2026-11-12"
     time: "20:00"
     venue: "Bürgerhaus Glockenbachwerkstatt"

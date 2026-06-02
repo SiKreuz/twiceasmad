@@ -14,11 +14,13 @@
 {{- $mode := .Get "mode" | default "full" -}}
 
 {{- if eq $mode "teaser" -}}
-  {{- /* Show pinned shows if any (highlight: true), otherwise the next N upcoming. */ -}}
+  {{- /* The next N upcoming shows, plus any pinned (highlight: true) shows beyond them — kept in date order. */ -}}
   {{- $count := int (.Site.Params.homeUpcomingCount | default 6) -}}
-  {{- $list := where $upcoming "highlight" true -}}
-  {{- if eq (len $list) 0 -}}
-    {{- $list = first $count $upcoming -}}
+  {{- $list := slice -}}
+  {{- range $i, $e := $upcoming -}}
+    {{- if or (lt $i $count) (eq $e.highlight true) -}}
+      {{- $list = $list | append $e -}}
+    {{- end -}}
   {{- end -}}
   {{- $totalUpcoming := len $upcoming -}}
   {{- $more := sub $totalUpcoming (len $list) -}}

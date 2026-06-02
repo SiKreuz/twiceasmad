@@ -7,20 +7,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const navMenu = document.querySelector('.nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
     
-    // Show navigation after scrolling past hero section
     const heroSection = document.querySelector('.hero-section');
-    if (nav && heroSection) {
-        let heroHeight = heroSection.offsetHeight;
+    const heroImage = document.querySelector('.hero-bg');
+    const sections = document.querySelectorAll('.content-section');
 
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > heroHeight / 2) {
-                nav.classList.add('visible');
-            } else {
-                nav.classList.remove('visible');
-            }
-        });
-    }
-    
     // Mobile menu toggle
     if (navToggle && navMenu) {
         navToggle.addEventListener('click', function() {
@@ -79,16 +69,6 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(section);
     });
     
-    // Parallax effect for hero image (optional)
-    const heroImage = document.querySelector('.hero-bg');
-    if (heroImage) {
-        window.addEventListener('scroll', function() {
-            const scrolled = window.pageYOffset;
-            const rate = scrolled * -0.5;
-            heroImage.style.transform = `translateY(${rate}px)`;
-        });
-    }
-
     // Show list tabs (Kommende / Vergangene)
     const showList = document.querySelector('[data-show-list]');
     if (showList) {
@@ -111,30 +91,55 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
-});
 
-// Add active class to navigation links based on scroll position
-window.addEventListener('scroll', function() {
-    const sections = document.querySelectorAll('.content-section');
-    const navLinks = document.querySelectorAll('.nav-link');
+    // All scroll-driven effects (nav reveal, parallax, active-nav highlight)
+    // run in a single rAF-throttled handler: at most one pass per frame, with
+    // all layout reads batched before all writes to avoid layout thrashing.
+    let ticking = false;
+    let navVisible = false;
+    let activeId = null;
 
-    if (!sections.length || !navLinks.length) {
-        return;
+    function updateOnScroll() {
+        ticking = false;
+        const scrollY = window.scrollY;
+
+        // --- reads ---
+        const heroHeight = heroSection ? heroSection.offsetHeight : 0;
+        let current = '';
+        if (sections.length && navLinks.length) {
+            sections.forEach(section => {
+                const top = section.offsetTop - 100;
+                if (scrollY >= top && scrollY < top + section.offsetHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+        }
+
+        // --- writes ---
+        if (nav && heroSection) {
+            const shouldShow = scrollY > heroHeight / 2;
+            if (shouldShow !== navVisible) {
+                nav.classList.toggle('visible', shouldShow);
+                navVisible = shouldShow;
+            }
+        }
+        if (heroImage) {
+            heroImage.style.transform = `translateY(${scrollY * -0.5}px)`;
+        }
+        if (current !== activeId) {
+            navLinks.forEach(link => {
+                link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+            });
+            activeId = current;
+        }
     }
-    
-    let current = '';
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop - 100;
-        const sectionHeight = section.offsetHeight;
-        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-            current = section.getAttribute('id');
+
+    window.addEventListener('scroll', function() {
+        if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(updateOnScroll);
         }
     });
-    
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === '#' + current) {
-            link.classList.add('active');
-        }
-    });
+
+    updateOnScroll(); // set initial state on load
 });

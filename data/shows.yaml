@@ -4,26 +4,12 @@
 #   time      (optional)  HH:MM — when set, used for the schema.org startDate (Europe/Berlin)
 #   venue     (optional)  Venue name
 #   city      (optional)  City — required for a show to appear in MusicEvent structured data
+#   country   (optional)  ISO country code for the event location; defaults to "DE". Set it for non-German gigs (e.g. "CH" Zürich, "AT" Wien).
 #   tickets   (optional)  ticket URL | "free" | "coming-soon"
 #   venue_url (optional)  Link used for "free" shows when there is no ticket URL
 #
-# For Google event rich results, add the venue's real postal address (street + zip):
-#   street    (optional)  e.g. "Blumenstraße 7"
-#   zip       (optional)  e.g. "80331"
-#   country   (optional)  ISO country code, defaults to "DE"
-#
 # Homepage teaser control:
 #   highlight (optional)  true  → additionally show this upcoming show in the homepage teaser, even if it isn't among the next 6
-#
-# Example with full address (qualifies for event rich results):
-#   - name: "Indie-Nacht"
-#     date: "2027-01-10"
-#     time: "18:00"
-#     venue: "Feierwerk Funkstation"
-#     city: "München"
-#     street: "Hansastraße 41"
-#     zip: "81373"
-#     tickets: "https://example.com/tickets"
 
 shows:
   - name: "Yab Yum Tour"
@@ -31,6 +17,7 @@ shows:
     time: "20:30"
     venue: "Roxy Musikbar"
     city: "Zürich"
+    country: "CH"
     tickets: "free"
 
   - name: "Yab Yum Tour"
@@ -134,6 +121,7 @@ shows:
     time: "20:00"
     venue: "Kramladen"
     city: "Wien"
+    country: "AT"
     tickets: "https://t.rausgegangen.de/tickets/twiceasmad-kramladen-2025"
 
   - name: "villa in concert"
@@ -148,6 +136,7 @@ shows:
     time: "19:30"
     venue: "Yoco - Jugendbegegnungszentrum"
     city: "Salzburg"
+    country: "AT"
     tickets: "https://www.yoco.info/events/yoco-markussaalkonzert-mit-broken-b-sides-twiceasmad-und-lil-chess"
 
   - name: "Newcomer Konzert"
@@ -246,6 +235,7 @@ shows:
     time: "20:00"
     venue: "Kramladen"
     city: "Wien"
+    country: "AT"
     tickets: "coming-soon"
 
   - name: "Stranieri Tour"

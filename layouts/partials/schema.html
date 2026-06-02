@@ -160,8 +160,6 @@
     {{- if .city -}}
       {{- $ticket := .tickets | default "" -}}
       {{- $addr := dict "@type" "PostalAddress" "addressLocality" .city "addressCountry" (.country | default "DE") -}}
-      {{- with .street }}{{- $addr = merge $addr (dict "streetAddress" .) -}}{{- end -}}
-      {{- with .zip }}{{- $addr = merge $addr (dict "postalCode" (printf "%v" .)) -}}{{- end -}}
       {{- $ev := dict
         "@context" "https://schema.org"
         "@type" "MusicEvent"

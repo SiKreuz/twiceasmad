@@ -6,6 +6,8 @@
 {{/* Processed image permalinks (absolute) — sources live under assets/ */}}
 {{- $pressebild := (resources.Get "images/pressebild.jpg").Process "resize 1200x jpg" -}}
 {{- $logoImg := (resources.Get "images/logo.png").Process "resize 512x" -}}
+{{- $logoWebp := resources.Copy "images/logo.webp" ($logoImg.Process "webp") -}}
+{{- $logoWebp.Publish -}}
 {{- $coverImg := (resources.Get "images/cover/stranieri.jpg").Process "resize 1000x jpg" -}}
 
 {{/* Derive URLs from arrays to avoid duplication */}}

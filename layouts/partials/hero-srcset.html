@@ -1,0 +1,14 @@
+{{- /* Builds a WebP srcset for a hero crop. Args: image (resource), widths (slice). */ -}}
+{{- $img := .image -}}
+{{- $set := slice -}}
+{{- range .widths -}}
+  {{- if le . $img.Width -}}
+    {{- $v := $img.Process (printf "resize %dx webp q82" .) -}}
+    {{- $set = $set | append (printf "%s %dw" $v.RelPermalink .) -}}
+  {{- end -}}
+{{- end -}}
+{{- if not $set -}}
+  {{- $v := $img.Process (printf "resize %dx webp q82" $img.Width) -}}
+  {{- $set = $set | append (printf "%s %dw" $v.RelPermalink $img.Width) -}}
+{{- end -}}
+{{- delimit $set ", " -}}

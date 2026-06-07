@@ -9,8 +9,10 @@ A one-page Hugo website for your band with a clean, modern design.
    hugo server -D
    ```
 
-2. **Add your hero image:**
-   - Place your band's hero image in `static/images/hero-background.jpg`
+2. **Add your hero images:**
+   - Landscape crop (desktop + phones in landscape): `assets/images/hero-landscape.jpg` (16:9, e.g. 3840×2160)
+   - Portrait crop (phones + tablets in portrait): `assets/images/hero-portrait.jpg` (9:19.5, e.g. 1290×2796)
+   - The right crop is served automatically by screen orientation
 
 3. **Edit your content:**
    - Update section files in `content/sections/`

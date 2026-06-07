@@ -3,23 +3,52 @@
 <!-- Hero Section with Full Screen Image -->
 <section id="hero" class="hero-section">
     <div class="hero-image">
-        {{- $hero := resources.Get "images/hero-background.jpg" -}}
-        {{- $heroWebp := slice -}}
-        {{- range (slice 1280 1920 2560) -}}
-          {{- if le . $hero.Width -}}
-            {{- $v := $hero.Process (printf "resize %dx webp q82" .) -}}
-            {{- $heroWebp = $heroWebp | append (printf "%s %dw" $v.RelPermalink .) -}}
+        {{- /* Landscape crop: desktop + phones in landscape */ -}}
+        {{- $heroL := resources.Get "images/hero-landscape.jpg" -}}
+        {{- $heroLWebp := slice -}}
+        {{- $heroLJpg := slice -}}
+        {{- range (slice 1280 1920 2560 3840) -}}
+          {{- if le . $heroL.Width -}}
+            {{- $w := $heroL.Process (printf "resize %dx webp q82" .) -}}
+            {{- $heroLWebp = $heroLWebp | append (printf "%s %dw" $w.RelPermalink .) -}}
+            {{- $j := $heroL.Process (printf "resize %dx q82" .) -}}
+            {{- $heroLJpg = $heroLJpg | append (printf "%s %dw" $j.RelPermalink .) -}}
           {{- end -}}
         {{- end -}}
-        {{- if not $heroWebp -}}
-          {{- $v := $hero.Process (printf "resize %dx webp q82" $hero.Width) -}}
-          {{- $heroWebp = $heroWebp | append (printf "%s %dw" $v.RelPermalink $hero.Width) -}}
+        {{- if not $heroLWebp -}}
+          {{- $w := $heroL.Process (printf "resize %dx webp q82" $heroL.Width) -}}
+          {{- $heroLWebp = $heroLWebp | append (printf "%s %dw" $w.RelPermalink $heroL.Width) -}}
+          {{- $j := $heroL.Process (printf "resize %dx q82" $heroL.Width) -}}
+          {{- $heroLJpg = $heroLJpg | append (printf "%s %dw" $j.RelPermalink $heroL.Width) -}}
         {{- end -}}
-        {{- $heroFallbackW := cond (gt 1920 $hero.Width) $hero.Width 1920 -}}
-        {{- $heroJpg := $hero.Process (printf "resize %dx q82" $heroFallbackW) -}}
+        {{- $heroLFallbackW := cond (gt 1920 $heroL.Width) $heroL.Width 1920 -}}
+        {{- $heroLImg := $heroL.Process (printf "resize %dx q82" $heroLFallbackW) -}}
+
+        {{- /* Portrait crop: phones + tablets in portrait, all members kept in frame */ -}}
+        {{- $heroP := resources.Get "images/hero-portrait.jpg" -}}
+        {{- $heroPWebp := slice -}}
+        {{- $heroPJpg := slice -}}
+        {{- range (slice 640 828 1080 1290) -}}
+          {{- if le . $heroP.Width -}}
+            {{- $w := $heroP.Process (printf "resize %dx webp q82" .) -}}
+            {{- $heroPWebp = $heroPWebp | append (printf "%s %dw" $w.RelPermalink .) -}}
+            {{- $j := $heroP.Process (printf "resize %dx q82" .) -}}
+            {{- $heroPJpg = $heroPJpg | append (printf "%s %dw" $j.RelPermalink .) -}}
+          {{- end -}}
+        {{- end -}}
+        {{- if not $heroPWebp -}}
+          {{- $w := $heroP.Process (printf "resize %dx webp q82" $heroP.Width) -}}
+          {{- $heroPWebp = $heroPWebp | append (printf "%s %dw" $w.RelPermalink $heroP.Width) -}}
+          {{- $j := $heroP.Process (printf "resize %dx q82" $heroP.Width) -}}
+          {{- $heroPJpg = $heroPJpg | append (printf "%s %dw" $j.RelPermalink $heroP.Width) -}}
+        {{- end -}}
+
         <picture>
-            <source type="image/webp" srcset="{{ delimit $heroWebp ", " }}" sizes="100vw">
-            <img src="{{ $heroJpg.RelPermalink }}" alt="{{ .Site.Params.bandName }} – {{ .Site.Params.tagline }} Band aus München live" class="hero-bg" width="{{ $hero.Width }}" height="{{ $hero.Height }}" fetchpriority="high" decoding="async">
+            <source media="(orientation: portrait)" type="image/webp" srcset="{{ delimit $heroPWebp ", " }}" sizes="100vw">
+            <source media="(orientation: portrait)" srcset="{{ delimit $heroPJpg ", " }}" sizes="100vw">
+            <source type="image/webp" srcset="{{ delimit $heroLWebp ", " }}" sizes="100vw">
+            <source srcset="{{ delimit $heroLJpg ", " }}" sizes="100vw">
+            <img src="{{ $heroLImg.RelPermalink }}" alt="{{ .Site.Params.bandName }} – {{ .Site.Params.tagline }} Band aus München live" class="hero-bg" width="{{ $heroL.Width }}" height="{{ $heroL.Height }}" fetchpriority="high" decoding="async">
         </picture>
         <div class="hero-overlay"></div>
     </div>

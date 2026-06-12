@@ -86,6 +86,11 @@ disableKinds = ['taxonomy', 'term']
     icon = "youtube"
     vendor = "simple-icons"
   [[params.social]]
+    name = "Bandcamp"
+    url = "https://twiceasmad.bandcamp.com"
+    icon = "bandcamp"
+    vendor = "simple-icons"
+  [[params.social]]
     name = "Email"
     url = "mail@twiceasmad.de"
     icon = "envelope"

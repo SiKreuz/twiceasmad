@@ -7,7 +7,7 @@ robots: "noindex, follow"
 description: "Impressum von twiceasmad – Angaben gemäß § 5 TMG."
 ---
 
-**Inhaltlich Verantwortlicher gemäß § 18 Abs. 2 MStV::**  
+**Inhaltlich Verantwortlicher gemäß § 18 Abs. 2 MStV:**  
 
 Vertreten durch: **Fabian Maurice Fremuth**  
 twiceasmad GbR  

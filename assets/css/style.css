@@ -586,7 +586,7 @@ body {
 .legal-page-header {
     background: linear-gradient(135deg, #712E67, var(--color-primary));
     color: white;
-    padding: 6rem 0 4rem;
+    padding: 2.25rem 0 4rem;
     text-align: center;
 }
 
@@ -1221,17 +1221,13 @@ altcha-widget {
     }
 }
 
-/* Press Kit page */
-.press-header {
-    padding: 2.25rem 0 3rem;
-}
-
-.press-header-top {
+/* Back link in a page header (press kit + legal pages) */
+.header-back-bar {
     text-align: left;
     margin-bottom: 1.75rem;
 }
 
-.press-back {
+.header-back {
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
@@ -1242,9 +1238,14 @@ altcha-widget {
     transition: color 0.2s ease, gap 0.2s ease;
 }
 
-.press-back:hover {
+.header-back:hover {
     color: #fff;
     gap: 0.6rem;
+}
+
+/* Press Kit page */
+.press-header {
+    padding: 2.25rem 0 3rem;
 }
 
 .press-logo-link {

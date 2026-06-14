@@ -3,8 +3,8 @@
 <!-- Press Kit Header -->
 <section class="legal-page-header press-header">
     <div class="container">
-        <div class="press-header-top">
-            <a href="{{ "/" | relURL }}" class="press-back" data-umami-event="Presskit Back to Site">← Zurück zur Website</a>
+        <div class="header-back-bar">
+            <a href="{{ "/" | relURL }}" class="header-back" data-umami-event="Presskit Back to Site">← Zurück zur Website</a>
         </div>
         {{- $logo := resources.Get "images/logo.png" -}}
         {{- $logoImg := $logo.Process "resize 120x webp" -}}

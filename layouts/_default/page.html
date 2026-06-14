@@ -3,6 +3,9 @@
 <!-- Legal Page Header -->
 <section class="legal-page-header">
     <div class="container">
+        <div class="header-back-bar">
+            <a href="{{ "/" | relURL }}" class="header-back">← Zurück zur Startseite</a>
+        </div>
         <h1 class="page-title">{{ .Title }}</h1>
     </div>
 </section>
@@ -12,9 +15,6 @@
     <div class="container">
         <div class="legal-content">
             {{ .Content }}
-        </div>
-        <div class="back-link">
-            <a href="{{ "/" | relURL }}" class="btn-back">← Zurück zur Startseite</a>
         </div>
     </div>
 </main>

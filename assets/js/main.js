@@ -124,7 +124,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         if (heroImage) {
-            heroImage.style.transform = `translateY(${scrollY * -0.5}px)`;
+            // Very subtle parallax — image drifts up at a fraction of scroll speed.
+            heroImage.style.transform = `translateY(${scrollY * -0.08}px)`;
         }
         if (current !== activeId) {
             navLinks.forEach(link => {

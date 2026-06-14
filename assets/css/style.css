@@ -99,14 +99,6 @@ body {
     padding: 1rem 1.25rem;
 }
 
-.hero-logo {
-    height: 150px;
-    width: auto;
-    margin: 0 auto 0.75rem;
-    display: block;
-    filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.35));
-}
-
 .band-name {
     font-size: 4rem;
     font-weight: 700;
@@ -268,6 +260,7 @@ body {
     z-index: 1000;
     transition: all 0.3s ease;
     transform: translateY(-100%);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .main-nav.visible {
@@ -303,11 +296,6 @@ body {
     font-size: 1.25rem;
     font-weight: 700;
     color: var(--color-text);
-}
-
-/* On top of hero, make nav brand readable */
-.main-nav {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .nav-menu {
@@ -416,29 +404,6 @@ body {
 .contact-intro {
     text-align: center;
     margin-bottom: 2rem;
-}
-
-.contact-lead {
-    font-size: 1.3rem;
-    color: var(--color-text);
-    margin-bottom: 1rem;
-}
-
-.contact-note {
-    color: #666;
-    margin: 0.75rem 0 0.25rem;
-}
-
-.contact-inline-mail {
-    display: inline-block;
-    color: var(--color-primary);
-    text-decoration: none;
-    font-weight: 600;
-    margin-top: 0.25rem;
-}
-
-.contact-inline-mail:hover {
-    text-decoration: underline;
 }
 
 .contact-grid {
@@ -745,11 +710,6 @@ body {
         padding: 60px 0;
     }
 
-    .hero-logo {
-        height: 56px;
-        margin-bottom: 0.6rem;
-    }
-
     /* Legal Pages Mobile */
     .page-title {
         font-size: 2.5rem;
@@ -942,7 +902,8 @@ body {
     box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), 0.3);
 }
 
-#shows .show-ticket-link.is-free {
+#shows .show-ticket-link.is-free,
+#shows .show-ticket-badge.is-free {
     background: #e8f7ea;
     color: #216b34;
     border: 1px solid #b7dfbf;
@@ -956,12 +917,6 @@ body {
     border: 1px solid var(--color-primary-400);
     color: var(--color-primary-600);
     background: transparent;
-}
-
-#shows .show-ticket-badge.is-free {
-    background: #e8f7ea;
-    color: #216b34;
-    border: 1px solid #b7dfbf;
 }
 
 #shows .show-ticket-badge.is-past {

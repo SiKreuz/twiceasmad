@@ -1,0 +1,252 @@
+{{ define "main" }}
+
+<!-- Press Kit Header -->
+<section class="legal-page-header press-header">
+    <div class="container">
+        <div class="press-header-top">
+            <a href="{{ "/" | relURL }}" class="press-back" data-umami-event="Presskit Back to Site">← Zurück zur Website</a>
+        </div>
+        {{- $logo := resources.Get "images/logo.png" -}}
+        {{- $logoImg := $logo.Process "resize 120x webp" -}}
+        <a href="{{ "/" | relURL }}" class="press-logo-link" aria-label="Zur Startseite">
+            <img class="press-logo" src="{{ $logoImg.RelPermalink }}" alt="{{ .Site.Params.bandName }} Logo" width="60" height="60" decoding="async">
+        </a>
+        <h1 class="page-title">{{ .Site.Params.bandName }} — Pressekit</h1>
+        <p class="page-lead">{{ .Site.Params.tagline }} · {{ .Site.Params.city }}</p>
+    </div>
+</section>
+
+<main class="presskit">
+
+    <!-- Factsheet -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Factsheet</h2>
+            </div>
+            <dl class="press-factsheet">
+                {{ range .Params.factsheet }}
+                <div class="press-fact">
+                    <dt>{{ .label }}</dt>
+                    <dd>{{ .value }}</dd>
+                </div>
+                {{ end }}
+            </dl>
+        </div>
+    </section>
+
+    <!-- Bio -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Bio</h2>
+            </div>
+            <div class="section-content press-bio">
+                <h3>Kurzbio</h3>
+                {{ .Content }}
+                <h3>Langbio</h3>
+                {{ with .Site.GetPage "/sections/about" }}
+                {{/* Pressebild aus der Langbio entfernen – Fotos stehen weiter unten in der eigenen Sektion */}}
+                {{ .Content | replaceRE "(?s)<picture[^>]*>.*?</picture>" "" | safeHTML }}
+                {{ end }}
+            </div>
+        </div>
+    </section>
+
+    <!-- Songs & Social -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Songs</h2>
+            </div>
+            <div class="section-content">
+                <div class="press-tracks">
+                    {{ range .Params.tracks }}
+                    {{ $title := .title }}
+                    {{ $res := resources.Get .file }}
+                    <div class="press-track">
+                        {{ with $res }}
+                        <div class="press-player" data-src="{{ .RelPermalink }}">
+                            <button class="press-player-btn" aria-label="Abspielen">
+                                <span class="press-icon-play">{{ partial "icons/icon" (dict "vendor" "bootstrap" "name" "play-fill" "size" "1.2em") }}</span>
+                                <span class="press-icon-pause">{{ partial "icons/icon" (dict "vendor" "bootstrap" "name" "pause-fill" "size" "1.2em") }}</span>
+                            </button>
+                            <div class="press-player-body">
+                                <span class="press-track-title">{{ $title }}</span>
+                                <div class="press-player-controls">
+                                    <div class="press-player-bar">
+                                        <div class="press-player-filled"></div>
+                                    </div>
+                                    <div class="press-player-time">
+                                        <span class="press-player-current">0:00</span>
+                                        <span class="press-player-sep">/</span>
+                                        <span class="press-player-duration">–:––</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{ else }}
+                        <span class="press-track-title">{{ $title }}</span>
+                        <span class="press-track-pending">Hörprobe folgt</span>
+                        {{ end }}
+                    </div>
+                    {{ end }}
+                </div>
+                <p class="press-social-label">Mehr Musik &amp; Social Media</p>
+                <div class="streaming-links press-social">
+                    {{ range .Site.Params.social }}
+                      {{ if .url }}
+                        {{ if eq .name "Email" }}
+                          <a href="mailto:{{ .url }}" class="streaming-link" aria-label="{{ .name }}" data-umami-event="Presskit Social Click" data-umami-event-platform="{{ .name }}">
+                            {{ partial "icons/icon" (dict "vendor" .vendor "name" .icon "size" "1.1em") }}
+                          </a>
+                        {{ else }}
+                          <a href="{{ .url }}" class="streaming-link" target="_blank" rel="noopener" aria-label="{{ .name }}" data-umami-event="Presskit Social Click" data-umami-event-platform="{{ .name }}">
+                            {{ partial "icons/icon" (dict "vendor" .vendor "name" .icon "size" "1.1em") }}
+                          </a>
+                        {{ end }}
+                      {{ end }}
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pressefotos -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Pressefotos</h2>
+            </div>
+            <div class="press-photo-grid">
+                {{ range .Params.photos }}
+                {{ $alt := .alt }}{{ $credit := .credit }}
+                {{ with resources.Get .src }}
+                {{ $preview := .Process "resize 700x webp" }}
+                <figure class="press-photo">
+                    <a href="{{ .RelPermalink }}" download aria-label="Foto in voller Auflösung herunterladen">
+                        <img src="{{ $preview.RelPermalink }}" alt="{{ $alt }}" width="{{ $preview.Width }}" height="{{ $preview.Height }}" loading="lazy" decoding="async">
+                    </a>
+                    <figcaption>
+                        {{ with $credit }}<span class="press-photo-credit">{{ . }}</span>{{ else }}<span></span>{{ end }}
+                        <a class="press-photo-download" href="{{ .RelPermalink }}" download>{{ partial "icons/icon" (dict "vendor" "bootstrap" "name" "download" "size" "1em") }} Download</a>
+                    </figcaption>
+                </figure>
+                {{ end }}
+                {{ end }}
+            </div>
+        </div>
+    </section>
+
+    <!-- Downloads -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Downloads</h2>
+            </div>
+            {{ $hasDl := false }}
+            {{ range .Params.downloads }}{{ if resources.Get .file }}{{ $hasDl = true }}{{ end }}{{ end }}
+            <div class="press-downloads">
+                {{ range .Params.downloads }}
+                {{ $title := .title }}{{ $icon := .icon | default "file-earmark-pdf" }}
+                {{ with resources.Get .file }}
+                <a class="cta-button" href="{{ .RelPermalink }}" download><span class="cta-content">{{ partial "icons/icon" (dict "vendor" "bootstrap" "name" $icon "size" "1.1em") }} {{ $title }}</span></a>
+                {{ end }}
+                {{ end }}
+            </div>
+            {{ if not $hasDl }}
+            <p class="press-muted">One-Sheet &amp; Tech-Rider auf Anfrage – <a href="mailto:{{ .Site.Params.bookingEmail }}">{{ .Site.Params.bookingEmail }}</a></p>
+            {{ end }}
+        </div>
+    </section>
+
+    <!-- Booking / Kontakt -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Booking &amp; Kontakt</h2>
+            </div>
+            <div class="section-content">
+                {{ with .Site.GetPage "/sections/contact" }}{{ .Content }}{{ end }}
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- Footer -->
+{{ partial "footer.html" . }}
+
+<script>
+(function () {
+  var active = null;
+
+  document.querySelectorAll('.press-player').forEach(function (player) {
+    var btn    = player.querySelector('.press-player-btn');
+    var bar    = player.querySelector('.press-player-bar');
+    var filled = player.querySelector('.press-player-filled');
+    var curEl  = player.querySelector('.press-player-current');
+    var durEl  = player.querySelector('.press-player-duration');
+    var audio  = null;
+
+    function fmt(s) {
+      if (!isFinite(s)) return '–:––';
+      var m = Math.floor(s / 60), sec = Math.floor(s % 60);
+      return m + ':' + (sec < 10 ? '0' : '') + sec;
+    }
+
+    function setProgress(p) {
+      filled.style.width = p + '%';
+    }
+
+    function initAudio() {
+      if (audio) return audio;
+      audio = new Audio(player.dataset.src);
+      audio.preload = 'metadata';
+      audio.addEventListener('loadedmetadata', function () { durEl.textContent = fmt(audio.duration); });
+      audio.addEventListener('timeupdate', function () {
+        var p = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
+        setProgress(p);
+        curEl.textContent = fmt(audio.currentTime);
+      });
+      audio.addEventListener('ended', function () {
+        btn.classList.remove('is-playing');
+        btn.setAttribute('aria-label', 'Abspielen');
+        setProgress(0);
+        curEl.textContent = '0:00';
+        active = null;
+      });
+      return audio;
+    }
+
+    btn.addEventListener('click', function () {
+      var a = initAudio();
+      if (!a.paused) {
+        a.pause();
+        btn.classList.remove('is-playing');
+        btn.setAttribute('aria-label', 'Abspielen');
+        active = null;
+      } else {
+        if (active && active.audio !== a) {
+          active.audio.pause();
+          active.btn.classList.remove('is-playing');
+          active.btn.setAttribute('aria-label', 'Abspielen');
+        }
+        a.play();
+        btn.classList.add('is-playing');
+        btn.setAttribute('aria-label', 'Pause');
+        active = { audio: a, btn: btn };
+      }
+    });
+
+    bar.addEventListener('click', function (e) {
+      var a = initAudio();
+      if (!a.duration) return;
+      var rect = bar.getBoundingClientRect();
+      a.currentTime = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width)) * a.duration;
+    });
+  });
+}());
+</script>
+
+{{ end }}

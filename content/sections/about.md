@@ -12,7 +12,7 @@ Stilistisch bewegen sie sich irgendwo zwischen [Bilderbuch](https://www.bilderbu
 Schmutzige E-Gitarren, wuchtige Bläser, bissiger Rap und Synthesizer-Action.
 Daraus entsteht ein dicker, ehrlicher Deutschpop-Sound mit klarer Live-DNA.
 
-Mit ihrer neuen EP Yab Yum, die im Sommer 2026 erscheint, rückt genau das in den Fokus:
+Mit ihrer neuen EP Yab Yum, die im Herbst 2026 erscheint, rückt genau das in den Fokus:
 der Moment, in dem zwischen Menschen Energie entsteht - intensiv, schwer greifbar und jenseits von dem, was sich mit Worten erklären lässt.
 Yab Yum ist kein Konzept.
 Es ist ein Zustand.

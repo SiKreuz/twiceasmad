@@ -12,6 +12,12 @@
 #   highlight (optional)  true  → additionally show this upcoming show in the homepage teaser, even if it isn't among the next 6
 
 shows:
+  - name: "Mondscheinexpress"
+    date: "2026-12-11"
+    venue: "Bahnwärter Thiel"
+    city: "München"
+    tickets: "free"
+
   - name: "Yab Yum Tour"
     date: "2026-12-05"
     time: "20:30"

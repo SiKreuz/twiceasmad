@@ -20,7 +20,7 @@ shows:
 
   - name: "Yab Yum Tour"
     date: "2026-12-05"
-    time: "20:30"
+    time: "20:00"
     venue: "Roxy Musikbar"
     city: "Zürich"
     country: "CH"
@@ -28,9 +28,10 @@ shows:
 
   - name: "Yab Yum Tour"
     date: "2026-12-03"
+    time: "20:00"
     venue: "Pink Flamingo"
     city: "Freiburg"
-    tickets: "coming-soon"
+    tickets: "https://rausgegangen.de/events/yab-yum-tour-2026-6/"
 
   - name: "Yab Yum Tour"
     date: "2026-12-02"

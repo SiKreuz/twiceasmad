@@ -76,6 +76,12 @@ shows:
     tickets: "free"
     venue_url: "https://rocketclub.de/programm/konzerte/846-umsonst-drinnen-50"
 
+  - name: "Yab Yum Tour"
+    date: "2026-10-18"
+    venue: "B72"
+    city: "Wien"
+    tickets: "coming-soon"
+
   - name: "Club-Geburtstag"
     date: "2026-10-16"
     time: "20:00"

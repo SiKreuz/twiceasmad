@@ -1,6 +1,13 @@
 {{/*
   show-card.html — renders a single show card.
-  Input: a show dict from get-shows.html. Pass `_isPast: true` (merged in) to render the past variant.
+  Input: a show dict from get-shows.html. Optional merged-in flags:
+    _isPast   true → render the past variant
+    _hidden   true → render with the `hidden` attribute (teaser overflow)
+
+  The card also carries everything main.js needs to turn an upcoming card into a past
+  one in the browser once the show has happened: `data-show-at` (the moment it becomes
+  past), `data-show-highlight` (teaser pinning), the "Vergangen" badge (pre-rendered
+  but hidden) and `data-past-text` on the location fallback.
 */}}
 {{- $e := . -}}
 {{- $isPast := $e._isPast | default false -}}
@@ -15,7 +22,7 @@
   {{- $mapsQuery = $e.city -}}
 {{- end -}}
 
-<article class="show-card{{ if $isPast }} is-past{{ end }}">
+<article class="show-card{{ if $isPast }} is-past{{ end }}" data-show-at="{{ $e._atISO }}"{{ if eq $e.highlight true }} data-show-highlight{{ end }}{{ if $e._hidden }} hidden{{ end }}>
   <p class="show-date" aria-label="Datum und Uhrzeit">
     <span class="show-date-main">{{ $eventDate.Format "02.01.2006" }}</span>
     {{- if $hasTime }}
@@ -35,14 +42,12 @@
         {{ with $e.venue }}{{ . }}{{ end }}{{ if and $e.venue $e.city }}, {{ end }}{{ with $e.city }}{{ . }}{{ end }}
       </a>
     {{- else -}}
-      <p class="show-location">{{ if $isPast }}Ort unbekannt{{ else }}Ort folgt{{ end }}</p>
+      <p class="show-location" data-past-text="Ort unbekannt">{{ if $isPast }}Ort unbekannt{{ else }}Ort folgt{{ end }}</p>
     {{- end -}}
   </div>
 
   <div class="show-ticket">
-    {{- if $isPast -}}
-      <span class="show-ticket-badge is-past">Vergangen</span>
-    {{- else -}}
+    {{- if not $isPast -}}
       {{- $ticketValue := $e.tickets | default "" -}}
       {{- if or (hasPrefix $ticketValue "https://") (hasPrefix $ticketValue "http://") -}}
         <a class="show-ticket-link" href="{{ $ticketValue }}" target="_blank" rel="noopener noreferrer" data-umami-event="Show Ticket Click" data-umami-event-date="{{ $e.date }}" data-umami-event-name="{{ $e.name }}">Tickets</a>
@@ -58,5 +63,6 @@
         <span class="show-ticket-badge is-soon">Info folgt</span>
       {{- end -}}
     {{- end -}}
+    <span class="show-ticket-badge is-past" data-past-badge{{ if not $isPast }} hidden{{ end }}>Vergangen</span>
   </div>
 </article>

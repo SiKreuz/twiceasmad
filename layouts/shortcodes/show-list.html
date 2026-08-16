@@ -1,45 +1,41 @@
 {{/*
   show-list shortcode.
   Default ({{< show-list >}}): full list with Kommende / Vergangene tabs — used on the /live/ page.
-  Teaser ({{< show-list mode="teaser" >}}): a season-aware subset of upcoming shows + a link to /live/ — used on the homepage.
+  Teaser ({{< show-list mode="teaser" >}}): a subset of upcoming shows + a link to /live/ — used on the homepage.
 
-  Teaser selection (no fixed count):
-    1. If any upcoming show has `highlight: true`, show exactly those (manual editorial control).
-    2. Otherwise show every upcoming show within `homeUpcomingWindowMonths` (festival summer / autumn tour adapts by itself).
-    3. Fallback: if nothing matches, show the single next upcoming show so the homepage is never empty.
+  Teaser selection: the next `homeUpcomingCount` upcoming shows, plus any pinned
+  (highlight: true) show beyond them — kept in date order.
+
+  Hugo splits upcoming/past against the build time, so both modes also ship everything
+  main.js needs to redo that split in the browser (see the sync block at the top of
+  assets/js/main.js): every upcoming show is rendered (teaser overflow just gets `hidden`),
+  the empty-state message and the "Vergangene" tab always exist (hidden when unused), and
+  the teaser counts sit in spans that JS can rewrite. Without JS the build-time split is
+  still what renders, so the markup is correct either way.
 */}}
 {{- $data := partial "get-shows.html" . -}}
 {{- $upcoming := $data.upcoming -}}
 {{- $past := $data.past -}}
 {{- $mode := .Get "mode" | default "full" -}}
+{{- $hasPast := gt (len $past) 0 -}}
 
 {{- if eq $mode "teaser" -}}
-  {{- /* The next N upcoming shows, plus any pinned (highlight: true) shows beyond them — kept in date order. */ -}}
   {{- $count := int (.Site.Params.homeUpcomingCount | default 6) -}}
-  {{- $list := slice -}}
-  {{- range $i, $e := $upcoming -}}
-    {{- if or (lt $i $count) (eq $e.highlight true) -}}
-      {{- $list = $list | append $e -}}
-    {{- end -}}
-  {{- end -}}
-  {{- $totalUpcoming := len $upcoming -}}
-  {{- $more := sub $totalUpcoming (len $list) -}}
+  {{- $total := len $upcoming -}}
   {{- $pastCount := len $past -}}
+  {{- $more := 0 -}}
 
-  <div class="show-list show-list-teaser" data-show-list>
+  <div class="show-list show-list-teaser" data-show-list data-teaser-count="{{ $count }}">
     <div class="show-tab-panel" data-show-panel="upcoming">
-      {{- if gt (len $list) 0 -}}
-        {{- range $list -}}{{ partial "show-card.html" . }}{{- end -}}
-      {{- else -}}
-        <p class="show-empty">Neue Termine folgen bald!</p>
+      {{- range $i, $e := $upcoming -}}
+        {{- $hide := and (ge $i $count) (ne $e.highlight true) -}}
+        {{- if $hide }}{{ $more = add $more 1 }}{{ end -}}
+        {{ partial "show-card.html" (merge $e (dict "_hidden" $hide)) }}
       {{- end -}}
+      <p class="show-empty"{{ if gt $total 0 }} hidden{{ end }}>Neue Termine folgen bald!</p>
     </div>
-    <div class="show-teaser-more">
-      {{- if gt $more 0 }}
-      <p class="show-teaser-note">Das sind nur die nächsten Termine – insgesamt {{ $totalUpcoming }} kommende Konzerte{{ if gt $pastCount 0 }} und ein Tour-Archiv mit {{ $pastCount }} vergangenen Shows{{ end }}.</p>
-      {{- else if gt $pastCount 0 }}
-      <p class="show-teaser-note">Schau dir auch unser Tour-Archiv mit {{ $pastCount }} vergangenen Shows an.</p>
-      {{- end }}
+    <div class="show-teaser-more" data-teaser-more data-past-count="{{ $pastCount }}">
+      <p class="show-teaser-note"><span data-note-more{{ if le $more 0 }} hidden{{ end }}>Das sind nur die nächsten Termine – insgesamt <span data-count="upcoming">{{ $total }}</span> kommende Konzerte.&#32;</span>Schau dir auch unser Tour-Archiv mit <span data-count="past">{{ $pastCount }}</span> vergangenen Shows an.</p>
       <a href="{{ "/live/" | relURL }}" class="cta-button show-all-cta" data-umami-event="Shows See All">Alle Termine ansehen →</a>
     </div>
   </div>
@@ -48,23 +44,16 @@
   <div class="show-list" data-show-list>
     <div class="show-tabs" role="tablist" aria-label="Live-Termine">
       <button type="button" class="show-tab-button active" data-show-tab="upcoming" aria-selected="true">Kommende</button>
-      {{- if gt (len $past) 0 -}}
-        <button type="button" class="show-tab-button" data-show-tab="past" aria-selected="false">Vergangene</button>
-      {{- end -}}
+      <button type="button" class="show-tab-button" data-show-tab="past" aria-selected="false"{{ if not $hasPast }} hidden{{ end }}>Vergangene</button>
     </div>
 
     <div class="show-tab-panel" data-show-panel="upcoming">
-      {{- if gt (len $upcoming) 0 -}}
-        {{- range $upcoming -}}{{ partial "show-card.html" . }}{{- end -}}
-      {{- else -}}
-        <p class="show-empty">Neue Termine folgen bald!</p>
-      {{- end -}}
+      {{- range $upcoming -}}{{ partial "show-card.html" . }}{{- end -}}
+      <p class="show-empty"{{ if gt (len $upcoming) 0 }} hidden{{ end }}>Neue Termine folgen bald!</p>
     </div>
 
-    {{- if gt (len $past) 0 -}}
-      <div class="show-tab-panel" data-show-panel="past" hidden>
-        {{- range $past -}}{{ partial "show-card.html" (merge . (dict "_isPast" true)) }}{{- end -}}
-      </div>
-    {{- end -}}
+    <div class="show-tab-panel" data-show-panel="past" hidden>
+      {{- range $past -}}{{ partial "show-card.html" (merge . (dict "_isPast" true)) }}{{- end -}}
+    </div>
   </div>
 {{- end -}}

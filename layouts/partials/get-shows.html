@@ -1,10 +1,10 @@
 {{/*
   get-shows.html — single source of truth for parsing data/shows.yaml.
   Returns a dict: { "upcoming": [...], "past": [...] }, each show enriched with:
-    ._at        time.Time (parsed in Europe/Berlin, DST-aware) used for sorting/splitting
-    ._hasTime   bool — whether an explicit start time was given
-    ._startDate ISO-8601 string for schema.org startDate
-                (with timezone offset when a time exists, date-only otherwise — never a fake T00:00:00)
+    ._at       time.Time (parsed in Europe/Berlin, DST-aware) used for sorting/splitting
+    ._atISO    the same instant as an absolute ISO-8601 string — rendered into the markup so
+               main.js can redo the split in the browser instead of leaving it frozen at build time
+    ._hasTime  bool — whether an explicit start time was given
   Used by the show-list shortcode (display) and schema.html (MusicEvent JSON-LD).
 */}}
 {{- $events := index hugo.Data.shows "shows" | default slice -}}
@@ -21,8 +21,7 @@
     {{- $raw = printf "%sT23:59:59" (string $e.date) -}}
   {{- end -}}
   {{- $at := time.AsTime $raw "Europe/Berlin" -}}
-  {{- $startDate := cond $hasTime ($at.Format "2006-01-02T15:04:05-07:00") (string $e.date) -}}
-  {{- $m := merge $e (dict "_at" $at "_hasTime" $hasTime "_startDate" $startDate) -}}
+  {{- $m := merge $e (dict "_at" $at "_atISO" ($at.Format "2006-01-02T15:04:05-07:00") "_hasTime" $hasTime) -}}
   {{- if lt $at $now -}}
     {{- $past = $past | append $m -}}
   {{- else -}}

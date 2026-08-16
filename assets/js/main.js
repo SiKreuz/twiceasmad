@@ -1,3 +1,77 @@
+// Keep the show list current between deploys.
+//
+// Hugo splits data/shows.yaml into "Kommende" / "Vergangene" against the *build*
+// time, so left alone the split freezes at the last deploy and shows that have
+// already happened keep sitting in the upcoming list. Redo it here against the
+// visitor's clock: every card carries `data-show-at`, an absolute timestamp with a
+// Europe/Berlin offset, so the comparison is timezone-proof.
+//
+// Runs immediately — this script sits at the end of <body>, so the list is already
+// parsed and there is no flash of an outdated list. Without JS the build-time split
+// still renders, just as stale as it was before.
+(function syncShowDates() {
+    const now = Date.now();
+    const isOver = iso => {
+        const at = Date.parse(iso || '');
+        return !isNaN(at) && at <= now;
+    };
+
+    // Structured data: stop advertising MusicEvents that are already over.
+    document.querySelectorAll('script[type="application/ld+json"][data-event-at]').forEach(script => {
+        if (isOver(script.dataset.eventAt)) script.remove();
+    });
+
+    const list = document.querySelector('[data-show-list]');
+    const upcomingPanel = list && list.querySelector('[data-show-panel="upcoming"]');
+    if (!upcomingPanel) return;
+
+    const pastPanel = list.querySelector('[data-show-panel="past"]');
+    const cards = Array.from(upcomingPanel.querySelectorAll('.show-card'));
+    const expired = cards.filter(card => isOver(card.dataset.showAt));
+    const upcoming = cards.filter(card => !isOver(card.dataset.showAt));
+
+    expired.forEach(card => {
+        // The teaser has no archive to move into — those cards just go away.
+        if (!pastPanel) {
+            card.remove();
+            return;
+        }
+        card.classList.add('is-past');
+        const fallback = card.querySelector('.show-location[data-past-text]');
+        if (fallback) fallback.textContent = fallback.dataset.pastText;
+        card.querySelectorAll('.show-ticket > *').forEach(el => {
+            el.hidden = !el.hasAttribute('data-past-badge');
+        });
+        // `expired` runs oldest-first and the archive is sorted newest-first, so
+        // prepending one by one lands them all in the right place.
+        pastPanel.insertBefore(card, pastPanel.firstChild);
+    });
+
+    // Homepage teaser: re-pick the visible subset now that cards have dropped out.
+    // Every upcoming show is in the DOM, so the next one can move up. The full list
+    // sets no cap, which leaves all of them visible.
+    const cap = parseInt(list.dataset.teaserCount, 10) || Infinity;
+    let visible = 0;
+    upcoming.forEach((card, i) => {
+        card.hidden = i >= cap && !card.hasAttribute('data-show-highlight');
+        if (!card.hidden) visible++;
+    });
+
+    const empty = upcomingPanel.querySelector('.show-empty');
+    if (empty) empty.hidden = visible > 0;
+
+    const pastTab = list.querySelector('[data-show-tab="past"]');
+    if (pastTab && pastPanel) pastTab.hidden = !pastPanel.querySelector('.show-card');
+
+    const teaserMore = list.querySelector('[data-teaser-more]');
+    if (teaserMore) {
+        teaserMore.querySelector('[data-count="upcoming"]').textContent = upcoming.length;
+        teaserMore.querySelector('[data-count="past"]').textContent =
+            (parseInt(teaserMore.dataset.pastCount, 10) || 0) + expired.length;
+        teaserMore.querySelector('[data-note-more]').hidden = upcoming.length <= visible;
+    }
+})();
+
 // Wait for DOM to be loaded
 document.addEventListener('DOMContentLoaded', function() {
     

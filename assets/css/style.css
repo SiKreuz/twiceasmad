@@ -773,6 +773,13 @@ body {
     max-width: 1000px;
 }
 
+/* The rules below set `display` with an id in the selector, which outranks the
+   browser's [hidden] rule — so honour `hidden` explicitly. main.js toggles it on
+   cards, badges and notes when it re-splits upcoming/past in the browser. */
+#shows [hidden] {
+    display: none !important;
+}
+
 #shows .show-tabs {
     display: inline-flex;
     gap: 0.5rem;

@@ -167,11 +167,12 @@
     {{- if .city -}}
       {{- $ticket := .tickets | default "" -}}
       {{- $addr := dict "@type" "PostalAddress" "addressLocality" .city "addressCountry" (.country | default "DE") -}}
+      {{/* startDate is date-only when the show has no start time — never a fake T00:00:00. */}}
       {{- $ev := dict
         "@context" "https://schema.org"
         "@type" "MusicEvent"
         "name" (printf "%s – %s live in %s" .name $params.bandName .city)
-        "startDate" ._startDate
+        "startDate" (cond ._hasTime ._atISO (string .date))
         "eventStatus" "https://schema.org/EventScheduled"
         "eventAttendanceMode" "https://schema.org/OfflineEventAttendanceMode"
         "location" (dict "@type" "Place" "name" (.venue | default .city) "address" $addr)
@@ -186,7 +187,9 @@
         {{- $freeURL := cond (ne (.venue_url | default "") "") (.venue_url | default "") $liveURL -}}
         {{- $ev = merge $ev (dict "offers" (dict "@type" "Offer" "price" "0" "priceCurrency" "EUR" "availability" "https://schema.org/InStock" "url" $freeURL)) -}}
       {{- end -}}
-<script type="application/ld+json">{{ $ev | jsonify | safeJS }}</script>
+{{/* data-event-at lets main.js drop the block once the show is over, so a page served
+     long after the last deploy does not advertise an event that already happened. */}}
+<script type="application/ld+json" data-event-at="{{ ._atISO }}">{{ $ev | jsonify | safeJS }}</script>
     {{- end -}}
   {{- end -}}
 {{- end -}}

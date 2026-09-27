@@ -1,0 +1,9 @@
+{{- $email := index .Site.Params (.Get "email") -}}
+{{- $featured := eq (.Get "featured") "true" -}}
+<div class="contact-card{{ if $featured }} contact-card--featured{{ end }}">
+	<span class="contact-icon">{{ partial "icons/icon" (dict "vendor" "bootstrap" "name" (.Get "icon") "size" "1.4em") }}</span>
+	<h3>{{ .Get "title" }}</h3>
+	<p class="contact-text">{{ .Inner | markdownify }}</p>
+	<a class="contact-link" href="mailto:{{ $email }}" data-umami-event="Contact Click" data-umami-event-type="{{ .Get "type" }}">{{ $email }}</a>
+	<a class="cta-button{{ if not $featured }} cta-button--outline{{ end }}" href="mailto:{{ $email }}" data-umami-event="Contact CTA Click" data-umami-event-type="{{ .Get "type" }}"><span class="cta-content">{{ partial "icons/icon" (dict "vendor" "bootstrap" "name" "envelope" "size" "1.1em") }} {{ .Get "cta" }}</span></a>
+</div>

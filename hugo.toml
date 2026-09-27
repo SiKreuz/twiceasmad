@@ -36,6 +36,7 @@ disableKinds = ['taxonomy', 'term']
   albumTitle = "Stranieri"
   albumReleaseDate = "2024-10-22"
   bookingEmail = "booking@twiceasmad.de"
+  generalEmail = "mail@twiceasmad.de"
 
   # Streaming Platforms
   [[params.streaming]]
